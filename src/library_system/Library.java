@@ -1,10 +1,15 @@
 package library_system;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.*;
 
 public class Library {
+	private ArrayList<User> Users = new ArrayList<User>();
+	private Item_DB stock;
 	public static void main(String [] args) {
+		
+		//load users and get an instance of stock
 		
 		Scanner scan = new Scanner(System.in);
 		
@@ -146,5 +151,9 @@ public class Library {
 		catch (Exception e) {
 			System.out.println(e);
 		}
+	}
+	
+	private User login(int card_num, String pwd) {
+		
 	}
 }

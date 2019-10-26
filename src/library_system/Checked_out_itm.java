@@ -15,7 +15,16 @@ public class Checked_out_itm {
 		id = item.getId();
 	}
 	
-	
+	public void renew() {
+		if(renewals == 3) {
+			System.out.println("this item is not renewable");
+		}
+		else {
+			renewals ++;
+			System.out.println("this is the "+ renewals + "renewal of this item");
+		}
+		
+	}
 	
 	public int getId() {
 		return id;
