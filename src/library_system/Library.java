@@ -7,6 +7,7 @@ import java.io.*;
 public class Library {
 	private ArrayList<User> Users = new ArrayList<User>();
 	private Item_DB stock;
+	private User curr_user;
 	public static void main(String [] args) {
 		
 		//load users and get an instance of stock
@@ -154,6 +155,7 @@ public class Library {
 	}
 	
 	private User login(int card_num, String pwd) {
-		
+		return null;
 	}
+	private void logout() {}
 }
