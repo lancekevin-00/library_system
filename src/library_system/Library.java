@@ -19,23 +19,23 @@ public class Library {
 
 		
 		System.out.println("Welcome to the library " + "example name");
-		
-		System.out.println("~~~~~~~~~~~~~~MENU~~~~~~~~~~~~~~");
-		System.out.println("1: Search");
-		System.out.println("2: Check Out");
-		System.out.println("3: Check Due Dates");
-		System.out.println("4: Return");
-		System.out.println("5: Check Fines");
-		System.out.println("6: Pay Fines");
-		System.out.println("7: Change Email Address");
-		System.out.println("8: Change Password");
-		System.out.println("9: Log out");
-		//if(user.type == "librarian")
-		//System.out.println(10: Edit User)
-		
+				
 		try {
 			boolean go_again = true;
 			while(go_again) {
+				System.out.println("~~~~~~~~~~~~~~MENU~~~~~~~~~~~~~~");
+				System.out.println("1: Search");
+				System.out.println("2: Check Out");
+				System.out.println("3: Check Due Dates");
+				System.out.println("4: Return");
+				System.out.println("5: Check Fines");
+				System.out.println("6: Pay Fines");
+				System.out.println("7: Change Email Address");
+				System.out.println("8: Change Password");
+				System.out.println("9: Log out");
+				//if(user.type == "librarian")
+				//System.out.println(10: Edit User)
+
 				int choice = scan.nextInt();
 				switch(choice) {
 				case 1:
@@ -45,8 +45,10 @@ public class Library {
 					System.out.println("Searching through the stock database for the search term");
 					System.out.println("Results:");
 					
-					System.out.println("Select a Result by id#:");
+					System.out.println("Select a Result by id# or enter zero to exit:");
 					int id = scan.nextInt();
+					if(id == 0)
+						break;
 					
 					System.out.println("~~~~~~~~~ACTIONS~~~~~~~~~");
 					System.out.println("1: Get Info");
@@ -54,7 +56,7 @@ public class Library {
 					System.out.println("3: Return to Menu");
 					int c = scan.nextInt();
 					boolean i = true;
-					while(i) {
+					//while(i) {
 					switch(c) {
 						case 1:
 							System.out.println("Getting Book Info");
@@ -67,7 +69,7 @@ public class Library {
 							i = false;
 							break;
 						}
-					}
+					//}
 					break;
 				case 2: //I think we should get rid of this and just leave checkout to the search action
 					System.out.println("Checking Out");
@@ -119,6 +121,10 @@ public class Library {
 						System.out.println("new password confirmed");
 						//set users password to the new password
 					}
+					else {
+						System.out.println("passwords do not match");
+						System.out.println("new password not confirmed");
+					}
 					break;
 				case 9:
 					go_again = false;
@@ -134,8 +140,8 @@ public class Library {
 					System.out.println("Enter A Valid Number");
 					break;
 				}
-				scan.close();
 			}
+			scan.close();
 		}
 		catch (Exception e) {
 			System.out.println(e);
