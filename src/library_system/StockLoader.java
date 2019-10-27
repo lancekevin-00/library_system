@@ -1,3 +1,4 @@
+package library_system;
 import java.io.FileReader;
 import java.util.ArrayList;
 import org.json.simple.JSONArray;
@@ -11,7 +12,7 @@ private static final String MAGAZINE_FILE_NAME = "magazines.json";
 private static final String EBOOK_FILE_NAME = "ebooks.json";
 private static final String AUDIOBOOK_FILE_NAME = "audiobooks.json";
 	
-	public static ArrayList<Stock> loadBooks() {
+	public static ArrayList<Book> loadBooks() {
 		ArrayList<Book> books = new ArrayList<Book>();
 		
 		try {
@@ -44,7 +45,7 @@ private static final String AUDIOBOOK_FILE_NAME = "audiobooks.json";
 	}
 	
 	
-	public static ArrayList<Stock> loadDVDs() {
+	public static ArrayList<DVD> loadDVDs() {
 		ArrayList<DVD> dvds = new ArrayList<DVD>();
 		
 		try {
@@ -76,7 +77,7 @@ private static final String AUDIOBOOK_FILE_NAME = "audiobooks.json";
 		return null;
 	}
 	
-	public static ArrayList<Stock> loadMagazines() {
+	public static ArrayList<Magazine> loadMagazines() {
 		ArrayList<Magazine> magazines = new ArrayList<Magazine>();
 		
 		try {
@@ -92,12 +93,12 @@ private static final String AUDIOBOOK_FILE_NAME = "audiobooks.json";
 				int year = (int)MagazineJSON.get("year");
 				String genre = (String)MagazineJSON.get("genre");
 				String publisher = (String)MagazineJSON.get("publisher");
-				String volume = (String)MagazineJSON.get("volume");
+				int volume = (int)MagazineJSON.get("volume");
 				String issue = (String)MagazineJSON.get("issue");
 				int numCopies = (int)MagazineJSON.get("numCopies");
 				boolean newArrival = (boolean)MagazineJSON.get("newArrival");
 				
-				magazines.add(new Magazine(id,title,year,genre,publisher,issue,numCopies,newArrival));
+				magazines.add(new Magazine(id,title,year,genre,publisher,volume, issue,numCopies,newArrival));
 			}
 			
 			return magazines;
@@ -108,8 +109,8 @@ private static final String AUDIOBOOK_FILE_NAME = "audiobooks.json";
 		
 		return null;
 	}
-	public static ArrayList<Stock> loadeBooks() {
-		ArrayList<eBook> eBooks = new ArrayList<eBook>();
+	public static ArrayList<eBook> loadeBooks() {
+		ArrayList<eBook> ebooks = new ArrayList<eBook>();
 		
 		try {
 			FileReader reader = new FileReader("src/eBooks.json");
@@ -128,7 +129,7 @@ private static final String AUDIOBOOK_FILE_NAME = "audiobooks.json";
 				int numCopies = (int)eBookJSON.get("numCopies");
 				boolean newArrival = (boolean)eBookJSON.get("newArrival");
 				
-				eeBooks.add(new eBook(id,title,year,genre,publisher,author,numCopies,newArrival));
+				ebooks.add(new eBook(id,title,year,genre,publisher,author,numCopies,newArrival));
 			}
 			
 			return ebooks;
@@ -140,8 +141,8 @@ private static final String AUDIOBOOK_FILE_NAME = "audiobooks.json";
 		return null;
 	}
 	
-	public static ArrayList<Stock> loadaudioBooks() {
-		ArrayList<audioBook> audiobooks = new ArrayList<audioBook>();
+	public static ArrayList<Audio_Book> loadaudioBooks() {
+		ArrayList<Audio_Book> audiobooks = new ArrayList<Audio_Book>();
 		
 		try {
 			FileReader reader = new FileReader("src/audiobooks.json");
@@ -160,7 +161,7 @@ private static final String AUDIOBOOK_FILE_NAME = "audiobooks.json";
 				int numCopies = (int)audioBookJSON.get("numCopies");
 				boolean newArrival = (boolean)audioBookJSON.get("newArrival");
 				
-				audiobooks.add(new audioBook(id,title,year,genre,publisher,author,numCopies,newArrival));
+				audiobooks.add(new Audio_Book(id,title,year,genre,publisher,author,numCopies,newArrival));
 			}
 			
 			return audiobooks;
