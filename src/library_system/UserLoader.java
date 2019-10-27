@@ -5,10 +5,10 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;;
 public class UserLoader {
-	private static final String BOOK_FILE_NAME = "books.json";
+	private static final String BOOK_FILE_NAME = "users.json";
 	
-	public static ArrayList<Users> loadBooks() {
-		ArrayList<Users> users = new ArrayList<Users>();
+	public static ArrayList<User> loadUsers() {
+		ArrayList<User> users = new ArrayList<User>();
 		
 		try {
 			FileReader reader = new FileReader("src/users.json");
