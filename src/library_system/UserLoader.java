@@ -29,8 +29,18 @@ public class UserLoader {
 				String password = (String)UserJSON.get("password");
 				String type = (String)UserJSON.get("type");
 				double fines = (double)UserJSON.get("fines");
-				
-				users.add(new User(id,firstName,lastName,birthdayYear,address,accountID,password ,type,fines));
+				if(type.equals("A")) {
+					users.add(new Adult(id,firstName,lastName,birthdayYear,address,accountID,password ,fines)); 
+				}
+				else if(type.equals("C")) {
+					users.add(new Child(id,firstName,lastName,birthdayYear,address,accountID,password ,fines)); 
+				}
+				else if(type.equals("T")) { 
+					users.add(new Teacher(id,firstName,lastName,birthdayYear,address,accountID,password ,fines)); 
+				}
+				else if(type.equals("L")) {
+					users.add(new Librarian(id,firstName,lastName,birthdayYear,address,accountID,password ,fines)); 
+				}
 			}
 			
 			return users;

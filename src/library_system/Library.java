@@ -12,13 +12,14 @@ public class Library {
 		
 		//load users and get an instance of stock
 		
+		
 		Scanner scan = new Scanner(System.in);
 		
 		System.out.println("~~~~~~~~~~~~~~WELCOME TO THE LIBRARY~~~~~~~~~~~~~~");
 		System.out.println("enter your card # to login: ");
 		int card_num = scan.nextInt();
 		System.out.println("please enter your password to continue: ");
-		String pwd = scan.nextLine();
+		String pwd = scan.next();
 		
 		System.out.println("Searching for the number " + card_num + " in the user database");
 		System.out.println("checking if the password " + pwd + " is correct");
