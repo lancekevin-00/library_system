@@ -7,8 +7,11 @@ public abstract class User {
 	protected int Age;
 	protected double Fees;
 	protected Checked_out_itm[] items;
+	protected String Address;
 	
-	public void checkout(Item itm) {}
+	public void checkout(Item itm) {
+		System.out.println("CHECKING OUT AN ITEM");
+	}
 	public void changePwd(String pwd) {
 		password = pwd;
 	}
@@ -22,29 +25,33 @@ public abstract class User {
 		}
 		return -1;
 	}
-	public void return_itm(int id) {}
+	public void return_itm(int id) {
+		System.out.println("RETURNING AN ITEM");
+	}
+	
+	//getters and setters
 	public String getName() {
 		return Name;
 	}
-	public void setName(String name) {
+	protected void setName(String name) {
 		Name = name;
 	}
 	public int getCardNumber() {
 		return cardNumber;
 	}
-	public void setCardNumber(int cardNumber) {
+	protected void setCardNumber(int cardNumber) {
 		this.cardNumber = cardNumber;
 	}
 	public String getPassword() {
 		return password;
 	}
-	public void setPassword(String password) {
+	protected void setPassword(String password) {
 		this.password = password;
 	}
 	public int getAge() {
 		return Age;
 	}
-	public void setAge(int age) {
+	protected void setAge(int age) {
 		Age = age;
 	}
 	public double getFees() {
@@ -52,6 +59,12 @@ public abstract class User {
 	}
 	public void setFees(double fees) {
 		Fees = fees;
+	}
+	public String getAddress() {
+		return Address;
+	}
+	protected void setAddress(String address) {
+		Address = address;
 	}
 	public Checked_out_itm[] getItems() {
 		return items;
