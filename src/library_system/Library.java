@@ -5,13 +5,13 @@ import java.util.Scanner;
 import java.io.*;
 
 public class Library {
-	private ArrayList<User> Users = new ArrayList<User>();
-	private Item_DB stock;
-	private User curr_user;
+
 	public static void main(String [] args) {
 		
 		//load users and get an instance of stock
-		
+		ArrayList<User> Users = new ArrayList<User>();
+		Item_DB stock;
+		User curr_user;
 		
 		Scanner scan = new Scanner(System.in);
 		
@@ -24,6 +24,8 @@ public class Library {
 		System.out.println("Searching for the number " + card_num + " in the user database");
 		System.out.println("checking if the password " + pwd + " is correct");
 
+		//this is an example user in the system used for testing the menu
+		curr_user = new Adult(001, "Example", "Name", 2000, "1234 Example lane" , 001, " Password", 0.00);
 		
 		System.out.println("Welcome to the library " + "example name");
 				
@@ -83,13 +85,17 @@ public class Library {
 					break;
 				case 3:
 					System.out.println("Check Due Dates");
+					Checked_out_itm[] items = curr_user.getItems();
+					for(Checked_out_itm item: items) {
+						System.out.println(item.getTitle()+": "+item.getTime_remaining()+" days remaining");
+					}
 					break;
 				case 4:
 					System.out.println("Return");
 					//select a book or books which you are returning
 					break;
 				case 5:
-					System.out.println("You owe: $" + "<users fines>");
+					System.out.println("You owe: $" + curr_user.getFees());
 					System.out.println("~~~~~~~~~ACTIONS~~~~~~~~~");
 					System.out.println("1: Make a payment");
 					System.out.println("2: Return to Menu");
@@ -99,24 +105,26 @@ public class Library {
 						System.out.println("Enter payment amount");
 						System.out.print("$");
 						int amt = scan.nextInt();
+						curr_user.setFees(curr_user.getFees() - amt);
 						System.out.println("Thank you for your payment");
-						System.out.println("You now owe "+ "new user fines value" + " in fines");
+						System.out.println("You now owe "+ curr_user.getFees() + " in fines");
 						break;
 					case 2:
 						break;
-					}
-;					break;
+					};
+					break;
 				case 6:
 					System.out.println("Enter payment amount");
 					System.out.print("$");
 					int amt = scan.nextInt();
+					curr_user.setFees(curr_user.getFees() - amt);
 					System.out.println("Thank you for your payment");
-					System.out.println("You now owe "+ "new user fines value" + " in fines");
+					System.out.println("You now owe "+ curr_user.getFees() + " in fines");
 					break;
 				case 7:
 					System.out.println("Enter your new email address: ");
-					String new_email = scan.next()
-;					//check for validity of new email
+					String new_email = scan.next();
+					//check for validity of new email
 					//set users email to the new email
 					break;
 				case 8:
@@ -126,7 +134,7 @@ public class Library {
 					String pwd2 = scan.next();
 					if(pwd1.equals(pwd2)) {
 						System.out.println("new password confirmed");
-						//set users password to the new password
+						curr_user.changePwd(pwd2);
 					}
 					else {
 						System.out.println("passwords do not match");
