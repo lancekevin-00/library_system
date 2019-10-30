@@ -57,7 +57,7 @@ public abstract class User {
 	public double getFees() {
 		return Fees;
 	}
-	public void setFees(double fees) {
+	protected void setFees(double fees) {
 		Fees = fees;
 	}
 	public String getAddress() {
