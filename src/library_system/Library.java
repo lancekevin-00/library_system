@@ -10,7 +10,7 @@ public class Library {
 		
 		//load users and get an instance of stock
 		ArrayList<User> Users = UserLoader.loadUsers();
-		Item_DB stock;
+		Item_DB stock = new Item_DB();
 		User curr_user;
 		
 		Scanner scan = new Scanner(System.in);
@@ -61,10 +61,18 @@ public class Library {
 				case 1:
 					System.out.println("Enter a search term: ");
 					String term = scan.next();
+					ArrayList<Book> bookStock = stock.getBooks();
 					
 					System.out.println("Searching through the stock database for the search term");
 					System.out.println("Results:");
-					
+					for(Book book : bookStock) {
+						for(int i = 0; i < 3; i++) {
+							if(book.getSearchTerms(i).contains(term)) {
+								System.out.println(book.getId() + ": " + book.getTitle());
+								i = 4;
+							}		
+						}
+					}
 					System.out.println("Select a Result by id# or enter zero to exit:");
 					int id = scan.nextInt();
 					if(id == 0)

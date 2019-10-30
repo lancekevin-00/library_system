@@ -6,7 +6,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;;
 
 public class StockLoader {
-private static final String BOOK_FILE_NAME = "books.json";
+private static final String BOOK_FILE_NAME = "src/books.json";
 private static final String DVD_FILE_NAME = "dvds.json";
 private static final String MAGAZINE_FILE_NAME = "magazines.json";
 private static final String EBOOK_FILE_NAME = "ebooks.json";
@@ -48,7 +48,7 @@ private static final String AUDIOBOOK_FILE_NAME = "audiobooks.json";
 		ArrayList<DVD> dvds = new ArrayList<DVD>();
 		
 		try {
-			FileReader reader = new FileReader("DVD_FILE_NAME");
+			FileReader reader = new FileReader(DVD_FILE_NAME);
 			JSONParser parser = new JSONParser();
 			JSONObject jsonData = (JSONObject)new JSONParser().parse(reader);
 			JSONArray dvdJSON = (JSONArray)jsonData.get("dvds");
@@ -80,7 +80,7 @@ private static final String AUDIOBOOK_FILE_NAME = "audiobooks.json";
 		ArrayList<Magazine> magazines = new ArrayList<Magazine>();
 		
 		try {
-			FileReader reader = new FileReader("MAGAZINE_FILE_NAME");
+			FileReader reader = new FileReader(MAGAZINE_FILE_NAME);
 			JSONParser parser = new JSONParser();
 			JSONObject jsonData = (JSONObject)new JSONParser().parse(reader);
 			JSONArray magazineJSON = (JSONArray)jsonData.get("magazines");
@@ -112,7 +112,7 @@ private static final String AUDIOBOOK_FILE_NAME = "audiobooks.json";
 		ArrayList<eBook> ebooks = new ArrayList<eBook>();
 		
 		try {
-			FileReader reader = new FileReader(" EBOOK_FILE_NAME");
+			FileReader reader = new FileReader(EBOOK_FILE_NAME);
 			JSONParser parser = new JSONParser();
 			JSONObject jsonData = (JSONObject)new JSONParser().parse(reader);
 			JSONArray ebookJSON = (JSONArray)jsonData.get("eBooks");
@@ -144,7 +144,7 @@ private static final String AUDIOBOOK_FILE_NAME = "audiobooks.json";
 		ArrayList<Audio_Book> audiobooks = new ArrayList<Audio_Book>();
 		
 		try {
-			FileReader reader = new FileReader("src/audiobooks.json");
+			FileReader reader = new FileReader(AUDIOBOOK_FILE_NAME);
 			JSONParser parser = new JSONParser();
 			JSONObject jsonData = (JSONObject)new JSONParser().parse(reader);
 			JSONArray audiobookJSON = (JSONArray)jsonData.get("audiobooks");
