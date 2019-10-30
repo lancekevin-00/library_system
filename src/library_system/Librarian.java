@@ -10,7 +10,7 @@ public class Librarian extends User{
 		super.Fees = fines;
 		super.Address = address;
 		super.items = new Checked_out_itm[10];
-		
+		is_librarian = true;
 	}
 	
 }

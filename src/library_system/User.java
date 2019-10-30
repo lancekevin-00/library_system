@@ -8,7 +8,7 @@ public abstract class User {
 	protected double Fees;
 	protected Checked_out_itm[] items;
 	protected String Address;
-	
+	public boolean is_librarian = false;
 	public void checkout(Item itm) {
 		System.out.println("CHECKING OUT AN ITEM");
 	}

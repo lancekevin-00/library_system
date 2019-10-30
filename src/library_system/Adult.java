@@ -17,6 +17,17 @@ public class Adult extends User {
 			this.children[i] = children[i];
 		}
 	}
+	Adult(int id,String firstName,String lastName,int birthdayYear,String address, int accountID,String password ,double fines) {
+		super.Name = firstName+" "+lastName;
+		super.cardNumber = id;
+		super.password = password;
+		super.Age = birthdayYear;
+		super.Fees = fines;
+		super.Address = address;
+		super.items = new Checked_out_itm[10];
+		
+		children = new Child[0];
+	}
 	
 	private double getChildFees() {
 		double total = 0.0;
