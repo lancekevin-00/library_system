@@ -60,7 +60,7 @@ private static final String AUDIOBOOK_FILE_NAME = "audiobooks.json";
 				int year = (int)(long)DVDJSON.get("year");
 				String genre = (String)DVDJSON.get("genre");
 				String director = (String)DVDJSON.get("director");
-				String actors = (String)DVDJSON.get("actors"); //For some reason cannot be cast on this line ???
+				String actors = (String)DVDJSON.get("actors"); //Need to swithc to a string array
 				int numCopies = (int)(long)DVDJSON.get("numCopies");
 				boolean newArrival = (boolean)DVDJSON.get("newArrival");
 				
@@ -93,7 +93,7 @@ private static final String AUDIOBOOK_FILE_NAME = "audiobooks.json";
 				String genre = (String)MagazineJSON.get("genre");
 				String publisher = (String)MagazineJSON.get("publisher");
 				int volume = (int)(long)MagazineJSON.get("volume");
-				String issue = (String)MagazineJSON.get("issue");
+				int issue = (int)(long)MagazineJSON.get("issue");
 				int numCopies = (int)(long)MagazineJSON.get("numCopies");
 				boolean newArrival = (boolean)MagazineJSON.get("newArrival");
 				
@@ -115,7 +115,7 @@ private static final String AUDIOBOOK_FILE_NAME = "audiobooks.json";
 			FileReader reader = new FileReader(EBOOK_FILE_NAME);
 			JSONParser parser = new JSONParser();
 			JSONObject jsonData = (JSONObject)new JSONParser().parse(reader);
-			JSONArray ebookJSON = (JSONArray)jsonData.get("eBooks");
+			JSONArray ebookJSON = (JSONArray)jsonData.get("ebooks");
 			
 			for(int i=0; i < ebookJSON.size(); i++) { //Null pointer at this line 
 				JSONObject eBookJSON = (JSONObject)ebookJSON.get(i);

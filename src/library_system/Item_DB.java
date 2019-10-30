@@ -23,6 +23,18 @@ public class Item_DB {
 	public ArrayList<Book> getBooks() {
 		return books;
 	}
+	public ArrayList<DVD> getDVDs() {
+		return dvds;
+	}
+	public ArrayList<Magazine> getMagazines() {
+		return magazines;
+	}
+	public ArrayList<eBook> geteBooks() {
+		return eBooks;
+	}
+	public ArrayList<Audio_Book> getaudioBooks() {
+		return audioBooks;
+	}
 	public Item_DB getInstance() {
 		if (db == null)
 			db = new Item_DB();

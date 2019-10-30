@@ -20,14 +20,14 @@ public class UserLoader {
 				int id = (int)(long)UserJSON.get("id");
 				String firstName = (String)UserJSON.get("firstName"); 
 				String lastName = (String)UserJSON.get("lastName");
-			//	int birthdayYear = (int)(long)UserJSON.get("birthdayYear"); // Need to add this to the json file 
+				int birthdayYear = (int)(long)UserJSON.get("birthdayYear"); // Need to add this to the json file 
 				String address = (String)UserJSON.get("address");
 				String email = (String)UserJSON.get("email"); //add this and phone to constructors
 				String phone = (String)UserJSON.get("phone"); //Have it as a string right now but idk if you want to make it an integer or not
-				int accountID = (int)UserJSON.get("accountID");
+				int accountID = (int)(long)UserJSON.get("accountId");
 				String password = (String)UserJSON.get("password");
 				String type = (String)UserJSON.get("type");
-				double fines = (double)UserJSON.get("fines");
+				double fines = 0.0;//(double)UserJSON.get("fines"); //Temporary until i figure out how to get rid of the error
 				if(type.equals("A")) {
 					users.add(new Adult(id,firstName,lastName,birthdayYear,address,accountID,password ,fines)); 
 				}

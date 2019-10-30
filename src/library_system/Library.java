@@ -63,9 +63,15 @@ public class Library {
 					String term = scan.next();
 					//Create a book arraylist
 					ArrayList<Book> bookStock = stock.getBooks();
-					
+					//Create a DVD arraylist
+					ArrayList<DVD> dvdStock = stock.getDVDs();
+					//Create a Magazine arraylist
+					ArrayList<Magazine> magazineStock = stock.getMagazines();
+					ArrayList<eBook> ebookStock = stock.geteBooks();
+					ArrayList<Audio_Book> audiobookStock = stock.getaudioBooks();
 					System.out.println("Searching through the stock database for the search term");
 					System.out.println("Results:");
+					//All this subject to change once we get them all into one arraylist 
 					//Search through the books search terms and print id and title fo the book(can add other stuff later
 					for(Book book : bookStock) {
 						for(int i = 0; i < 3; i++) {
@@ -74,7 +80,44 @@ public class Library {
 								i = 4;
 							}		
 						}
+					} 
+					//Search throught the dvd search terms
+					for(DVD dvd : dvdStock) {
+						for(int j = 0; j < 3; j++) {
+							if(dvd.getSearchTerms(j).contains(term)) {
+								System.out.println(dvd.getId() + ": " + dvd.getTitle());
+								j = 4;
+							}		
+						}
 					}
+					//Search through the magazine search terms
+					for(Magazine magazine : magazineStock) {
+						for(int i = 0; i < 3; i++) {
+							if(magazine.getSearchTerms(i).contains(term)) {
+								System.out.println(magazine.getId() + ": " + magazine.getTitle());
+								i = 4;
+							}		
+						}
+					}
+					//Search through the eBook stock
+					for(eBook ebook : ebookStock) {
+						for(int i = 0; i < 3; i++) {
+							if(ebook.getSearchTerms(i).contains(term)) {
+								System.out.println(ebook.getId() + ": " + ebook.getTitle());
+								i = 4;
+							}		
+						}
+					}
+					//Serach through the audioBook search terms
+					for(Audio_Book audiobook : audiobookStock) {
+						for(int i = 0; i < 3; i++) {
+							if(audiobook.getSearchTerms(i).contains(term)) {
+								System.out.println(audiobook.getId() + ": " + audiobook.getTitle());
+								i = 4;
+							}		
+						}
+					}
+					
 					System.out.println("Select a Result by id# or enter zero to exit:");
 					int id = scan.nextInt();
 					if(id == 0)
@@ -90,9 +133,10 @@ public class Library {
 					switch(c) {
 						case 1:
 							System.out.println("Getting Book Info");
+							
 							break;
 						case 2:
-							System.out.println("Chekckout The Item");
+							System.out.println("Checkout The Item");
 							break;
 						case 3:
 							System.out.println("Return to Menu");

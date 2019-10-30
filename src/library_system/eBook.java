@@ -7,6 +7,7 @@ public class eBook extends Item {
 	private String author;
 	private int numCopies;
 	private boolean newArrival;
+	private String searchTerms[] = new String[3]; //Placeholder 
 	public eBook(int id,String title,int year,String genre,String publisher,String author,int numCopies,boolean newArrival) {
 		this.id = id;
 		this.title = title;
@@ -16,6 +17,10 @@ public class eBook extends Item {
 		this.author = author;
 		this.numCopies = numCopies;
 		this.newArrival = newArrival;
+		searchTerms[0]= this.title;
+		searchTerms[1]= this.genre;
+		searchTerms[2] = this.author;
+		setSearchTerms(searchTerms);
 	}
 	
 	public void notifyWaitlist() {

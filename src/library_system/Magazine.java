@@ -5,10 +5,11 @@ public class Magazine extends Item {
 	private String genre;
 	private String publisher;
 	private int volume;
-	private String issue;
+	private int issue;
 	private int numCopies;
 	private boolean newArrival;
-	public Magazine(int id,String title,int year,String genre,String publisher,int volume, String issue,int numCopies,boolean newArrival) {
+	private String searchTerms[] = new String[3]; //Placeholder 
+	public Magazine(int id,String title,int year,String genre,String publisher,int volume, int issue,int numCopies,boolean newArrival) {
 		this.id = id;
 		this.title = title;
 		this.year = year;
@@ -18,6 +19,10 @@ public class Magazine extends Item {
 		this.issue = issue;
 		this.numCopies = numCopies;
 		this.newArrival = newArrival;
+		searchTerms[0]= this.title;
+		searchTerms[1]= this.genre;
+		searchTerms[2] = this.publisher;
+		setSearchTerms(searchTerms);
 	}
 	
 	public void notifyWaitlist() {
