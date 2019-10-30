@@ -13,11 +13,11 @@ public class Item_DB {
 	private ArrayList<eBook> eBooks;
 	
 	private Item_DB() {
-		books = new ArrayList<Book>();
-		audioBooks = new ArrayList<Audio_Book>();
-		magazines = new ArrayList<Magazine>();
-		dvds = new ArrayList<DVD>();
-		eBooks = new ArrayList<eBook>();
+		books = StockLoader.loadBooks();
+		audioBooks = StockLoader.loadaudioBooks();
+		magazines = StockLoader.loadMagazines();
+		dvds = StockLoader.loadDVDs();
+		eBooks = StockLoader.loadeBooks();
 	}
 	
 	public Item_DB getInstance() {

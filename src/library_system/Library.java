@@ -9,7 +9,7 @@ public class Library {
 	public static void main(String [] args) {
 		
 		//load users and get an instance of stock
-		ArrayList<User> Users = new ArrayList<User>();
+		ArrayList<User> Users = UserLoader.loadUsers();
 		Item_DB stock;
 		User curr_user;
 		
@@ -20,10 +20,10 @@ public class Library {
 		int card_num = scan.nextInt();
 		System.out.println("please enter your password to continue: ");
 		String pwd = scan.next();
-		
+		//curr_user = login(card_num,pwd);
 		System.out.println("Searching for the number " + card_num + " in the user database");
 		System.out.println("checking if the password " + pwd + " is correct");
-
+		
 		//this is an example user in the system used for testing the menu
 		curr_user = new Adult(001, "Example", "Name", 2000, "1234 Example lane" , 001, " Password", 0.00);
 		

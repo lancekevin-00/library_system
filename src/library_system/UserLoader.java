@@ -5,14 +5,13 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;;
 public class UserLoader {
-	private static final String BOOK_FILE_NAME = "users.json";
+	private static final String USER_FILE_NAME = "users.json";
 	
 	public static ArrayList<User> loadUsers() {
 		ArrayList<User> users = new ArrayList<User>();
 		
 		try {
-			FileReader reader = new FileReader("src/users.json");
-			JSONParser parser = new JSONParser();
+			FileReader reader = new FileReader(USER_FILE_NAME);
 			JSONObject jsonData = (JSONObject)new JSONParser().parse(reader);
 			JSONArray userJSON = (JSONArray)jsonData.get("users");
 			
@@ -23,7 +22,7 @@ public class UserLoader {
 				String lastName = (String)UserJSON.get("lastName");
 				int birthdayYear = (int)UserJSON.get("birthdayYear");
 				String address = (String)UserJSON.get("address");
-				String email = (String)UserJSON.get("email");
+				String email = (String)UserJSON.get("email"); //add this and phone to constructors
 				String phone = (String)UserJSON.get("phone"); //Have it as a string right now but idk if you want to make it an integer or not
 				int accountID = (int)UserJSON.get("accountID");
 				String password = (String)UserJSON.get("password");

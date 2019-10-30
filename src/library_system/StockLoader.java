@@ -16,8 +16,7 @@ private static final String AUDIOBOOK_FILE_NAME = "audiobooks.json";
 		ArrayList<Book> books = new ArrayList<Book>();
 		
 		try {
-			FileReader reader = new FileReader("src/books.json");
-			JSONParser parser = new JSONParser();
+			FileReader reader = new FileReader(BOOK_FILE_NAME);
 			JSONObject jsonData = (JSONObject)new JSONParser().parse(reader);
 			JSONArray bookJSON = (JSONArray)jsonData.get("books");
 			
@@ -49,7 +48,7 @@ private static final String AUDIOBOOK_FILE_NAME = "audiobooks.json";
 		ArrayList<DVD> dvds = new ArrayList<DVD>();
 		
 		try {
-			FileReader reader = new FileReader("src/dvds.json");
+			FileReader reader = new FileReader("DVD_FILE_NAME");
 			JSONParser parser = new JSONParser();
 			JSONObject jsonData = (JSONObject)new JSONParser().parse(reader);
 			JSONArray dvdJSON = (JSONArray)jsonData.get("dvds");
@@ -81,7 +80,7 @@ private static final String AUDIOBOOK_FILE_NAME = "audiobooks.json";
 		ArrayList<Magazine> magazines = new ArrayList<Magazine>();
 		
 		try {
-			FileReader reader = new FileReader("src/magazines.json");
+			FileReader reader = new FileReader("MAGAZINE_FILE_NAME");
 			JSONParser parser = new JSONParser();
 			JSONObject jsonData = (JSONObject)new JSONParser().parse(reader);
 			JSONArray magazineJSON = (JSONArray)jsonData.get("magazines");
@@ -113,7 +112,7 @@ private static final String AUDIOBOOK_FILE_NAME = "audiobooks.json";
 		ArrayList<eBook> ebooks = new ArrayList<eBook>();
 		
 		try {
-			FileReader reader = new FileReader("src/eBooks.json");
+			FileReader reader = new FileReader(" EBOOK_FILE_NAME");
 			JSONParser parser = new JSONParser();
 			JSONObject jsonData = (JSONObject)new JSONParser().parse(reader);
 			JSONArray ebookJSON = (JSONArray)jsonData.get("eBooks");
