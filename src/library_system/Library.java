@@ -61,10 +61,12 @@ public class Library {
 				case 1:
 					System.out.println("Enter a search term: ");
 					String term = scan.next();
+					//Create a book arraylist
 					ArrayList<Book> bookStock = stock.getBooks();
 					
 					System.out.println("Searching through the stock database for the search term");
 					System.out.println("Results:");
+					//Search through the books search terms and print id and title fo the book(can add other stuff later
 					for(Book book : bookStock) {
 						for(int i = 0; i < 3; i++) {
 							if(book.getSearchTerms(i).contains(term)) {
