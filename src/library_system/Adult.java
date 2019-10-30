@@ -40,4 +40,31 @@ public class Adult extends User {
 	public double getFees(){
 		return (Fees + this.getChildFees());
 	}
+	
+	public void addChild(Child c) {
+		Child[] tempChildren = new Child[children.length + 1];
+		for(int i=0;i<children.length;i++) {
+			tempChildren[i] = children[i];
+		}
+		tempChildren[children.length] = c;
+		children = tempChildren;
+	}
+	
+	public void removeChild(String name) {
+		boolean before = true;
+		Child[] tempChildren = new Child[children.length - 1];
+		for(int i=0;i<children.length; i++) {
+			if(children[i].Name == name) {
+				before = false;
+			}
+			if(before) {
+				tempChildren[i] = children[i];
+			}
+			else {
+				tempChildren[i-1] = children[i];
+			}
+		}
+		children = tempChildren;
+	}
+	
 }
