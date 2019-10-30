@@ -17,6 +17,7 @@ public class Book extends Item {
 		this.author = author;
 		this.numCopies = numCopies;
 		this.newArrival = newArrival;
+		//Placeholders to test the search function, will clean up once it works 
 		searchTerms[0]= this.title;
 		searchTerms[1]= this.genre;
 		searchTerms[2] = this.author;

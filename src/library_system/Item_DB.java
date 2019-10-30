@@ -6,7 +6,7 @@ public class Item_DB {
 	
 	Item_DB db;
 	public ArrayList<Item> items;
-	public ArrayList<Book> books;
+	private static ArrayList<Book> books = new ArrayList<Book>();
 	public ArrayList<Audio_Book> audioBooks;
 	public ArrayList<Magazine> magazines;
 	public ArrayList<DVD> dvds;

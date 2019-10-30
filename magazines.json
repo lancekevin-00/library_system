@@ -1,0 +1,43 @@
+{"magazines ":[
+  {
+  	"id":5,
+  	"title":"Popular Machinics",
+  	"year":1905,
+    "genre": "Science",
+    "publisher":"Hearst Magazines",
+    "volume": 7,
+    "issue":2,
+    "numCopies":2,
+    "newArrival":false
+  },{
+  	"id":6,
+  	"title":"Tiny Houses",
+  	"year":2017,
+    "genre": "Construction",
+    "publisher":"Alpha",
+    "volume": 2,
+    "issue":1,
+    "numCopies":4,
+    "newArrival":true
+  },{
+  	"id":7,
+  	"title":"Popular Woodworking",
+  	"year":2013,
+    "genre": "Construction",
+    "publisher":"F&W",
+    "volume": 1,
+    "issue":3,
+    "numCopies":1,
+    "newArrival":false
+  },{
+  	"id":8,
+  	"title":"Seventeen",
+  	"year":2019,
+    "genre": "Teen",
+    "publisher":"Hearst Media",
+    "volume": 10,
+    "issue":2,
+    "numCopies":5,
+    "newArrival":false
+  }
+]}

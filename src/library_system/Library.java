@@ -23,7 +23,7 @@ public class Library {
 
 		
 		//login functionality for when the user loader is functioning
-		System.out.println("Searching for the number " + card_num + " in the user database");
+	/*	System.out.println("Searching for the number " + card_num + " in the user database");
 		for(User user: Users) {
 			if(user.getCardNumber() == card_num) {
 				System.out.println("checking if the password " + pwd + " is correct");
@@ -34,7 +34,7 @@ public class Library {
 			}
 		}
 
-
+*/
 		//this is an example user in the system used for testing the menu
 		curr_user = new Adult(001, "Example", "Name", 2000, "1234 Example lane" , 001, " Password", 0.00, new Child[0]);
 		
