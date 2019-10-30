@@ -21,11 +21,20 @@ public class Library {
 		System.out.println("please enter your password to continue: ");
 		String pwd = scan.next();
 		
+		//login functionality for when the user loader is functioning
 		System.out.println("Searching for the number " + card_num + " in the user database");
-		System.out.println("checking if the password " + pwd + " is correct");
+		for(User user: Users) {
+			if(user.getCardNumber() == card_num) {
+				System.out.println("checking if the password " + pwd + " is correct");
+				if (user.getPassword().equals(pwd)){
+					System.out.println("login successful");
+					curr_user = user;
+				}
+			}
+		}
 
 		//this is an example user in the system used for testing the menu
-		curr_user = new Adult(001, "Example", "Name", 2000, "1234 Example lane" , 001, " Password", 0.00);
+		curr_user = new Adult(001, "Example", "Name", 2000, "1234 Example lane" , 001, " Password", 0.00, new Child[0]);
 		
 		System.out.println("Welcome to the library " + "example name");
 				
@@ -105,7 +114,7 @@ public class Library {
 						System.out.println("Enter payment amount");
 						System.out.print("$");
 						int amt = scan.nextInt();
-						curr_user.setFees(curr_user.getFees() - amt);
+						curr_user.makePayment(amt);
 						System.out.println("Thank you for your payment");
 						System.out.println("You now owe "+ curr_user.getFees() + " in fines");
 						break;
@@ -117,7 +126,7 @@ public class Library {
 					System.out.println("Enter payment amount");
 					System.out.print("$");
 					int amt = scan.nextInt();
-					curr_user.setFees(curr_user.getFees() - amt);
+					curr_user.makePayment(amt);
 					System.out.println("Thank you for your payment");
 					System.out.println("You now owe "+ curr_user.getFees() + " in fines");
 					break;
@@ -161,10 +170,6 @@ public class Library {
 		catch (Exception e) {
 			System.out.println(e);
 		}
-	}
-	
-	private User login(int card_num, String pwd) {
-		return null;
 	}
 	private void logout() {}
 }
