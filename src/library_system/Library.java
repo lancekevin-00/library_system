@@ -53,8 +53,8 @@ public class Library {
 				System.out.println("7: Change Email Address");
 				System.out.println("8: Change Password");
 				System.out.println("9: Log out");
-				//if(user.type == "librarian")
-				//System.out.println(10: Edit User)
+				if(curr_user.is_librarian)
+					System.out.println("10: Edit User");
 
 				int choice = scan.nextInt();
 				switch(choice) {
@@ -165,9 +165,9 @@ public class Library {
 					System.out.println("Good bye");
 					break;
 				case 10:
-				//	if(user.type == librarian)
-				//  System.out.println("Entering the edit user menu"
-				//	else
+					if(curr_user.is_librarian)
+				    System.out.println("Entering the edit user menu");
+					else
 					System.out.println("Enter A Valid Number");
 					break;
 				default:
@@ -181,5 +181,4 @@ public class Library {
 			System.out.println(e);
 		}
 	}
-	private void logout() {}
 }
