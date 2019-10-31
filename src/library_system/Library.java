@@ -16,29 +16,49 @@ public class Library {
 		Scanner scan = new Scanner(System.in);
 		
 		System.out.println("~~~~~~~~~~~~~~WELCOME TO THE LIBRARY~~~~~~~~~~~~~~");
-		System.out.println("enter your card # to login: ");
-		int card_num = scan.nextInt();
-		System.out.println("please enter your password to continue: ");
-		String pwd = scan.next();		
-
-		
-		//login functionality for when the user loader is functioning
-		System.out.println("Searching for the number " + card_num + " in the user database");
-		for(User user: Users) {
-			if(user.getCardNumber() == card_num) {
-				System.out.println("checking if the password " + pwd + " is correct");
-				if (user.getPassword().equals(pwd)){
-					System.out.println("login successful");
-					curr_user = user;
+		do {
+			System.out.println("enter your card # to login: ");
+			int card_num = scan.nextInt();	
+	
+			//login functionality for when the user loader is functioning
+			System.out.println("Searching for the number " + card_num + " in the user database");
+			boolean found = false;
+			for(User user: Users) {
+				if(user.getCardNumber() == card_num) {
+					found = true;
+					int pwd_attmpts = 3;
+					String pwd;
+					do {
+						System.out.println("please enter your password to continue: ");
+						pwd = scan.next();
+						System.out.println("checking if the password " + pwd + " is correct");
+						if (user.getPassword().equals(pwd)){
+							System.out.println("login successful");
+							curr_user = user;
+						}
+						else {
+							System.out.println("incorrect password " + pwd_attmpts + " attempts remaining");
+							pwd_attmpts--;
+						}
+					}
+					while(pwd_attmpts > 0 && curr_user == null);
 				}
 			}
+			if (!found) {
+				System.out.println("that card number does not exist");
+			}
+			else {
+				System.out.println("you ran out of attempts");
+			}
+			
 		}
+		while(curr_user == null);
 
 
 		//this is an example user in the system used for testing the menu
 		//curr_user = new Adult(001, "Example", "Name", 2000, "1234 Example lane" , 001, " Password", 0.00, new Child[0]);
 		
-		System.out.println("Welcome to the library " + "example name");
+		System.out.println("Welcome to the library " + curr_user.getName());
 				
 		try {
 			boolean go_again = true;
