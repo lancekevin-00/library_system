@@ -11,7 +11,7 @@ public class Library {
 		//load users and get an instance of stock
 		ArrayList<User> Users = UserLoader.loadUsers();
 		Item_DB stock = new Item_DB();
-		User curr_user;
+		User curr_user = null;
 		
 		Scanner scan = new Scanner(System.in);
 		
@@ -23,7 +23,7 @@ public class Library {
 
 		
 		//login functionality for when the user loader is functioning
-	/*	System.out.println("Searching for the number " + card_num + " in the user database");
+		System.out.println("Searching for the number " + card_num + " in the user database");
 		for(User user: Users) {
 			if(user.getCardNumber() == card_num) {
 				System.out.println("checking if the password " + pwd + " is correct");
@@ -34,9 +34,9 @@ public class Library {
 			}
 		}
 
-*/
+
 		//this is an example user in the system used for testing the menu
-		curr_user = new Adult(001, "Example", "Name", 2000, "1234 Example lane" , 001, " Password", 0.00, new Child[0]);
+		//curr_user = new Adult(001, "Example", "Name", 2000, "1234 Example lane" , 001, " Password", 0.00, new Child[0]);
 		
 		System.out.println("Welcome to the library " + "example name");
 				
@@ -57,10 +57,12 @@ public class Library {
 					System.out.println("10: Edit User");
 
 				int choice = scan.nextInt();
+				scan.nextLine();
 				switch(choice) {
 				case 1:
 					System.out.println("Enter a search term: ");
-					String term = scan.next();
+					String term = scan.nextLine();
+					System.out.println(term);
 					//Create a book arraylist
 					ArrayList<Book> bookStock = stock.getBooks();
 					//Create a DVD arraylist

@@ -8,7 +8,6 @@ public class Magazine extends Item {
 	private int issue;
 	private int numCopies;
 	private boolean newArrival;
-	private String searchTerms[] = new String[3]; //Placeholder 
 	public Magazine(int id,String title,int year,String genre,String publisher,int volume, int issue,int numCopies,boolean newArrival) {
 		this.id = id;
 		this.title = title;
@@ -19,6 +18,7 @@ public class Magazine extends Item {
 		this.issue = issue;
 		this.numCopies = numCopies;
 		this.newArrival = newArrival;
+		searchTerms = new String[3];
 		searchTerms[0]= this.title;
 		searchTerms[1]= this.genre;
 		searchTerms[2] = this.publisher;

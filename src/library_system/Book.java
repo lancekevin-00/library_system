@@ -7,7 +7,6 @@ public class Book extends Item {
 	private String author;
 	private int numCopies;
 	private boolean newArrival;
-	private String searchTerms[] = new String[3]; //Placeholder 
 	public Book(int id,String title,int year,String genre,String publisher,String author,int numCopies,boolean newArrival) {
 		this.id = id;
 		this.title = title;
@@ -18,6 +17,7 @@ public class Book extends Item {
 		this.numCopies = numCopies;
 		this.newArrival = newArrival;
 		//Placeholders to test the search function, will clean up once it works 
+		searchTerms = new String[3];
 		searchTerms[0]= this.title;
 		searchTerms[1]= this.genre;
 		searchTerms[2] = this.author;

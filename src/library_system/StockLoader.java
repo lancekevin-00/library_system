@@ -11,9 +11,9 @@ private static final String DVD_FILE_NAME = "dvds.json";
 private static final String MAGAZINE_FILE_NAME = "magazines.json";
 private static final String EBOOK_FILE_NAME = "ebooks.json";
 private static final String AUDIOBOOK_FILE_NAME = "audiobooks.json";
-	
-	public static ArrayList<Book> loadBooks() {
-		ArrayList<Book> books = new ArrayList<Book>();
+ArrayList<Item> stock = new ArrayList<Item>();
+	public static ArrayList<Item> loadBooks() {
+		//ArrayList<Book> books = new ArrayList<Book>();
 		
 		try {
 			FileReader reader = new FileReader(BOOK_FILE_NAME);
@@ -31,10 +31,10 @@ private static final String AUDIOBOOK_FILE_NAME = "audiobooks.json";
 				int numCopies = (int)(long)BookJSON.get("numCopies");
 				boolean newArrival = (boolean)BookJSON.get("newArrival");
 				
-				books.add(new Book(id,title,year,genre,publisher,author,numCopies,newArrival));
+				stock.add(new Book(id,title,year,genre,publisher,author,numCopies,newArrival));
 			}
 			
-			return books;
+			return stock;
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -60,11 +60,11 @@ private static final String AUDIOBOOK_FILE_NAME = "audiobooks.json";
 				int year = (int)(long)DVDJSON.get("year");
 				String genre = (String)DVDJSON.get("genre");
 				String director = (String)DVDJSON.get("director");
-				String actors = (String)DVDJSON.get("actors"); //Need to swithc to a string array
+				//String[] actors = (String[])DVDJSON.get("actors"); 
 				int numCopies = (int)(long)DVDJSON.get("numCopies");
 				boolean newArrival = (boolean)DVDJSON.get("newArrival");
 				
-				dvds.add(new DVD(id,title,year,genre,director,actors,numCopies,newArrival));
+				dvds.add(new DVD(id,title,year,genre,director/*,actors*/,numCopies,newArrival));
 			}
 			
 			return dvds;
