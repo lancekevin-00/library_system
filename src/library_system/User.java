@@ -8,13 +8,13 @@ public abstract class User {
 	protected double Fees;
 	protected Checked_out_itm[] items;
 	protected String Address;
+	protected String email;
+	protected int phone;
 	public boolean is_librarian = false;
 	public void checkout(Item itm) {
 		System.out.println("CHECKING OUT AN ITEM");
 	}
-	public void changePwd(String pwd) {
-		password = pwd;
-	}
+
 	public void makePayment(double pmt) {
 		Fees = Fees - pmt;
 	}
@@ -72,6 +72,20 @@ public abstract class User {
 	public void setItems(Checked_out_itm[] items) {
 		this.items = items;
 	}
-	
-	
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public int getPhone() {
+		return phone;
+	}
+
+	public void setPhone(int phone) {
+		this.phone = phone;
+	}
 }
