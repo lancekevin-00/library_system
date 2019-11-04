@@ -9,6 +9,9 @@ public abstract class User {
 	protected Checked_out_itm[] items;
 	protected String Address;
 	public boolean is_librarian = false;
+	protected String email;
+	protected int phone;
+	
 	public void checkout(Item itm) {
 		System.out.println("CHECKING OUT AN ITEM");
 	}
@@ -72,6 +75,23 @@ public abstract class User {
 	public void setItems(Checked_out_itm[] items) {
 		this.items = items;
 	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public int getPhone() {
+		return phone;
+	}
+
+	public void setPhone(int phone) {
+		this.phone = phone;
+	}
+	
 	protected abstract void addNewBook(int id, String title, int year, String genre, String publisher, String author, int numCopies,boolean newArrival);
 	protected abstract void addNeweBook(int id, String title, int year, String genre, String publisher, String author, int numCopies,boolean newArrival);
 	protected abstract void addNewAudio_Book(int id, String title, int year, String genre, String publisher, String author, int numCopies,boolean newArrival);
