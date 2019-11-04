@@ -14,7 +14,7 @@ public class Library {
 		User curr_user = null;
 		boolean total_logout = false;
 		Scanner scan = new Scanner(System.in);
-		do {
+		while(!total_logout){
 			System.out.println("~~~~~~~~~~~~~~WELCOME TO THE LIBRARY~~~~~~~~~~~~~~");
 			do {
 				System.out.println("enter your card # to login: ");
@@ -236,8 +236,58 @@ public class Library {
 						System.out.println("Good bye" + curr_user.Name);
 						break;
 					case 10:
-						if(curr_user.is_librarian)
-					    System.out.println("Entering the edit user menu");
+						if(curr_user.is_librarian) {
+							
+							//finding the user
+							System.out.println("Enter the card Number of the user you would like to edit:");
+							User eUser = null;
+							boolean f = false;
+							do {
+								int cNum = scan.nextInt();
+								if (cNum > 0) {
+									for(User user : Users) {
+										if (user.getCardNumber() == cNum) {
+											eUser = user;
+											f = true;
+										}
+									}
+									if (eUser == null) {
+										System.out.println("user not found, try again or enter -1 to exit");
+									}
+								}
+							}
+							while(!f);
+							System.out.println("------------------");
+							System.out.println("1: Look up fines");
+							System.out.println("2: Change Email");
+							System.out.println("3: Change Address");
+							System.out.println("4: Change Phone Number");
+							System.out.println("0: exit");
+							
+							int a = scan.nextInt();
+							switch(a) {
+							case 1:
+								System.out.println("fines: "+ eUser.getFees());
+								break;
+							case 2:
+								System.out.println("enter the new email");
+								String nEmail = scan.next();
+								eUser.setEmail(nEmail);
+								break;
+							case 3:
+								System.out.println("enter the new address");
+								String nAddress = scan.nextLine();
+								eUser.setAddress(nAddress);
+								break;
+							case 4:
+								System.out.println("enter the new email");
+								int nPhone = scan.nextInt();
+								eUser.setPhone(nPhone);
+								break;
+							default:
+								break;
+							}
+						}
 						else
 						System.out.println("Enter A Valid Number");
 						break;
@@ -382,12 +432,13 @@ public class Library {
 							curr_user.addNewAudio_Book(idNum,title,year,genre,publisher,author,numCopies,newArrival);
 							break;
 							
-							
 						}
 						break;
 					case 12:
 						System.out.println("EXITING THE SYSTEM");
 						total_logout = true;
+						go_again = false;
+						break;
 					default:
 						System.out.println("Enter A Valid Number");
 						break;
@@ -397,6 +448,7 @@ public class Library {
 			catch (Exception e) {
 				System.out.println(e);
 			}
+			System.out.println("were at the end of the loop");
 		}
 		while(!total_logout);
 		scan.close();
