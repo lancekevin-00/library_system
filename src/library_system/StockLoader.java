@@ -11,9 +11,9 @@ private static final String DVD_FILE_NAME = "dvds.json";
 private static final String MAGAZINE_FILE_NAME = "magazines.json";
 private static final String EBOOK_FILE_NAME = "ebooks.json";
 private static final String AUDIOBOOK_FILE_NAME = "audiobooks.json";
-ArrayList<Item> stock = new ArrayList<Item>();
-	public static ArrayList<Item> loadBooks() {
-		//ArrayList<Book> books = new ArrayList<Book>();
+private static ArrayList<Item> stock = new ArrayList<Item>();
+	public static ArrayList<Book> loadBooks() {
+		ArrayList<Book> books = new ArrayList<Book>();
 		
 		try {
 			FileReader reader = new FileReader(BOOK_FILE_NAME);
@@ -31,10 +31,10 @@ ArrayList<Item> stock = new ArrayList<Item>();
 				int numCopies = (int)(long)BookJSON.get("numCopies");
 				boolean newArrival = (boolean)BookJSON.get("newArrival");
 				
-				stock.add(new Book(id,title,year,genre,publisher,author,numCopies,newArrival));
+				books.add(new Book(id,title,year,genre,publisher,author,numCopies,newArrival));
 			}
 			
-			return stock;
+			return books;
 			
 		} catch (Exception e) {
 			e.printStackTrace();

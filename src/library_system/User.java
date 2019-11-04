@@ -72,6 +72,10 @@ public abstract class User {
 	public void setItems(Checked_out_itm[] items) {
 		this.items = items;
 	}
-	
-	
+	protected abstract void addNewBook(int id, String title, int year, String genre, String publisher, String author, int numCopies,boolean newArrival);
+	protected abstract void addNeweBook(int id, String title, int year, String genre, String publisher, String author, int numCopies,boolean newArrival);
+	protected abstract void addNewAudio_Book(int id, String title, int year, String genre, String publisher, String author, int numCopies,boolean newArrival);
+	protected abstract void addNewDVD(int id,String title,int year,String genre,String director,String[] actors,int numCopies,boolean newArrival);
+	protected abstract void addNewMagazine(int id,String title,int year,String genre,String publisher,int volume, int issue,int numCopies,boolean newArrival);
+
 }

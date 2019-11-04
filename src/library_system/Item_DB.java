@@ -5,8 +5,7 @@ import java.util.ArrayList;
 public class Item_DB {
 	
 	Item_DB db;
-	public ArrayList<Item> items;
-	private static ArrayList<Book> books = new ArrayList<Book>();
+	public ArrayList<Book> books;
 	public ArrayList<Audio_Book> audioBooks;
 	public ArrayList<Magazine> magazines;
 	public ArrayList<DVD> dvds;
@@ -14,11 +13,10 @@ public class Item_DB {
 	
 	public Item_DB() {
 		books = StockLoader.loadBooks();
-		audioBooks = StockLoader.loadaudioBooks();
-		magazines = StockLoader.loadMagazines();
 		dvds = StockLoader.loadDVDs();
+		magazines = StockLoader.loadMagazines();
 		eBooks = StockLoader.loadeBooks();
-		
+		audioBooks = StockLoader.loadaudioBooks();
 	}
 	public ArrayList<Book> getBooks() {
 		return books;
