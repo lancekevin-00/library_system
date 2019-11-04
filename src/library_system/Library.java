@@ -130,7 +130,7 @@ public class Library {
 								}		
 							}
 						}
-						//Serach through the audioBook search terms
+						//Search through the audioBook search terms
 						for(Audio_Book audiobook : audiobookStock) {
 							for(int i = 0; i < 3; i++) {
 								if(audiobook.getSearchTerms(i).contains(term)) {
@@ -221,7 +221,7 @@ public class Library {
 						String pwd2 = scan.next();
 						if(pwd1.equals(pwd2)) {
 							System.out.println("new password confirmed");
-							curr_user.changePwd(pwd2);
+							curr_user.setPassword(pwd2);
 						}
 						else {
 							System.out.println("passwords do not match");
@@ -234,14 +234,65 @@ public class Library {
 						System.out.println("Good bye" + curr_user.Name);
 						break;
 					case 10:
-						if(curr_user.is_librarian)
-					    System.out.println("Entering the edit user menu");
+						if(curr_user.is_librarian) {
+							
+							//finding the user
+							System.out.println("Enter the card Number of the user you would like to edit:");
+							User eUser = null;
+							boolean f = false;
+							do {
+								int cNum = scan.nextInt();
+								if (cNum > 0) {
+									for(User user : Users) {
+										if (user.getCardNumber() == cNum) {
+											eUser = user;
+											f = true;
+										}
+									}
+									if (eUser == null) {
+										System.out.println("user not found, try again or enter -1 to exit");
+									}
+								}
+							}
+							while(!f);
+							System.out.println("------------------");
+							System.out.println("1: Look up fines");
+							System.out.println("2: Change Email");
+							System.out.println("3: Change Address");
+							System.out.println("4: Change Phone Number");
+							System.out.println("0: exit");
+							
+							int a = scan.nextInt();
+							switch(a) {
+							case 1:
+								System.out.println("fines: "+ eUser.getFees());
+								break;
+							case 2:
+								System.out.println("enter the new email");
+								String nEmail = scan.next();
+								eUser.setEmail(nEmail);
+								break;
+							case 3:
+								System.out.println("enter the new address");
+								String nAddress = scan.nextLine();
+								eUser.setAddress(nAddress);
+								break;
+							case 4:
+								System.out.println("enter the new email");
+								int nPhone = scan.nextInt();
+								eUser.setPhone(nPhone);
+								break;
+							default:
+								break;
+							}
+						}
 						else
 						System.out.println("Enter A Valid Number");
 						break;
 					case 11:
 						System.out.println("EXITING THE SYSTEM");
 						total_logout = true;
+						break;
 					default:
 						System.out.println("Enter A Valid Number");
 						break;
