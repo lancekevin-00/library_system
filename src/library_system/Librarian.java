@@ -1,13 +1,12 @@
 package library_system;
-import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.ArrayList;
 import java.io.IOException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;;
 public class Librarian extends User{
 	 JSONObject obj = new JSONObject();
-	private String fileName;
+	 Item_DB stock = new Item_DB();
 	Librarian(int id,String firstName,String lastName,int birthdayYear,String address, int accountID,String password ,double fines) {
 		super.Name = firstName+" "+lastName;
 		super.cardNumber = id;
@@ -20,21 +19,16 @@ public class Librarian extends User{
 	}
 	
 	@Override
-	protected void addNewBook(int id,String title, int year, String genre, String publisher, String author, int numCopies, boolean newArrival) {
+	protected void addNewBook(ArrayList<Book> books) {
 		
-		try (FileWriter file = new FileWriter("books.json",true)) {	
-			//JSONArray bookJSON = (JSONArray)jsonData.get("books")
-			//JSONObject list1 = new JSONObject();
-			obj.put("id", id);
-			obj.put("title", title);
-			obj.put("year", year);
-			obj.put("genre",genre);
-			obj.put("publisher",publisher);
-			obj.put("author",author);
-			obj.put("numCopies", numCopies);
-			obj.put("newArrival", newArrival);
-			
-			file.write(obj.toJSONString());
+		try (FileWriter file = new FileWriter("books.json")) {	
+			file.write("{\"books\":");
+			  JSONArray list = new JSONArray();
+		      for(int i = 0; i <books.size(); i++) {
+		    	  list.add(books.get(i));
+		      }
+			file.write(list.toJSONString());
+			file.write("\n}");
 
 	file.flush();
 	file.close();
@@ -43,21 +37,15 @@ public class Librarian extends User{
 			e.printStackTrace();
 		}
 	}
-	protected void addNewDVD(int id,String title,int year,String genre,String director,String[] actors,int numCopies,boolean newArrival) {
-		try (FileWriter file = new FileWriter("dvds.json",true)) {	
-			//JSONArray bookJSON = (JSONArray)jsonData.get("books")
-			//JSONObject list1 = new JSONObject();
-			obj.put("id", id);
-			obj.put("title", title);
-			obj.put("year", year);
-			obj.put("genre",genre);
-			obj.put("director",director);
-			obj.put("actors",actors);
-			obj.put("numCopies", numCopies);
-			obj.put("newArrival", newArrival);
-			
-			file.write(obj.toJSONString());
-
+	protected void addNewDVD(ArrayList<DVD> dvd) {
+		try (FileWriter file = new FileWriter("dvds.json")) {	
+			file.write("{\"dvds\":");
+			  JSONArray list = new JSONArray();
+		      for(int i = 0; i <dvd.size(); i++) {
+		    	  list.add(dvd.get(i));
+		      }
+			file.write(list.toJSONString());
+			file.write("\n}");
 	file.flush();
 	file.close();
 		}
@@ -65,22 +53,15 @@ public class Librarian extends User{
 			e.printStackTrace();
 		}
 	}
-	protected void addNewMagazine(int id,String title,int year,String genre,String publisher,int volume, int issue,int numCopies,boolean newArrival) {
-		try (FileWriter file = new FileWriter("magazines.json",true)) {	
-			//JSONArray bookJSON = (JSONArray)jsonData.get("books")
-			//JSONObject list1 = new JSONObject();
-			obj.put("id", id);
-			obj.put("title", title);
-			obj.put("year", year);
-			obj.put("genre",genre);
-			obj.put("publisher",publisher);
-			obj.put("volume",volume);
-			obj.put("issue",issue);
-			obj.put("numCopies", numCopies);
-			obj.put("newArrival", newArrival);
-			
-			file.write(obj.toJSONString());
-
+	protected void addNewMagazine(ArrayList<Magazine> magazines) {
+		try (FileWriter file = new FileWriter("magazines.json")) {	
+			file.write("{\"magazines\":");
+			  JSONArray list = new JSONArray();
+		      for(int i = 0; i <magazines.size(); i++) {
+		    	  list.add(magazines.get(i));
+		      }
+			file.write(list.toJSONString());
+			file.write("\n}");
 	file.flush();
 	file.close();
 		}
@@ -88,21 +69,15 @@ public class Librarian extends User{
 			e.printStackTrace();
 		}
 	}
-	protected void addNeweBook(int id,String title,int year,String genre,String publisher,String author,int numCopies,boolean newArrival) {
-		try (FileWriter file = new FileWriter("ebooks.json",true)) {	
-			//JSONArray bookJSON = (JSONArray)jsonData.get("books")
-			//JSONObject list1 = new JSONObject();
-			obj.put("id", id);
-			obj.put("title", title);
-			obj.put("year", year);
-			obj.put("genre",genre);
-			obj.put("publisher",publisher);
-			obj.put("author",author);
-			obj.put("numCopies", numCopies);
-			obj.put("newArrival", newArrival);
-			
-			file.write(obj.toJSONString());
-
+	protected void addNeweBook(ArrayList<eBook> ebook) {
+		try (FileWriter file = new FileWriter("ebooks.json")) {	
+			file.write("{\"ebooks\":");
+			  JSONArray list = new JSONArray();
+		      for(int i = 0; i <ebook.size(); i++) {
+		    	  list.add(ebook.get(i));
+		      }
+			file.write(list.toJSONString());
+			file.write("\n}");
 	file.flush();
 	file.close();
 		}
@@ -110,21 +85,15 @@ public class Librarian extends User{
 			e.printStackTrace();
 		}
 	}
-	protected void addNewAudio_Book(int id,String title,int year,String genre,String publisher,String author,int numCopies,boolean newArrival) {
-		try (FileWriter file = new FileWriter("audiobooks.json",true)) {	
-			//JSONArray bookJSON = (JSONArray)jsonData.get("books")
-			//JSONObject list1 = new JSONObject();
-			obj.put("id", id);
-			obj.put("title", title);
-			obj.put("year", year);
-			obj.put("genre",genre);
-			obj.put("publisher",publisher);
-			obj.put("author",author);
-			obj.put("numCopies", numCopies);
-			obj.put("newArrival", newArrival);
-			
-			file.write(obj.toJSONString());
-
+	protected void addNewAudio_Book(ArrayList<Audio_Book> audiobook) {
+		try (FileWriter file = new FileWriter("audiobooks.json")) {	
+			file.write("{\"audiobooks\":");
+			  JSONArray list = new JSONArray();
+		      for(int i = 0; i <audiobook.size(); i++) {
+		    	  list.add(audiobook.get(i));
+		      }
+			file.write(list.toJSONString());
+			file.write("\n}");
 	file.flush();
 	file.close();
 		}

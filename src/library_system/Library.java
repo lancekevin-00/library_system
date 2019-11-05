@@ -2,8 +2,6 @@ package library_system;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.io.*;
-
 public class Library {
 
 	public static void main(String [] args) {
@@ -284,10 +282,6 @@ public class Library {
 						scan.nextLine();
 						System.out.println("Enter Genre");
 						genre = scan.nextLine();
-						System.out.println("Enter Publisher"); 
-						publisher = scan.nextLine();
-						System.out.println("Enter Author"); 
-						author = scan.nextLine();
 						System.out.println("Enter number of copies");
 						numCopies = scan.nextInt();
 						scan.nextLine();
@@ -297,8 +291,14 @@ public class Library {
 						switch(add) {
 						
 						case 1: 
-							
-							curr_user.addNewBook(idNum,title,year,genre,publisher,author,numCopies,newArrival);
+							System.out.println("Enter Publisher"); 
+							publisher = scan.nextLine();
+							System.out.println("Enter Author"); 
+							author = scan.nextLine();
+							Book newbook = new Book(idNum,title,year,genre,publisher,author,numCopies,newArrival);
+							ArrayList<Book> books = stock.getBooks();
+							books.add(newbook);
+							curr_user.addNewBook(books);
 							break;
 						case 2: 
 							System.out.println("Enter Directors"); 
@@ -311,7 +311,10 @@ public class Library {
 							System.out.println("Enter Actor"); 
 							actors[x] = scan.nextLine();
 							}
-							curr_user.addNewDVD(idNum,title,year,genre,director,actors,numCopies,newArrival);
+							DVD newDVD = new DVD(idNum,title,year,genre,director/*,actors*/,numCopies,newArrival);
+							ArrayList<DVD> dvds = stock.getDVDs();
+							dvds.add(newDVD);
+							curr_user.addNewDVD(dvds);
 							break;
 						case 3: 
 							System.out.println("Enter Publisher"); 
@@ -322,13 +325,30 @@ public class Library {
 							System.out.println("Enter Issue#"); 
 							issue = scan.nextInt();
 							scan.nextLine();
-							curr_user.addNewMagazine(idNum,title,year,genre,publisher,volume,issue,numCopies,newArrival);
+							Magazine newMagazine = new Magazine(idNum,title,year,genre,publisher,volume,issue,numCopies,newArrival);
+							ArrayList<Magazine> magazines = stock.getMagazines();
+							magazines.add(newMagazine);
+							curr_user.addNewMagazine(magazines);
 							break;
 						case 4: 
-							curr_user.addNeweBook(idNum,title,year,genre,publisher,author,numCopies,newArrival);
+							System.out.println("Enter Publisher"); 
+							publisher = scan.nextLine();
+							System.out.println("Enter Author"); 
+							author = scan.nextLine();
+							eBook newebook = new eBook(idNum,title,year,genre,publisher,author,numCopies,newArrival);
+							ArrayList<eBook> ebooks = stock.geteBooks();
+							ebooks.add(newebook);
+							curr_user.addNeweBook(ebooks);
 							break;
 						case 5: 
-							curr_user.addNewAudio_Book(idNum,title,year,genre,publisher,author,numCopies,newArrival);
+							System.out.println("Enter Publisher"); 
+							publisher = scan.nextLine();
+							System.out.println("Enter Author"); 
+							author = scan.nextLine();
+							Audio_Book newaudioBook = new Audio_Book(idNum,title,year,genre,publisher,author,numCopies,newArrival);
+							ArrayList<Audio_Book> audiobooks = stock.getaudioBooks();
+							audiobooks.add(newaudioBook);
+							curr_user.addNewAudio_Book(audiobooks);
 							break;
 							
 						}

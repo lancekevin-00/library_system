@@ -27,4 +27,7 @@ public class Book extends Item {
 	public void notifyWaitlist() {
 		super.notifyWaitlist();
 	}
+	public String toString() {
+		return "{\n \"id\":" + id + ",\n\"title\":\"" + title + "\",\n\"year\":"+ year + ",\n\"genre\":\"" + genre + "\",\n\"publisher\":\"" + publisher +"\",\n\"author\":\"" + author + "\",\n\"numCopies\":" + numCopies + ",\n\"newArrival\":" +newArrival + "\n}";
+	}
 }

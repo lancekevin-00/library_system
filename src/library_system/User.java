@@ -1,5 +1,5 @@
 package library_system;
-
+import java.util.ArrayList;
 public abstract class User {
 	protected String Name;
 	protected int cardNumber;
@@ -92,20 +92,10 @@ public abstract class User {
 		this.phone = phone;
 	}
 	
-	protected void addNewBook(int id, String title, int year, String genre, String publisher, String author, int numCopies,boolean newArrival) {
-		
-	}
-	protected void addNeweBook(int id, String title, int year, String genre, String publisher, String author, int numCopies,boolean newArrival) {
-		
-	}
-	protected void addNewAudio_Book(int id, String title, int year, String genre, String publisher, String author, int numCopies,boolean newArrival) {
-		
-	}
-	protected void addNewDVD(int id,String title,int year,String genre,String director,String[] actors,int numCopies,boolean newArrival) { 
-		
-	}
-	protected void addNewMagazine(int id,String title,int year,String genre,String publisher,int volume, int issue,int numCopies,boolean newArrival) { 
-		
-	}
+	protected void addNewBook(ArrayList<Book> book) {}
+	protected void addNeweBook(ArrayList<eBook> ebook) {}
+	protected void addNewAudio_Book(ArrayList<Audio_Book> audiobook) {}
+	protected void addNewDVD(ArrayList<DVD> dvd) {}
+	protected void addNewMagazine(ArrayList<Magazine> magazines) {}
 
 }
