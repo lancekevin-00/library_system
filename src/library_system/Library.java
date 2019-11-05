@@ -121,14 +121,14 @@ public class Library {
 						System.out.println("3: Return to Menu");
 						int c = scan.nextInt();
 						boolean i = true;
-						//while(i) {
+						while(i) {
 						switch(c) {
 							case 1:
-								System.out.println("Getting Item Info");
-								//System.out.println("Copies Available:" + );
+								System.out.println(curr_result.getTitle());
+								System.out.println("Copies Available:" + curr_result.getCopies_avalible());
 								break;
 							case 2:
-								//checking if the user can checkout an item
+								
 								Checked_out_itm [] itms = curr_user.getItems();
 								boolean added = false;
 								for(int b=0; b<itms.length; b++) {
@@ -146,23 +146,20 @@ public class Library {
 								i = false;
 								break;
 							}
-						//}
+						}
 						break;
-					case 2: //I think we should get rid of this and just leave checkout to the search action
-						System.out.println("Checking Out");
-						break;
-					case 3:
+					case 2:
 						System.out.println("Check Due Dates");
 						Checked_out_itm[] items = curr_user.getItems();
 						for(Checked_out_itm item: items) {
 							System.out.println(item.getTitle()+": "+item.getTime_remaining()+" days remaining");
 						}
 						break;
-					case 4:
+					case 3:
 						System.out.println("Return");
 						//select a book or books which you are returning
 						break;
-					case 5:
+					case 4:
 						System.out.println("You owe: $" + curr_user.getFees());
 						System.out.println("~~~~~~~~~ACTIONS~~~~~~~~~");
 						System.out.println("1: Make a payment");
@@ -181,7 +178,7 @@ public class Library {
 							break;
 						};
 						break;
-					case 6:
+					case 5:
 						System.out.println("Enter payment amount");
 						System.out.print("$");
 						int amt = scan.nextInt();
@@ -189,13 +186,13 @@ public class Library {
 						System.out.println("Thank you for your payment");
 						System.out.println("You now owe "+ curr_user.getFees() + " in fines");
 						break;
-					case 7:
+					case 6:
 						System.out.println("Enter your new email address: ");
 						String new_email = scan.next();
 						//check for validity of new email
 						//set users email to the new email
 						break;
-					case 8:
+					case 7:
 						System.out.println("Enter your new password:");
 						String pwd1 = scan.next();
 						System.out.println("Confirm your password:");
@@ -209,12 +206,12 @@ public class Library {
 							System.out.println("new password not confirmed");
 						}
 						break;
-					case 9:
+					case 8:
 						go_again = false;
 						curr_user = null;
 						System.out.println("Good bye" + curr_user.Name);
 						break;
-					case 10:
+					case 9:
 						if(curr_user.is_librarian) {
 
 							//finding the user
@@ -270,7 +267,7 @@ public class Library {
 						else
 						System.out.println("Enter A Valid Number");
 						break;
-					case 11:
+					case 10:
 						String title, genre, publisher, author,director;
 						String [] actors;
 						int year, numCopies,idNum, volume, issue;
@@ -364,7 +361,7 @@ public class Library {
 
 						}
 						break;
-					case 12:
+					case 11:
 						System.out.println("EXITING THE SYSTEM");
 						total_logout = true;
 						go_again = false;
