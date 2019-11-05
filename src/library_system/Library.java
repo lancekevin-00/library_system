@@ -12,9 +12,6 @@ public class Library {
 		ArrayList<User> Users = UserLoader.loadUsers();
 		Item_DB stock = new Item_DB();
 		ArrayList<Item> stock2 = StockLoader.getStock();
-		for(Item itm : stock2) {
-			System.out.println(itm.getTitle());
-		}
 		User curr_user = null;
 		boolean total_logout = false;
 		Scanner scan = new Scanner(System.in);
@@ -57,10 +54,6 @@ public class Library {
 				
 			}
 			while(curr_user == null);
-	
-	
-			//this is an example user in the system used for testing the menu
-			//curr_user = new Adult(001, "Example", "Name", 2000, "1234 Example lane" , 001, " Password", 0.00, new Child[0]);
 			
 			System.out.println("Welcome to the library " + curr_user.getName());
 					
@@ -89,67 +82,40 @@ public class Library {
 					case 1:
 						System.out.println("Enter a search term: ");
 						String term = scan.nextLine();
-						System.out.println(term);
-						//Create a book arraylist
-						ArrayList<Book> bookStock = stock.getBooks();
-						//Create a DVD arraylist
-						ArrayList<DVD> dvdStock = stock.getDVDs();
-						//Create a Magazine arraylist
-						ArrayList<Magazine> magazineStock = stock.getMagazines();
-						ArrayList<eBook> ebookStock = stock.geteBooks();
-						ArrayList<Audio_Book> audiobookStock = stock.getaudioBooks();
+						
 						System.out.println("Searching through the stock database for the search term");
-						System.out.println("Results:");					
-						//All this subject to change once we get them all into one arraylist 
-						//Search through the books search terms and print id and title fo the book(can add other stuff later
-						for(Book book : bookStock) {
-							for(int i = 0; i < 3; i++) {
-								if(book.getSearchTerms(i).contains(term)) {
-									System.out.println(book.getId() + ": " + book.getTitle());
-									i = 4;
-								}		
-							}
-						} 
-						//Search throught the dvd search terms
-						for(DVD dvd : dvdStock) {
-							for(int j = 0; j < 3; j++) {
-								if(dvd.getSearchTerms(j).contains(term)) {
-									System.out.println(dvd.getId() + ": " + dvd.getTitle());
-									j = 4;
-								}		
+						System.out.println("Results:");	
+						
+						
+						ArrayList<Item> results = new ArrayList<Item>();
+						for(Item itm:stock2) {
+							String[] terms = itm.getSearchTerms();
+							for(int i = 0; i < terms.length; i++) {
+
+								if(terms[i].contains(term))
+									results.add(itm);
+									
 							}
 						}
-						//Search through the magazine search terms
-						for(Magazine magazine : magazineStock) {
-							for(int i = 0; i < 3; i++) {
-								if(magazine.getSearchTerms(i).contains(term)) {
-									System.out.println(magazine.getId() + ": " + magazine.getTitle());
-									i = 4;
-								}		
-							}
+						
+						for(Item itm: results) {
+							System.out.println(itm.getId() + ": "+ itm.getTitle());
 						}
-						//Search through the eBook stock
-						for(eBook ebook : ebookStock) {
-							for(int i = 0; i < 3; i++) {
-								if(ebook.getSearchTerms(i).contains(term)) {
-									System.out.println(ebook.getId() + ": " + ebook.getTitle());
-									i = 4;
-								}		
-							}
-						}
-						//Search through the audioBook search terms
-						for(Audio_Book audiobook : audiobookStock) {
-							for(int i = 0; i < 3; i++) {
-								if(audiobook.getSearchTerms(i).contains(term)) {
-									System.out.println(audiobook.getId() + ": " + audiobook.getTitle());
-									i = 4;
-								}		
-							}
-						}
+						
+						
 						System.out.println("Select a Result by id# or enter zero to exit:");
 						int id = scan.nextInt();
-						if(id == 0)
+						if(id >= 0)
 							break;
+						Item curr_result = null;
+						while(curr_result == null) {
+							for(int i = 0; i < results.size(); i++) {
+								if(results.get(i).getId() == id)
+									curr_result = results.get(i);
+								}
+							System.out.println("Please enter a valid id or 0 to exit");
+						}
+						
 						
 						System.out.println("~~~~~~~~~ACTIONS~~~~~~~~~");
 						System.out.println("1: Get Info");
@@ -161,7 +127,7 @@ public class Library {
 						switch(c) {
 							case 1:
 								System.out.println("Getting Item Info");
-							//	System.out.println("Copies Available:" + );
+								//System.out.println("Copies Available:" + );
 								break;
 							case 2:
 								System.out.println("Checkout The Item");

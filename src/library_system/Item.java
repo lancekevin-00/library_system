@@ -45,8 +45,8 @@ public class Item{
 		this.copies_in_stock = copies_in_stock;
 	}
 	
-	public String getSearchTerms(int index) {
-		return searchTerms[index];
+	public String[] getSearchTerms() {
+		return searchTerms;
 	}
 	public void setSearchTerms(String[] searchTerms) {
 		this.searchTerms = searchTerms;
