@@ -9,21 +9,15 @@ public abstract class User {
 	protected Checked_out_itm[] items;
 	protected String Address;
 	public boolean is_librarian = false;
-<<<<<<< HEAD
 	protected String email;
 	protected int phone;
-	
-	public void checkout(Item itm) {
-		System.out.println("CHECKING OUT AN ITEM");
-=======
-	
+
 	public void checkout(Checked_out_itm itm, int i) {
 		items[i] = itm;
->>>>>>> checkout_return
 	}
-	
+
 	public void return_itm(int id) {}
-	
+
 	public void changePwd(String pwd) {
 		password = pwd;
 	}
@@ -37,7 +31,7 @@ public abstract class User {
 		}
 		return -1;
 	}
-	
+
 	//getters and setters
 	public String getName() {
 		return Name;
@@ -81,7 +75,7 @@ public abstract class User {
 	public void setItems(Checked_out_itm[] items) {
 		this.items = items;
 	}
-	
+
 	public String getEmail() {
 		return email;
 	}
@@ -97,7 +91,7 @@ public abstract class User {
 	public void setPhone(int phone) {
 		this.phone = phone;
 	}
-	
+
 	protected void addNewBook(ArrayList<Book> book) {}
 	protected void addNeweBook(ArrayList<eBook> ebook) {}
 	protected void addNewAudio_Book(ArrayList<Audio_Book> audiobook) {}

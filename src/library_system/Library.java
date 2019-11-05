@@ -52,15 +52,7 @@ public class Library {
 
 			}
 			while(curr_user == null);
-<<<<<<< HEAD
-			
-=======
 
-
-			//this is an example user in the system used for testing the menu
-			//curr_user = new Adult(001, "Example", "Name", 2000, "1234 Example lane" , 001, " Password", 0.00, new Child[0]);
-
->>>>>>> checkout_return
 			System.out.println("Welcome to the library " + curr_user.getName());
 
 			try {
@@ -88,12 +80,11 @@ public class Library {
 					case 1:
 						System.out.println("Enter a search term: ");
 						String term = scan.nextLine();
-						
+
 						System.out.println("Searching through the stock database for the search term");
-<<<<<<< HEAD
-						System.out.println("Results:");	
-						
-						
+						System.out.println("Results:");
+
+
 						ArrayList<Item> results = new ArrayList<Item>();
 						for(Item itm:stock2) {
 							String[] terms = itm.getSearchTerms();
@@ -101,15 +92,15 @@ public class Library {
 
 								if(terms[i].contains(term))
 									results.add(itm);
-									
+
 							}
 						}
-						
+
 						for(Item itm: results) {
 							System.out.println(itm.getId() + ": "+ itm.getTitle());
 						}
-						
-						
+
+
 						System.out.println("Select a Result by id# or enter zero to exit:");
 						int id = scan.nextInt();
 						if(id >= 0)
@@ -122,64 +113,8 @@ public class Library {
 								}
 							System.out.println("Please enter a valid id or 0 to exit");
 						}
-						
-						
-=======
-						System.out.println("Results:");
-						//All this subject to change once we get them all into one arraylist
-						//Search through the books search terms and print id and title fo the book(can add other stuff later
-						for(Book book : bookStock) {
-							for(int i = 0; i < 3; i++) {
-								if(book.getSearchTerms(i).contains(term)) {
-									System.out.println(book.getId() + ": " + book.getTitle());
-									i = 4;
-								}
-							}
-						}
-						//Search throught the dvd search terms
-						for(DVD dvd : dvdStock) {
-							for(int j = 0; j < 3; j++) {
-								if(dvd.getSearchTerms(j).contains(term)) {
-									System.out.println(dvd.getId() + ": " + dvd.getTitle());
-									j = 4;
-								}
-							}
-						}
-						//Search through the magazine search terms
-						for(Magazine magazine : magazineStock) {
-							for(int i = 0; i < 3; i++) {
-								if(magazine.getSearchTerms(i).contains(term)) {
-									System.out.println(magazine.getId() + ": " + magazine.getTitle());
-									i = 4;
-								}
-							}
-						}
-						//Search through the eBook stock
-						for(eBook ebook : ebookStock) {
-							for(int i = 0; i < 3; i++) {
-								if(ebook.getSearchTerms(i).contains(term)) {
-									System.out.println(ebook.getId() + ": " + ebook.getTitle());
-									i = 4;
-								}
-							}
-						}
-						//Search through the audioBook search terms
-						for(Audio_Book audiobook : audiobookStock) {
-							for(int i = 0; i < 3; i++) {
-								if(audiobook.getSearchTerms(i).contains(term)) {
-									System.out.println(audiobook.getId() + ": " + audiobook.getTitle());
-									i = 4;
-								}
-							}
-						}
-
-						System.out.println("Select a Result by id# or enter zero to exit:");
-						int id = scan.nextInt();
-						if(id <= 0)
-							break;
 
 
->>>>>>> checkout_return
 						System.out.println("~~~~~~~~~ACTIONS~~~~~~~~~");
 						System.out.println("1: Get Info");
 						System.out.println("2: Checkout");
@@ -280,7 +215,7 @@ public class Library {
 						break;
 					case 10:
 						if(curr_user.is_librarian) {
-							
+
 							//finding the user
 							System.out.println("Enter the card Number of the user you would like to edit:");
 							User eUser = null;
@@ -306,7 +241,7 @@ public class Library {
 							System.out.println("3: Change Address");
 							System.out.println("4: Change Phone Number");
 							System.out.println("0: exit");
-							
+
 							int a = scan.nextInt();
 							switch(a) {
 							case 1:
@@ -350,7 +285,7 @@ public class Library {
 						System.out.println("Enter ID #");
 						idNum = scan.nextInt();
 						scan.nextLine();
-						System.out.println("Enter Title"); 
+						System.out.println("Enter Title");
 						title = scan.nextLine();
 						System.out.println("Enter Year");
 						year = scan.nextInt();
@@ -360,62 +295,23 @@ public class Library {
 						System.out.println("Enter number of copies");
 						numCopies = scan.nextInt();
 						scan.nextLine();
-						System.out.println("Enter true if new arrival and false if not"); 
+						System.out.println("Enter true if new arrival and false if not");
 						newArrival = scan.nextBoolean();
 						scan.nextLine();
 						switch(add) {
-<<<<<<< HEAD
-						
-						case 1: 
-							System.out.println("Enter Publisher"); 
-=======
 
 						case 1:
-							System.out.println("Enter ID #");
-							idNum = scan.nextInt();
-							scan.nextLine();
-							System.out.println("Enter Title");
-							title = scan.nextLine();
-							System.out.println("Enter Year");
-							year = scan.nextInt();
-							scan.nextLine();
-							System.out.println("Enter Genre");
-							genre = scan.nextLine();
 							System.out.println("Enter Publisher");
->>>>>>> checkout_return
 							publisher = scan.nextLine();
 							System.out.println("Enter Author");
 							author = scan.nextLine();
-<<<<<<< HEAD
 							Book newbook = new Book(idNum,title,year,genre,publisher,author,numCopies,newArrival);
 							ArrayList<Book> books = stock.getBooks();
 							books.add(newbook);
 							curr_user.addNewBook(books);
 							break;
-						case 2: 
-							System.out.println("Enter Directors"); 
-=======
-							System.out.println("Enter number of copies");
-							numCopies = scan.nextInt();
-							scan.nextLine();
-							System.out.println("Enter true if new arrival and false if not");
-							newArrival = scan.nextBoolean();
-							scan.nextLine();
-							curr_user.addNewBook(idNum,title,year,genre,publisher,author,numCopies,newArrival);
-							break;
 						case 2:
-							System.out.println("Enter ID #");
-							idNum = scan.nextInt();
-							scan.nextLine();
-							System.out.println("Enter Title");
-							title = scan.nextLine();
-							System.out.println("Enter Year");
-							year = scan.nextInt();
-							scan.nextLine();
-							System.out.println("Enter Genre");
-							genre = scan.nextLine();
 							System.out.println("Enter Directors");
->>>>>>> checkout_return
 							director = scan.nextLine();
 							System.out.println("Enter number of actors you would like listed");
 							int numOfActors = scan.nextInt();
@@ -425,36 +321,13 @@ public class Library {
 							System.out.println("Enter Actor");
 							actors[x] = scan.nextLine();
 							}
-<<<<<<< HEAD
 							DVD newDVD = new DVD(idNum,title,year,genre,director/*,actors*/,numCopies,newArrival);
 							ArrayList<DVD> dvds = stock.getDVDs();
 							dvds.add(newDVD);
 							curr_user.addNewDVD(dvds);
 							break;
-						case 3: 
-							System.out.println("Enter Publisher"); 
-=======
-							System.out.println("Enter number of copies");
-							numCopies = scan.nextInt();
-							scan.nextLine();
-							System.out.println("Enter true if new arrival and false if not");
-							newArrival = scan.nextBoolean();
-							scan.nextLine();
-							curr_user.addNewDVD(idNum,title,year,genre,director,actors,numCopies,newArrival);
-							break;
 						case 3:
-							System.out.println("Enter ID #");
-							idNum = scan.nextInt();
-							scan.nextLine();
-							System.out.println("Enter Title");
-							title = scan.nextLine();
-							System.out.println("Enter Year");
-							year = scan.nextInt();
-							scan.nextLine();
-							System.out.println("Enter Genre");
-							genre = scan.nextLine();
 							System.out.println("Enter Publisher");
->>>>>>> checkout_return
 							publisher = scan.nextLine();
 							System.out.println("Enter Volume#");
 							volume = scan.nextInt();
@@ -462,91 +335,32 @@ public class Library {
 							System.out.println("Enter Issue#");
 							issue = scan.nextInt();
 							scan.nextLine();
-<<<<<<< HEAD
 							Magazine newMagazine = new Magazine(idNum,title,year,genre,publisher,volume,issue,numCopies,newArrival);
 							ArrayList<Magazine> magazines = stock.getMagazines();
 							magazines.add(newMagazine);
 							curr_user.addNewMagazine(magazines);
 							break;
-						case 4: 
-							System.out.println("Enter Publisher"); 
-=======
-							System.out.println("Enter number of copies");
-							numCopies = scan.nextInt();
-							scan.nextLine();
-							System.out.println("Enter true if new arrival and false if not");
-							newArrival = scan.nextBoolean();
-							scan.nextLine();
-							curr_user.addNewMagazine(idNum,title,year,genre,publisher,volume,issue,numCopies,newArrival);
-							break;
 						case 4:
-							System.out.println("Enter ID #");
-							idNum = scan.nextInt();
-							scan.nextLine();
-							System.out.println("Enter Title");
-							title = scan.nextLine();
-							System.out.println("Enter Year");
-							year = scan.nextInt();
-							scan.nextLine();
-							System.out.println("Enter Genre");
-							genre = scan.nextLine();
 							System.out.println("Enter Publisher");
->>>>>>> checkout_return
 							publisher = scan.nextLine();
 							System.out.println("Enter Author");
 							author = scan.nextLine();
-<<<<<<< HEAD
 							eBook newebook = new eBook(idNum,title,year,genre,publisher,author,numCopies,newArrival);
 							ArrayList<eBook> ebooks = stock.geteBooks();
 							ebooks.add(newebook);
 							curr_user.addNeweBook(ebooks);
 							break;
-						case 5: 
-							System.out.println("Enter Publisher"); 
-=======
-							System.out.println("Enter number of copies");
-							numCopies = scan.nextInt();
-							scan.nextLine();
-							System.out.println("Enter true if new arrival and false if not");
-							newArrival = scan.nextBoolean();
-							scan.nextLine();
-							curr_user.addNeweBook(idNum,title,year,genre,publisher,author,numCopies,newArrival);
-							break;
 						case 5:
-							System.out.println("Enter ID #");
-							idNum = scan.nextInt();
-							scan.nextLine();
-							System.out.println("Enter Title");
-							title = scan.nextLine();
-							System.out.println("Enter Year");
-							year = scan.nextInt();
-							scan.nextLine();
-							System.out.println("Enter Genre");
-							genre = scan.nextLine();
 							System.out.println("Enter Publisher");
->>>>>>> checkout_return
 							publisher = scan.nextLine();
 							System.out.println("Enter Author");
 							author = scan.nextLine();
-<<<<<<< HEAD
 							Audio_Book newaudioBook = new Audio_Book(idNum,title,year,genre,publisher,author,numCopies,newArrival);
 							ArrayList<Audio_Book> audiobooks = stock.getaudioBooks();
 							audiobooks.add(newaudioBook);
 							curr_user.addNewAudio_Book(audiobooks);
 							break;
-							
-=======
-							System.out.println("Enter number of copies");
-							numCopies = scan.nextInt();
-							scan.nextLine();
-							System.out.println("Enter true if new arrival and false if not");
-							newArrival = scan.nextBoolean();
-							scan.nextLine();
-							curr_user.addNewAudio_Book(idNum,title,year,genre,publisher,author,numCopies,newArrival);
-							break;
 
-
->>>>>>> checkout_return
 						}
 						break;
 					case 12:
