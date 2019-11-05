@@ -10,13 +10,8 @@ public abstract class User {
 	protected String Address;
 	public boolean is_librarian = false;
 	
-	public void checkout(Checked_out_itm itm) {
-		for(int i=0;i<items.length;i++) {
-			if(items[i] == null) {
-				items[i] = itm;
-				return;
-			}
-		}
+	public void checkout(Checked_out_itm itm, int i) {
+		items[i] = itm;
 	}
 	
 	public void return_itm(int id) {}
