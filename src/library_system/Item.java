@@ -55,5 +55,11 @@ public abstract class Item {
 	public String getTitle() {
 		return title;
 	}
+	
+	public Checked_out_itm checkout() {
+		copies_avalible --;
+		Checked_out_itm ret = new Checked_out_itm(title, this);
+		return ret;
+	}
 
 }

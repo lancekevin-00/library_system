@@ -9,9 +9,18 @@ public abstract class User {
 	protected Checked_out_itm[] items;
 	protected String Address;
 	public boolean is_librarian = false;
-	public void checkout(Item itm) {
-		System.out.println("CHECKING OUT AN ITEM");
+	
+	public void checkout(Checked_out_itm itm) {
+		for(int i=0;i<items.length;i++) {
+			if(items[i] == null) {
+				items[i] = itm;
+				return;
+			}
+		}
 	}
+	
+	public void return_itm(int id) {}
+	
 	public void changePwd(String pwd) {
 		password = pwd;
 	}
@@ -24,9 +33,6 @@ public abstract class User {
 				return item.getTime_remaining();
 		}
 		return -1;
-	}
-	public void return_itm(int id) {
-		System.out.println("RETURNING AN ITEM");
 	}
 	
 	//getters and setters
