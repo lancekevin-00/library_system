@@ -11,6 +11,10 @@ public class Library {
 		//load users and get an instance of stock
 		ArrayList<User> Users = UserLoader.loadUsers();
 		Item_DB stock = new Item_DB();
+		ArrayList<Item> stock2 = StockLoader.getStock();
+		for(Item itm : stock2) {
+			System.out.println(itm.getTitle());
+		}
 		User curr_user = null;
 		boolean total_logout = false;
 		Scanner scan = new Scanner(System.in);

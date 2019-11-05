@@ -1,6 +1,6 @@
 package library_system;
 
-public abstract class Item {
+public class Item{
 	protected int max_checkout_time;
 	protected User[] waitlist;
 	protected int copies_avalible;

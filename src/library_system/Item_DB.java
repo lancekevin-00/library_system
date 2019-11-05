@@ -10,6 +10,7 @@ public class Item_DB {
 	public ArrayList<Magazine> magazines;
 	public ArrayList<DVD> dvds;
 	public ArrayList<eBook> eBooks;
+	//public ArrayList<Item> stock;
 	
 	public Item_DB() {
 		books = StockLoader.loadBooks();
@@ -18,6 +19,7 @@ public class Item_DB {
 		eBooks = StockLoader.loadeBooks();
 		audioBooks = StockLoader.loadaudioBooks();
 	}
+	
 	public ArrayList<Book> getBooks() {
 		return books;
 	}
@@ -42,6 +44,10 @@ public class Item_DB {
 	public void update_day() {
 		System.out.println("updating day");
 		System.out.println("this method does nothing currently");
+	}
+	
+	public ArrayList<Item> search(){
+		return null;
 	}
 	
 }

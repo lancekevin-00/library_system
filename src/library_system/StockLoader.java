@@ -12,6 +12,11 @@ private static final String MAGAZINE_FILE_NAME = "magazines.json";
 private static final String EBOOK_FILE_NAME = "ebooks.json";
 private static final String AUDIOBOOK_FILE_NAME = "audiobooks.json";
 private static ArrayList<Item> stock = new ArrayList<Item>();
+
+	public static ArrayList<Item> getStock(){
+		return stock;
+	}
+
 	public static ArrayList<Book> loadBooks() {
 		ArrayList<Book> books = new ArrayList<Book>();
 		
@@ -31,7 +36,10 @@ private static ArrayList<Item> stock = new ArrayList<Item>();
 				int numCopies = (int)(long)BookJSON.get("numCopies");
 				boolean newArrival = (boolean)BookJSON.get("newArrival");
 				
-				books.add(new Book(id,title,year,genre,publisher,author,numCopies,newArrival));
+				Book temp = new Book(id,title,year,genre,publisher,author,numCopies,newArrival);
+				
+				books.add(temp);
+				stock.add(temp);
 			}
 			
 			return books;
@@ -64,7 +72,9 @@ private static ArrayList<Item> stock = new ArrayList<Item>();
 				int numCopies = (int)(long)DVDJSON.get("numCopies");
 				boolean newArrival = (boolean)DVDJSON.get("newArrival");
 				
-				dvds.add(new DVD(id,title,year,genre,director/*,actors*/,numCopies,newArrival));
+				DVD temp = new DVD(id,title,year,genre,director/*,actors*/,numCopies,newArrival);
+				dvds.add(temp);
+				stock.add(temp);
 			}
 			
 			return dvds;
@@ -97,7 +107,8 @@ private static ArrayList<Item> stock = new ArrayList<Item>();
 				int numCopies = (int)(long)MagazineJSON.get("numCopies");
 				boolean newArrival = (boolean)MagazineJSON.get("newArrival");
 				
-				magazines.add(new Magazine(id,title,year,genre,publisher,volume, issue,numCopies,newArrival));
+				Magazine temp = new Magazine(id,title,year,genre,publisher,volume, issue,numCopies,newArrival);
+				magazines.add(temp);
 			}
 			
 			return magazines;
@@ -128,7 +139,9 @@ private static ArrayList<Item> stock = new ArrayList<Item>();
 				int numCopies = (int)(long)eBookJSON.get("numCopies");
 				boolean newArrival = (boolean)eBookJSON.get("newArrival");
 				
-				ebooks.add(new eBook(id,title,year,genre,publisher,author,numCopies,newArrival));
+				eBook temp = new eBook(id,title,year,genre,publisher,author,numCopies,newArrival);
+				ebooks.add(temp);
+				stock.add(temp);
 			}
 			
 			return ebooks;
@@ -160,7 +173,9 @@ private static ArrayList<Item> stock = new ArrayList<Item>();
 				int numCopies = (int)(long)audioBookJSON.get("numCopies");
 				boolean newArrival = (boolean)audioBookJSON.get("newArrival");
 				
-				audiobooks.add(new Audio_Book(id,title,year,genre,publisher,author,numCopies,newArrival));
+				Audio_Book temp = new Audio_Book(id,title,year,genre,publisher,author,numCopies,newArrival);
+				audiobooks.add(temp);
+				stock.add(temp);
 			}
 			
 			return audiobooks;
