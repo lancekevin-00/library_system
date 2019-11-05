@@ -11,6 +11,7 @@ public class Library {
 		Item_DB stock = new Item_DB();
 		ArrayList<Item> stock2 = StockLoader.getStock();
 		User curr_user = null;
+		Checked_out_itm[] items;
 		boolean total_logout = false;
 		Scanner scan = new Scanner(System.in);
 		while(!total_logout){
@@ -150,14 +151,29 @@ public class Library {
 						break;
 					case 2:
 						System.out.println("Check Due Dates");
-						Checked_out_itm[] items = curr_user.getItems();
+						items = curr_user.getItems();
 						for(Checked_out_itm item: items) {
 							System.out.println(item.getTitle()+": "+item.getTime_remaining()+" days remaining");
 						}
 						break;
 					case 3:
-						System.out.println("Return");
-						//select a book or books which you are returning
+						items = curr_user.getItems();
+						for(Checked_out_itm itm: items) {
+							System.out.println("ID: "+itm.getId() + ":\t "+ itm.getTitle() + "\t " + itm.getTime_remaining() + " days remaining \t this item has been renewed " + itm.getRenewals() + " times");
+						}
+						
+						int d = 0;
+						boolean e = false;
+						while(!e || d == 0) {
+							System.out.println("Please enter the ID of the item you would like to return or 0 to exit");
+							d = scan.nextInt();
+							for(int f = 0; f < items.length; f++) {
+								if(d == items[f].getId()) {
+									e = true;
+									curr_user.return_itm(f);
+								}
+							}
+						}
 						break;
 					case 4:
 						System.out.println("You owe: $" + curr_user.getFees());
@@ -189,8 +205,7 @@ public class Library {
 					case 6:
 						System.out.println("Enter your new email address: ");
 						String new_email = scan.next();
-						//check for validity of new email
-						//set users email to the new email
+						curr_user.setEmail(new_email);
 						break;
 					case 7:
 						System.out.println("Enter your new password:");
@@ -208,8 +223,8 @@ public class Library {
 						break;
 					case 8:
 						go_again = false;
-						curr_user = null;
 						System.out.println("Good bye" + curr_user.Name);
+						curr_user = null;
 						break;
 					case 9:
 						if(curr_user.is_librarian) {
