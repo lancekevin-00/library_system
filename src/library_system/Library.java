@@ -103,7 +103,7 @@ public class Library {
 
 						System.out.println("Select a Result by id# or enter zero to exit:");
 						int id = scan.nextInt();
-						if(id >= 0)
+						if(id <= 0)
 							break;
 						Item curr_result = null;
 						while(curr_result == null) {
@@ -133,8 +133,9 @@ public class Library {
 								boolean added = false;
 								for(int b=0; b<itms.length; b++) {
 									if(itms[b] == null) {
-										curr_user.checkout(curr_itm.checkout(), i);
+										curr_user.checkout(curr_result.checkout(), b);
 										added = true;
+										System.out.println("successfully checked out "+ curr_result.getTitle());
 									}
 								}
 								if(!added)
