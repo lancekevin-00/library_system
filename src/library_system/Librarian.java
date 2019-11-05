@@ -1,13 +1,10 @@
 package library_system;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.*;
 import java.io.IOException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;;
 public class Librarian extends User{
 	 JSONObject obj = new JSONObject();
-	private String fileName;
 	Librarian(int id,String firstName,String lastName,int birthdayYear,String address, int accountID,String password ,double fines) {
 		super.Name = firstName+" "+lastName;
 		super.cardNumber = id;
@@ -45,8 +42,6 @@ public class Librarian extends User{
 	}
 	protected void addNewDVD(int id,String title,int year,String genre,String director,String[] actors,int numCopies,boolean newArrival) {
 		try (FileWriter file = new FileWriter("dvds.json",true)) {	
-			//JSONArray bookJSON = (JSONArray)jsonData.get("books")
-			//JSONObject list1 = new JSONObject();
 			obj.put("id", id);
 			obj.put("title", title);
 			obj.put("year", year);
@@ -67,8 +62,6 @@ public class Librarian extends User{
 	}
 	protected void addNewMagazine(int id,String title,int year,String genre,String publisher,int volume, int issue,int numCopies,boolean newArrival) {
 		try (FileWriter file = new FileWriter("magazines.json",true)) {	
-			//JSONArray bookJSON = (JSONArray)jsonData.get("books")
-			//JSONObject list1 = new JSONObject();
 			obj.put("id", id);
 			obj.put("title", title);
 			obj.put("year", year);
@@ -112,8 +105,6 @@ public class Librarian extends User{
 	}
 	protected void addNewAudio_Book(int id,String title,int year,String genre,String publisher,String author,int numCopies,boolean newArrival) {
 		try (FileWriter file = new FileWriter("audiobooks.json",true)) {	
-			//JSONArray bookJSON = (JSONArray)jsonData.get("books")
-			//JSONObject list1 = new JSONObject();
 			obj.put("id", id);
 			obj.put("title", title);
 			obj.put("year", year);

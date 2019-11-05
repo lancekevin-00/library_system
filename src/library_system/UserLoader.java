@@ -27,7 +27,8 @@ public class UserLoader {
 				int accountID = (int)(long)UserJSON.get("accountId");
 				String password = (String)UserJSON.get("password");
 				String type = (String)UserJSON.get("type");
-				double fines = 0.0; //(double)(UserJSON.get("fines")); //Temporary until i figure out how to get rid of the error
+				Number val = (Number)UserJSON.get("value");//Temporary until i figure out how to get rid of the error
+				double fines = val.doubleValue();
 				if(type.equals("A")) {
 					users.add(new Adult(id,firstName,lastName,birthdayYear,address,accountID,password ,fines)); 
 				}
