@@ -80,6 +80,7 @@ public class Library {
 					if(curr_user.is_librarian) {
 						System.out.println("10: Edit User");
 						System.out.println("11: Add item");
+						System.out.println("12: Update day");
 					}
 
 
@@ -383,6 +384,13 @@ public class Library {
 						System.out.println("EXITING THE SYSTEM");
 						total_logout = true;
 						go_again = false;
+						break;
+					case 12:
+						System.out.println("Updating the day");
+						for(User user: Users) {
+							user.updateDay();
+							user.updateFees();
+						}
 						break;
 					default:
 						System.out.println("Enter A Valid Number");
