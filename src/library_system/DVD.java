@@ -8,6 +8,7 @@ public class DVD extends Item {
 	private int numCopies;
 	private boolean newArrival;
 	public DVD(int id,String title,int year,String genre,String director/*,String[] actors*/,int numCopies,boolean newArrival) {
+		super();
 		this.id = id;
 		this.title = title;
 		this.year = year;

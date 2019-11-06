@@ -9,6 +9,7 @@ public class Magazine extends Item {
 	private int numCopies;
 	private boolean newArrival;
 	public Magazine(int id,String title,int year,String genre,String publisher,int volume, int issue,int numCopies,boolean newArrival) {
+		super();
 		this.id = id;
 		this.title = title;
 		this.year = year;

@@ -8,6 +8,7 @@ public class Audio_Book extends Item {
 	private int numCopies;
 	private boolean newArrival;
 	public Audio_Book(int id,String title,int year,String genre,String publisher,String author,int numCopies,boolean newArrival) {
+		super();
 		this.id = id;
 		this.title = title;
 		this.year = year;

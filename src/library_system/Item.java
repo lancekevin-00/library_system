@@ -9,6 +9,10 @@ public class Item{
 	protected String title;
 	protected int id;
 	
+	public Item() {
+		waitlist = new User[10];
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -23,14 +27,27 @@ public class Item{
 		this.max_checkout_time = max_checkout_time;
 	}
 	
+	public void addUserToWaitlist(User u) {
+		for (int i = 0; i < waitlist.length; i++) {
+			if (waitlist[i] == null) {
+				waitlist[i] = u;
+				System.out.println(u.getName() + " has been added to the waitlist");
+				return;
+			}
+		}
+		System.out.println("the waitlist has reached its max length of " + waitlist.length);
+	}
+	
 	public User[] getWaitlist() {
 		return waitlist;
 	}
+	
 	public void notifyWaitlist() {
 		for(User user:waitlist) {
 			System.out.println("notifying " + user.getName());
 		}
 	}
+	
 	public int getCopies_avalible() {
 		return copies_avalible;
 	}
