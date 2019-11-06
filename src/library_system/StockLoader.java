@@ -94,7 +94,7 @@ private static ArrayList<Item> stock = new ArrayList<Item>();
 			JSONObject jsonData = (JSONObject)new JSONParser().parse(reader);
 			JSONArray magazineJSON = (JSONArray)jsonData.get("magazines");
 			
-			for(int i=0; i < magazineJSON.size(); i++) { //Null pointer at this line 
+			for(int i=0; i < magazineJSON.size(); i++) {
 				JSONObject MagazineJSON = (JSONObject)magazineJSON.get(i);
 				int id = (int)(long)MagazineJSON.get("id");
 				String title = (String)MagazineJSON.get("title");
@@ -108,6 +108,7 @@ private static ArrayList<Item> stock = new ArrayList<Item>();
 				
 				Magazine temp = new Magazine(id,title,year,genre,publisher,volume, issue,numCopies,newArrival);
 				magazines.add(temp);
+				stock.add(temp);
 			}
 			
 			return magazines;
@@ -139,8 +140,7 @@ private static ArrayList<Item> stock = new ArrayList<Item>();
 				boolean newArrival = (boolean)eBookJSON.get("newArrival");
 				
 				eBook temp = new eBook(id,title,year,genre,publisher,author,numCopies,newArrival);
-				ebooks.add(temp);
-				stock.add(temp);
+			
 			}
 			
 			return ebooks;
@@ -172,11 +172,9 @@ private static ArrayList<Item> stock = new ArrayList<Item>();
 				int numCopies = (int)(long)audioBookJSON.get("numCopies");
 				boolean newArrival = (boolean)audioBookJSON.get("newArrival");
 				
-				Audio_Book temp = new Audio_Book(id,title,year,genre,publisher,author,numCopies,newArrival);
-				audiobooks.add(temp);
-				stock.add(temp);
+				audiobooks.add(new Audio_Book(id,title,year,genre,publisher,author,numCopies,newArrival));		
 			}
-			
+			stock.addAll(audiobooks);
 			return audiobooks;
 			
 		} catch (Exception e) {

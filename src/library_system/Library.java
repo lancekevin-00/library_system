@@ -43,12 +43,10 @@ public class Library {
 						}
 						while(pwd_attmpts > 0 && curr_user == null);
 					}
+		
 				}
 				if (!found) {
 					System.out.println("that card number does not exist");
-				}
-				else {
-					System.out.println("you ran out of attempts");
 				}
 
 			}
@@ -390,4 +388,5 @@ public class Library {
 		while(!total_logout);
 		scan.close();
 	}
+	
 }

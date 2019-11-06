@@ -10,8 +10,6 @@ public class Item_DB {
 	public ArrayList<Magazine> magazines;
 	public ArrayList<DVD> dvds;
 	public ArrayList<eBook> eBooks;
-	//public ArrayList<Item> stock;
-	
 	public Item_DB() {
 		books = StockLoader.loadBooks();
 		dvds = StockLoader.loadDVDs();
