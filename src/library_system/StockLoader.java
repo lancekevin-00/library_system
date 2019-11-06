@@ -68,11 +68,11 @@ private static ArrayList<Item> stock = new ArrayList<Item>();
 				int year = (int)(long)DVDJSON.get("year");
 				String genre = (String)DVDJSON.get("genre");
 				String director = (String)DVDJSON.get("director");
-				//String[] actors = (String[])DVDJSON.get("actors"); 
+				String[] actors = (String[])DVDJSON.get("actors"); 
 				int numCopies = (int)(long)DVDJSON.get("numCopies");
 				boolean newArrival = (boolean)DVDJSON.get("newArrival");
 				
-				DVD temp = new DVD(id,title,year,genre,director/*,actors*/,numCopies,newArrival);
+				DVD temp = new DVD(id,title,year,genre,director,actors,numCopies,newArrival);
 				dvds.add(temp);
 				stock.add(temp);
 			}

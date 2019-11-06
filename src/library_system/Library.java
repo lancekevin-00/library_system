@@ -319,7 +319,7 @@ public class Library {
 							System.out.println("Enter Actor");
 							actors[x] = scan.nextLine();
 							}
-							DVD newDVD = new DVD(idNum,title,year,genre,director/*,actors*/,numCopies,newArrival);
+							DVD newDVD = new DVD(idNum,title,year,genre,director,actors,numCopies,newArrival);
 							ArrayList<DVD> dvds = stock.getDVDs();
 							dvds.add(newDVD);
 							curr_user.addNewDVD(dvds);
