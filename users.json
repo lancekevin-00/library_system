@@ -22,7 +22,7 @@
     "accountId":2,
     "password":"placeholder",
     "type":"L",
-    "fines": 3.4
+    "fines": 0
   },{
   	"id":3,
   	"firstName":"Jim",
@@ -34,7 +34,7 @@
     "accountId":3,
     "password":"placeholder",
     "type":"A",
-    "fines":7.2
+    "fines":7
   },{
   	"id":4,
   	"firstName":"Bryan",
@@ -51,13 +51,13 @@
   	"id":5,
   	"firstName":"Jed",
   	"lastName":"Wilson",
-	"birthdayYear":2010,
+	"birthdayYear":2000,
     "address": "342 Fairview Pl.",
     "email":"jwilson@gmail.com",
     "phone":"803-945-3388",
     "accountId":4,
     "password":"placeholder",
     "type":"A",
-    "fines":0
+    "fines":3
   }
 ]}

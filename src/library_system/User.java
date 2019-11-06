@@ -94,11 +94,4 @@ public abstract class User {
 	public void setPhone(int phone) {
 		this.phone = phone;
 	}
-
-	protected void addNewBook(ArrayList<Book> book) {}
-	protected void addNeweBook(ArrayList<eBook> ebook) {}
-	protected void addNewAudio_Book(ArrayList<Audio_Book> audiobook) {}
-	protected void addNewDVD(ArrayList<DVD> dvd) {}
-	protected void addNewMagazine(ArrayList<Magazine> magazines) {}
-
 }

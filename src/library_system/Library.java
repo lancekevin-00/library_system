@@ -1,5 +1,8 @@
 package library_system;
-
+import java.io.FileWriter;
+import java.io.IOException;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Library {
@@ -12,16 +15,7 @@ public class Library {
 		User curr_user = null;
 		Checked_out_itm[] items;
 		boolean total_logout = false;
-		Scanner scan = new Scanner(System.in);
-		
-		
-		for(Item ffffgee: stock) {
-			System.out.println(ffffgee.getId() + "\t" + ffffgee.getTitle());
-		}
-		
-		
-		
-		
+		Scanner scan = new Scanner(System.in);		
 		while(!total_logout){
 			System.out.println("~~~~~~~~~~~~~~WELCOME TO THE LIBRARY~~~~~~~~~~~~~~");
 			do {
@@ -69,14 +63,13 @@ public class Library {
 				while(go_again) {
 					System.out.println("~~~~~~~~~~~~~~MENU~~~~~~~~~~~~~~");
 					System.out.println("1: Search");
-					System.out.println("2: Check Out");
-					System.out.println("3: Check Due Dates");
-					System.out.println("4: Return");
-					System.out.println("5: Check Fines");
-					System.out.println("6: Pay Fines");
-					System.out.println("7: Change Email Address");
-					System.out.println("8: Change Password");
-					System.out.println("9: Log out");
+					System.out.println("2: Check Due Dates");
+					System.out.println("3: Return");
+					System.out.println("4: Check Fines");
+					System.out.println("5: Pay Fines");
+					System.out.println("6: Change Email Address");
+					System.out.println("7: Change Password");
+					System.out.println("8: Log out");
 					if(curr_user.is_librarian) {
 						System.out.println("10: Edit User");
 						System.out.println("11: Add item");
@@ -131,6 +124,7 @@ public class Library {
 						boolean i = true;
 						while(i) {
 						int c = scan.nextInt();
+						scan.nextLine();
 						switch(c) {
 							case 1:
 								System.out.println(curr_result.getTitle());
@@ -146,6 +140,7 @@ public class Library {
 								for(int b=0; b<items.length; b++) {
 									if(items[b] == null) {
 										curr_user.checkout(curr_result.checkout(), b);
+								
 										added = true;
 										System.out.println("successfully checked out "+ curr_result.getTitle());
 									}
@@ -322,7 +317,6 @@ public class Library {
 						newArrival = scan.nextBoolean();
 						scan.nextLine();
 						switch(add) {
-
 						case 1:
 							System.out.println("Enter Publisher");
 							publisher = scan.nextLine();
@@ -331,7 +325,7 @@ public class Library {
 							Book newbook = new Book(idNum,title,year,genre,publisher,author,numCopies,newArrival);
 							ArrayList<Book> books = StockLoader.getBooks();
 							books.add(newbook);
-							curr_user.addNewBook(books);
+							updateBook(books);
 							break;
 						case 2:
 							System.out.println("Enter Directors");
@@ -341,7 +335,7 @@ public class Library {
 							DVD newDVD = new DVD(idNum,title,year,genre,director ,actors,numCopies,newArrival);
 							ArrayList<DVD> dvds = StockLoader.getDvds();
 							dvds.add(newDVD);
-							curr_user.addNewDVD(dvds);
+							updateDVDs(dvds);
 							break;
 						case 3:
 							System.out.println("Enter Publisher");
@@ -355,7 +349,7 @@ public class Library {
 							Magazine newMagazine = new Magazine(idNum,title,year,genre,publisher,volume,issue,numCopies,newArrival);
 							ArrayList<Magazine> magazines = StockLoader.getMagazines();
 							magazines.add(newMagazine);
-							curr_user.addNewMagazine(magazines);
+							updateMagazines(magazines);
 							break;
 						case 4:
 							System.out.println("Enter Publisher");
@@ -365,7 +359,7 @@ public class Library {
 							eBook newebook = new eBook(idNum,title,year,genre,publisher,author,numCopies,newArrival);
 							ArrayList<eBook> ebooks = StockLoader.getEbooks();
 							ebooks.add(newebook);
-							curr_user.addNeweBook(ebooks);
+							updateeBooks(ebooks);
 							break;
 						case 5:
 							System.out.println("Enter Publisher");
@@ -375,7 +369,7 @@ public class Library {
 							Audio_Book newaudioBook = new Audio_Book(idNum,title,year,genre,publisher,author,numCopies,newArrival);
 							ArrayList<Audio_Book> audiobooks = StockLoader.getAudiobooks();
 							audiobooks.add(newaudioBook);
-							curr_user.addNewAudio_Book(audiobooks);
+							updateAudio_Books(audiobooks);
 							break;
 						}
 						break;
@@ -393,10 +387,101 @@ public class Library {
 			catch (Exception e) {
 				System.out.println(e);
 			}
-			System.out.println("were at the end of the loop");
 		}
 		while(!total_logout);
 		scan.close();
+		updateBook(StockLoader.getBooks());
+		updateDVDs(StockLoader.getDvds());
+		updateMagazines(StockLoader.getMagazines());
+		updateeBooks(StockLoader.getEbooks());
+		updateAudio_Books(StockLoader.getAudiobooks());
 	}
-	
+/**Helper Methods
+ * 
+ * @param books
+ */
+	private static void updateBook(ArrayList<Book> books) {
+		
+		try (FileWriter file = new FileWriter("books.json")) {	
+			file.write("{\"books\":");
+			  JSONArray list = new JSONArray();
+		      for(int i = 0; i <books.size(); i++) {
+		    	  list.add(books.get(i));
+		      }
+			file.write(list.toJSONString());
+			file.write("\n}");
+
+	file.flush();
+	file.close();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	private static void updateDVDs(ArrayList<DVD> dvd) {
+		try (FileWriter file = new FileWriter("dvds.json")) {	
+			file.write("{\"dvds\":");
+			  JSONArray list = new JSONArray();
+		      for(int i = 0; i <dvd.size(); i++) {
+		    	  list.add(dvd.get(i));
+		      }
+			file.write(list.toJSONString());
+			file.write("\n}");
+	file.flush();
+	file.close();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	private static void updateMagazines(ArrayList<Magazine> magazines) {
+		try (FileWriter file = new FileWriter("magazines.json")) {	
+			file.write("{\"magazines\":");
+			  JSONArray list = new JSONArray();
+		      for(int i = 0; i <magazines.size(); i++) {
+		    	  list.add(magazines.get(i));
+		      }
+			file.write(list.toJSONString());
+			file.write("\n}");
+	file.flush();
+	file.close();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	private static void updateeBooks(ArrayList<eBook> ebook) {
+		try (FileWriter file = new FileWriter("ebooks.json")) {	
+			file.write("{\"ebooks\":");
+			  JSONArray list = new JSONArray();
+		      for(int i = 0; i <ebook.size(); i++) {
+		    	  list.add(ebook.get(i));
+		      }
+			file.write(list.toJSONString());
+			file.write("\n}");
+	file.flush();
+	file.close();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	private static void updateAudio_Books(ArrayList<Audio_Book> audiobook) {
+		try (FileWriter file = new FileWriter("audiobooks.json")) {	
+			file.write("{\"audiobooks\":");
+			  JSONArray list = new JSONArray();
+		      for(int i = 0; i <audiobook.size(); i++) {
+		    	  list.add(audiobook.get(i));
+		      }
+			file.write(list.toJSONString());
+			file.write("\n}");
+	file.flush();
+	file.close();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }
+
+

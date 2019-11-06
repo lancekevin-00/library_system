@@ -56,11 +56,8 @@ private static ArrayList<Audio_Book> audiobooks;
 				int numCopies = (int)(long)BookJSON.get("numCopies");
 				boolean newArrival = (boolean)BookJSON.get("newArrival");
 				
-				Book temp = new Book(id,title,year,genre,publisher,author,numCopies,newArrival);
-				
-				books.add(temp);
-				System.out.println(temp.getId());
-				stock.add(temp);
+				books.add(new Book(id,title,year,genre,publisher,author,numCopies,newArrival));
+				stock.addAll(books);
 			}
 			
 			return books;
@@ -92,9 +89,8 @@ private static ArrayList<Audio_Book> audiobooks;
 				int numCopies = (int)(long)DVDJSON.get("numCopies");
 				boolean newArrival = (boolean)DVDJSON.get("newArrival");
 				
-				DVD temp = new DVD(id,title,year,genre,director,actors,numCopies,newArrival);
-				dvds.add(temp);
-				stock.add(temp);
+				dvds.add(new DVD(id,title,year,genre,director,actors,numCopies,newArrival));
+				stock.addAll(dvds);
 			}
 			
 			return dvds;
@@ -128,7 +124,6 @@ private static ArrayList<Audio_Book> audiobooks;
 				boolean newArrival = (boolean)MagazineJSON.get("newArrival");
 				
 				magazines.add(new Magazine(id,title,year,genre,publisher,volume, issue,numCopies,newArrival));
-				
 				stock.addAll(magazines);
 			}
 			
