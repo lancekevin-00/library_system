@@ -330,7 +330,7 @@ public class Library {
 							System.out.println("Enter Author");
 							author = scan.nextLine();
 							Book newbook = new Book(idNum,title,year,genre,publisher,author,numCopies,newArrival);
-							ArrayList<Book> books = stock.getBooks();
+							ArrayList<Book> books = StockLoader.getBooks();
 							books.add(newbook);
 							curr_user.addNewBook(books);
 							break;
@@ -345,8 +345,8 @@ public class Library {
 							System.out.println("Enter Actor");
 							actors[x] = scan.nextLine();
 							}
-							DVD newDVD = new DVD(idNum,title,year,genre,director/*,actors*/,numCopies,newArrival);
-							ArrayList<DVD> dvds = stock.getDVDs();
+							DVD newDVD = new DVD(idNum,title,year,genre,director ,actors,numCopies,newArrival);
+							ArrayList<DVD> dvds = StockLoader.getDvds();
 							dvds.add(newDVD);
 							curr_user.addNewDVD(dvds);
 							break;
@@ -360,7 +360,7 @@ public class Library {
 							issue = scan.nextInt();
 							scan.nextLine();
 							Magazine newMagazine = new Magazine(idNum,title,year,genre,publisher,volume,issue,numCopies,newArrival);
-							ArrayList<Magazine> magazines = stock.getMagazines();
+							ArrayList<Magazine> magazines = StockLoader.getMagazines();
 							magazines.add(newMagazine);
 							curr_user.addNewMagazine(magazines);
 							break;
@@ -370,7 +370,7 @@ public class Library {
 							System.out.println("Enter Author");
 							author = scan.nextLine();
 							eBook newebook = new eBook(idNum,title,year,genre,publisher,author,numCopies,newArrival);
-							ArrayList<eBook> ebooks = stock.geteBooks();
+							ArrayList<eBook> ebooks = StockLoader.getEbooks();
 							ebooks.add(newebook);
 							curr_user.addNeweBook(ebooks);
 							break;
@@ -380,11 +380,10 @@ public class Library {
 							System.out.println("Enter Author");
 							author = scan.nextLine();
 							Audio_Book newaudioBook = new Audio_Book(idNum,title,year,genre,publisher,author,numCopies,newArrival);
-							ArrayList<Audio_Book> audiobooks = stock.getaudioBooks();
+							ArrayList<Audio_Book> audiobooks = StockLoader.getAudiobooks();
 							audiobooks.add(newaudioBook);
 							curr_user.addNewAudio_Book(audiobooks);
 							break;
-
 						}
 						break;
 					case 11:
