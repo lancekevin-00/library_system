@@ -26,7 +26,7 @@ public class Item{
 	public User[] getWaitlist() {
 		return waitlist;
 	}
-	public void notifyWaitlistNext() {
+	public void notifyWaitlist() {
 		User next = waitlist[0];
 	}
 	public int getCopies_avalible() {
