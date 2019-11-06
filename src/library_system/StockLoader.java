@@ -94,7 +94,6 @@ private static ArrayList<Audio_Book> audiobooks;
 				
 				DVD temp = new DVD(id,title,year,genre,director,actors,numCopies,newArrival);
 				dvds.add(temp);
-				System.out.println(temp.getId());
 				stock.add(temp);
 			}
 			
@@ -128,9 +127,9 @@ private static ArrayList<Audio_Book> audiobooks;
 				int numCopies = (int)(long)MagazineJSON.get("numCopies");
 				boolean newArrival = (boolean)MagazineJSON.get("newArrival");
 				
-				Magazine temp = new Magazine(id,title,year,genre,publisher,volume, issue,numCopies,newArrival);
-				magazines.add(temp);
-				stock.add(temp);
+				magazines.add(new Magazine(id,title,year,genre,publisher,volume, issue,numCopies,newArrival));
+				
+				stock.addAll(magazines);
 			}
 			
 			return magazines;
@@ -162,10 +161,9 @@ private static ArrayList<Audio_Book> audiobooks;
 				int numCopies = (int)(long)eBookJSON.get("numCopies");
 				boolean newArrival = (boolean)eBookJSON.get("newArrival");
 				
-				eBook temp = new eBook(id,title,year,genre,publisher,author,numCopies,newArrival);
-			
+				ebooks.add(new eBook(id,title,year,genre,publisher,author,numCopies,newArrival));		
 			}
-			
+			stock.addAll(ebooks);
 			return ebooks;
 			
 		} catch (Exception e) {

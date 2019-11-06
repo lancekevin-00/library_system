@@ -294,8 +294,7 @@ public class Library {
 						System.out.println("Enter A Valid Number");
 						break;
 					case 10:
-						String title, genre, publisher, author,director;
-						String [] actors;
+						String title, genre, publisher, author,director,actors;
 						int year, numCopies,idNum, volume, issue;
 						boolean newArrival;
 						System.out.println("~~~~~~~~~ACTIONS~~~~~~~~~");
@@ -337,14 +336,8 @@ public class Library {
 						case 2:
 							System.out.println("Enter Directors");
 							director = scan.nextLine();
-							System.out.println("Enter number of actors you would like listed");
-							int numOfActors = scan.nextInt();
-							scan.nextLine();
-							actors = new String[numOfActors];
-							for(int x = 0; x < numOfActors;x++ ) {
-							System.out.println("Enter Actor");
-							actors[x] = scan.nextLine();
-							}
+							System.out.println("Enter the actors you want displayed seperated by commas");
+							actors = scan.nextLine();
 							DVD newDVD = new DVD(idNum,title,year,genre,director ,actors,numCopies,newArrival);
 							ArrayList<DVD> dvds = StockLoader.getDvds();
 							dvds.add(newDVD);
