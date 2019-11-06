@@ -129,11 +129,14 @@ public class Library {
 								System.out.println("Copies Available:" + curr_result.getCopies_avalible());
 								break;
 							case 2:
-								
-								Checked_out_itm [] itms = curr_user.getItems();
+								if (curr_user.getFees() != 0) {
+									System.out.println("You have " + curr_user.getFees() + " in outstanding fees so you are unable to checkout");
+									break;
+								}
+								items = curr_user.getItems();
 								boolean added = false;
-								for(int b=0; b<itms.length; b++) {
-									if(itms[b] == null) {
+								for(int b=0; b<items.length; b++) {
+									if(items[b] == null) {
 										curr_user.checkout(curr_result.checkout(), b);
 										added = true;
 										System.out.println("successfully checked out "+ curr_result.getTitle());
@@ -157,11 +160,11 @@ public class Library {
 						}
 						break;
 					case 3:
+						System.out.println("Checked Out Items:");
 						items = curr_user.getItems();
 						for(Checked_out_itm itm: items) {
 							System.out.println("ID: "+itm.getId() + ":\t "+ itm.getTitle() + "\t " + itm.getTime_remaining() + " days remaining \t this item has been renewed " + itm.getRenewals() + " times");
 						}
-						
 						int d = 0;
 						boolean e = false;
 						while(!e || d == 0) {
