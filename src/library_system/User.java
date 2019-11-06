@@ -16,7 +16,10 @@ public abstract class User {
 		items[i] = itm;
 	}
 
-	public void return_itm(int id) {}
+	public void return_itm(int index) {
+		items[index].return_itm();
+		items[index] = null;
+	}
 
 	public void changePwd(String pwd) {
 		password = pwd;

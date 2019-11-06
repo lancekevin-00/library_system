@@ -27,9 +27,7 @@ public class Item{
 		return waitlist;
 	}
 	public void notifyWaitlist() {
-		for(User user:waitlist) {
-			System.out.println("notifying " + user.getName());
-		}
+		User next = waitlist[0];
 	}
 	public int getCopies_avalible() {
 		return copies_avalible;

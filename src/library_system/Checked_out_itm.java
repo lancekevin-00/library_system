@@ -1,6 +1,7 @@
 package library_system;
 
 public class Checked_out_itm {
+	private Item item;
 	private String type;
 	private int renewals;
 	private int time_remaining;
@@ -13,6 +14,10 @@ public class Checked_out_itm {
 		time_remaining = item.getMax_checkout_time();
 		title = item.getTitle();
 		id = item.getId();
+	}
+	
+	public void return_itm() {
+		item.setCopies_avalible(item.getCopies_avalible() + 1);
 	}
 	
 	public void renew() {
