@@ -8,12 +8,20 @@ public class Library {
 
 		//load users and get an instance of stock
 		ArrayList<User> Users = UserLoader.loadUsers();
-		Item_DB stock = new Item_DB();
-		ArrayList<Item> stock2 = StockLoader.getStock();
+		ArrayList<Item> stock = StockLoader.loadDB();
 		User curr_user = null;
 		Checked_out_itm[] items;
 		boolean total_logout = false;
 		Scanner scan = new Scanner(System.in);
+		
+		
+		for(Item ffffgee: stock) {
+			System.out.println(ffffgee.getId() + "\t" + ffffgee.getTitle());
+		}
+		
+		
+		
+		
 		while(!total_logout){
 			System.out.println("~~~~~~~~~~~~~~WELCOME TO THE LIBRARY~~~~~~~~~~~~~~");
 			do {
@@ -37,13 +45,15 @@ public class Library {
 								curr_user = user;
 							}
 							else {
-								System.out.println("incorrect password " + pwd_attmpts + " attempts remaining");
 								pwd_attmpts--;
+								System.out.println("incorrect password " + pwd_attmpts + " attempts remaining");
 							}
 						}
 						while(pwd_attmpts > 0 && curr_user == null);
+						if (pwd_attmpts == 0)
+							System.out.println("You ran out of attempts");
 					}
-		
+
 				}
 				if (!found) {
 					System.out.println("that card number does not exist");
@@ -59,16 +69,17 @@ public class Library {
 				while(go_again) {
 					System.out.println("~~~~~~~~~~~~~~MENU~~~~~~~~~~~~~~");
 					System.out.println("1: Search");
-					System.out.println("2: Check Due Dates");
-					System.out.println("3: Return");
-					System.out.println("4: Check Fines");
-					System.out.println("5: Pay Fines");
-					System.out.println("6: Change Email Address");
-					System.out.println("7: Change Password");
-					System.out.println("8: Log out");
+					System.out.println("2: Check Out");
+					System.out.println("3: Check Due Dates");
+					System.out.println("4: Return");
+					System.out.println("5: Check Fines");
+					System.out.println("6: Pay Fines");
+					System.out.println("7: Change Email Address");
+					System.out.println("8: Change Password");
+					System.out.println("9: Log out");
 					if(curr_user.is_librarian) {
-						System.out.println("9: Edit User");
-						System.out.println("10: Add item");
+						System.out.println("10: Edit User");
+						System.out.println("11: Add item");
 					}
 
 
@@ -80,20 +91,19 @@ public class Library {
 						String term = scan.nextLine();
 
 						System.out.println("Searching through the stock database for the search term");
-						System.out.println("Results:");
-
-
 						ArrayList<Item> results = new ArrayList<Item>();
-						for(Item itm:stock2) {
+						for(Item itm:stock) {
 							String[] terms = itm.getSearchTerms();
 							for(int i = 0; i < terms.length; i++) {
 
-								if(terms[i].contains(term))
+								if(terms[i].contains(term) && !results.contains(itm))
 									results.add(itm);
 
 							}
 						}
-
+						
+						
+						System.out.println("Results:");
 						for(Item itm: results) {
 							System.out.println(itm.getId() + ": "+ itm.getTitle());
 						}
@@ -117,9 +127,10 @@ public class Library {
 						System.out.println("1: Get Info");
 						System.out.println("2: Checkout");
 						System.out.println("3: Return to Menu");
-						int c = scan.nextInt();
+						
 						boolean i = true;
 						while(i) {
+						int c = scan.nextInt();
 						switch(c) {
 							case 1:
 								System.out.println(curr_result.getTitle());
@@ -283,7 +294,8 @@ public class Library {
 						System.out.println("Enter A Valid Number");
 						break;
 					case 10:
-						String title, genre, publisher, author,director,actors;
+						String title, genre, publisher, author,director;
+						String [] actors;
 						int year, numCopies,idNum, volume, issue;
 						boolean newArrival;
 						System.out.println("~~~~~~~~~ACTIONS~~~~~~~~~");
@@ -325,9 +337,15 @@ public class Library {
 						case 2:
 							System.out.println("Enter Directors");
 							director = scan.nextLine();
-							System.out.println("Enter the actors you want to display seperated by a comma");
-							actors = scan.nextLine();
-							DVD newDVD = new DVD(idNum,title,year,genre,director,actors,numCopies,newArrival);
+							System.out.println("Enter number of actors you would like listed");
+							int numOfActors = scan.nextInt();
+							scan.nextLine();
+							actors = new String[numOfActors];
+							for(int x = 0; x < numOfActors;x++ ) {
+							System.out.println("Enter Actor");
+							actors[x] = scan.nextLine();
+							}
+							DVD newDVD = new DVD(idNum,title,year,genre,director/*,actors*/,numCopies,newArrival);
 							ArrayList<DVD> dvds = stock.getDVDs();
 							dvds.add(newDVD);
 							curr_user.addNewDVD(dvds);
