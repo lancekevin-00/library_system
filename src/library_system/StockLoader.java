@@ -13,6 +13,12 @@ private static final String EBOOK_FILE_NAME = "ebooks.json";
 private static final String AUDIOBOOK_FILE_NAME = "audiobooks.json";
 private static ArrayList<Item> stock;
 
+private static ArrayList<Book> books;
+private static ArrayList<DVD> dvds;
+private static ArrayList<Magazine> magazines;
+private static ArrayList<eBook> ebooks;
+private static ArrayList<Audio_Book> audiobooks;
+
 	private static ArrayList<Item> getStock(){
 		stock = new ArrayList<Item>();
 		loadBooks();
@@ -30,11 +36,9 @@ private static ArrayList<Item> stock;
 		}
 		return stock;
 	}
-	
-	
 
 	private static ArrayList<Book> loadBooks() {
-		ArrayList<Book> books = new ArrayList<Book>();
+		books = new ArrayList<Book>();
 		
 		try {
 			FileReader reader = new FileReader(BOOK_FILE_NAME);
@@ -70,7 +74,7 @@ private static ArrayList<Item> stock;
 	
 	
 	private static ArrayList<DVD> loadDVDs() {
-		ArrayList<DVD> dvds = new ArrayList<DVD>();
+		dvds = new ArrayList<DVD>();
 		
 		try {
 			FileReader reader = new FileReader(DVD_FILE_NAME);
@@ -104,7 +108,7 @@ private static ArrayList<Item> stock;
 	}
 	
 	private static ArrayList<Magazine> loadMagazines() {
-		ArrayList<Magazine> magazines = new ArrayList<Magazine>();
+		magazines = new ArrayList<Magazine>();
 		
 		try {
 			FileReader reader = new FileReader(MAGAZINE_FILE_NAME);
@@ -138,7 +142,7 @@ private static ArrayList<Item> stock;
 	}
 	
 	private static ArrayList<eBook> loadeBooks() {
-		ArrayList<eBook> ebooks = new ArrayList<eBook>();
+		ebooks = new ArrayList<eBook>();
 		
 		try {
 			FileReader reader = new FileReader(EBOOK_FILE_NAME);
@@ -172,7 +176,7 @@ private static ArrayList<Item> stock;
 	}
 	
 	private static ArrayList<Audio_Book> loadaudioBooks() {
-		ArrayList<Audio_Book> audiobooks = new ArrayList<Audio_Book>();
+		audiobooks = new ArrayList<Audio_Book>();
 		
 		try {
 			FileReader reader = new FileReader(AUDIOBOOK_FILE_NAME);
@@ -204,5 +208,26 @@ private static ArrayList<Item> stock;
 		
 		return null;
 	}
+
+	public static ArrayList<Book> getBooks() {
+		return books;
+	}
+
+	public static ArrayList<DVD> getDvds() {
+		return dvds;
+	}
+
+	public static ArrayList<Magazine> getMagazines() {
+		return magazines;
+	}
+
+	public static ArrayList<eBook> getEbooks() {
+		return ebooks;
+	}
+
+	public static ArrayList<Audio_Book> getAudiobooks() {
+		return audiobooks;
+	}
+	
 	
 }
