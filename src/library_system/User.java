@@ -63,6 +63,22 @@ public abstract class User {
 	public double getFees() {
 		return Fees;
 	}
+	
+	public void updateFees() {
+		Fees = 0;
+		for(Checked_out_itm itm: items) {
+			if(itm.getTime_remaining() < 0) {
+				Fees += itm.getTime_remaining() * -1;
+			}
+		}
+	}
+	
+	public void updateDay() {
+		for(Checked_out_itm itm: items) {
+			itm.updateDay();
+		}
+	}
+	
 	protected void setFees(double fees) {
 		Fees = fees;
 	}

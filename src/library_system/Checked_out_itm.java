@@ -52,8 +52,8 @@ public class Checked_out_itm {
 	public int getTime_remaining() {
 		return time_remaining;
 	}
-	public void setTime_remaining(int time_remaining) {
-		this.time_remaining = time_remaining;
+	public void updateDay() {
+		time_remaining --;
 	}
 	public String getTitle() {
 		return title;
@@ -61,6 +61,4 @@ public class Checked_out_itm {
 	public void setTitle(String name) {
 		this.title = name;
 	}
-	
-	
 }
