@@ -11,13 +11,29 @@ private static final String DVD_FILE_NAME = "dvds.json";
 private static final String MAGAZINE_FILE_NAME = "magazines.json";
 private static final String EBOOK_FILE_NAME = "ebooks.json";
 private static final String AUDIOBOOK_FILE_NAME = "audiobooks.json";
-private static ArrayList<Item> stock = new ArrayList<Item>();
+private static ArrayList<Item> stock;
 
-	public static ArrayList<Item> getStock(){
+	private static ArrayList<Item> getStock(){
+		stock = new ArrayList<Item>();
+		loadBooks();
+		loadDVDs();
+		loadeBooks();
+		loadMagazines();
+		loadaudioBooks();
+		
 		return stock;
 	}
+	
+	public static ArrayList<Item> loadDB(){
+		if(stock == null) {
+			stock = getStock();
+		}
+		return stock;
+	}
+	
+	
 
-	public static ArrayList<Book> loadBooks() {
+	private static ArrayList<Book> loadBooks() {
 		ArrayList<Book> books = new ArrayList<Book>();
 		
 		try {
@@ -39,6 +55,7 @@ private static ArrayList<Item> stock = new ArrayList<Item>();
 				Book temp = new Book(id,title,year,genre,publisher,author,numCopies,newArrival);
 				
 				books.add(temp);
+				System.out.println(temp.getId());
 				stock.add(temp);
 			}
 			
@@ -52,7 +69,7 @@ private static ArrayList<Item> stock = new ArrayList<Item>();
 	}
 	
 	
-	public static ArrayList<DVD> loadDVDs() {
+	private static ArrayList<DVD> loadDVDs() {
 		ArrayList<DVD> dvds = new ArrayList<DVD>();
 		
 		try {
@@ -74,6 +91,7 @@ private static ArrayList<Item> stock = new ArrayList<Item>();
 				
 				DVD temp = new DVD(id,title,year,genre,director/*,actors*/,numCopies,newArrival);
 				dvds.add(temp);
+				System.out.println(temp.getId());
 				stock.add(temp);
 			}
 			
@@ -86,7 +104,7 @@ private static ArrayList<Item> stock = new ArrayList<Item>();
 		return null;
 	}
 	
-	public static ArrayList<Magazine> loadMagazines() {
+	private static ArrayList<Magazine> loadMagazines() {
 		ArrayList<Magazine> magazines = new ArrayList<Magazine>();
 		
 		try {
@@ -119,7 +137,8 @@ private static ArrayList<Item> stock = new ArrayList<Item>();
 		
 		return null;
 	}
-	public static ArrayList<eBook> loadeBooks() {
+	
+	private static ArrayList<eBook> loadeBooks() {
 		ArrayList<eBook> ebooks = new ArrayList<eBook>();
 		
 		try {
@@ -153,7 +172,7 @@ private static ArrayList<Item> stock = new ArrayList<Item>();
 		return null;
 	}
 	
-	public static ArrayList<Audio_Book> loadaudioBooks() {
+	private static ArrayList<Audio_Book> loadaudioBooks() {
 		ArrayList<Audio_Book> audiobooks = new ArrayList<Audio_Book>();
 		
 		try {

@@ -5,8 +5,7 @@ import java.io.IOException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 public class Librarian extends User{
-	 JSONObject obj = new JSONObject();
-	 Item_DB stock = new Item_DB();
+	JSONObject obj = new JSONObject();
 	Librarian(int id,String firstName,String lastName,int birthdayYear,String address, int accountID,String password ,double fines) {
 		super.Name = firstName+" "+lastName;
 		super.cardNumber = id;
