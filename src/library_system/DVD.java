@@ -1,15 +1,14 @@
 package library_system;
-
+import java.util.ArrayList;
 public class DVD extends Item {
 	private int year;
 	private String genre;
 	private String director;
-	private String[] actors;
+	private String actors;
 	private int numCopies;
 	private boolean newArrival;
-	public DVD(int id,String title,int year,String genre,String director/*,String[] actors*/,int numCopies,boolean newArrival) {
+	public DVD(int id,String title,int year,String genre,String director,String actors,int numCopies,boolean newArrival) {
 		super();
-
 		this.id = id;
 		this.title = title;
 		this.year = year;
@@ -29,6 +28,6 @@ public class DVD extends Item {
 		super.notifyWaitlist();
 	}
 	public String toString() {
-		return "{\n \"id\":" + id + ",\n\"title\":\"" + title + "\",\n\"year\":"+ year + ",\n\"genre\":\"" + genre + "\",\n\"director\":\"" + director /*+"\",\n\"actors\":\"" + actors */+ "\",\n\"numCopies\":" + numCopies + ",\n\"newArrival\":" +newArrival + "\n}";
+		return "{\n \"id\":" + id + ",\n\"title\":\"" + title + "\",\n\"year\":"+ year + ",\n\"genre\":\"" + genre + "\",\n\"director\":\"" + director +"\",\n\"actors\":\"" + actors + "\",\n\"numCopies\":" + numCopies + ",\n\"newArrival\":" +newArrival + "\n}";
 	}
 }

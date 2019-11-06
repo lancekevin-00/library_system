@@ -61,17 +61,16 @@ public class Library {
 				while(go_again) {
 					System.out.println("~~~~~~~~~~~~~~MENU~~~~~~~~~~~~~~");
 					System.out.println("1: Search");
-					System.out.println("2: Check Out");
-					System.out.println("3: Check Due Dates");
-					System.out.println("4: Return");
-					System.out.println("5: Check Fines");
-					System.out.println("6: Pay Fines");
-					System.out.println("7: Change Email Address");
-					System.out.println("8: Change Password");
-					System.out.println("9: Log out");
+					System.out.println("2: Check Due Dates");
+					System.out.println("3: Return");
+					System.out.println("4: Check Fines");
+					System.out.println("5: Pay Fines");
+					System.out.println("6: Change Email Address");
+					System.out.println("7: Change Password");
+					System.out.println("8: Log out");
 					if(curr_user.is_librarian) {
-						System.out.println("10: Edit User");
-						System.out.println("11: Add item");
+						System.out.println("9: Edit User");
+						System.out.println("10: Add item");
 					}
 
 
@@ -286,8 +285,7 @@ public class Library {
 						System.out.println("Enter A Valid Number");
 						break;
 					case 10:
-						String title, genre, publisher, author,director;
-						String [] actors;
+						String title, genre, publisher, author,director,actors;
 						int year, numCopies,idNum, volume, issue;
 						boolean newArrival;
 						System.out.println("~~~~~~~~~ACTIONS~~~~~~~~~");
@@ -329,14 +327,8 @@ public class Library {
 						case 2:
 							System.out.println("Enter Directors");
 							director = scan.nextLine();
-							System.out.println("Enter number of actors you would like listed");
-							int numOfActors = scan.nextInt();
-							scan.nextLine();
-							actors = new String[numOfActors];
-							for(int x = 0; x < numOfActors;x++ ) {
-							System.out.println("Enter Actor");
-							actors[x] = scan.nextLine();
-							}
+							System.out.println("Enter the actors you want to display seperated by a comma");
+							actors = scan.nextLine();
 							DVD newDVD = new DVD(idNum,title,year,genre,director,actors,numCopies,newArrival);
 							ArrayList<DVD> dvds = stock.getDVDs();
 							dvds.add(newDVD);
