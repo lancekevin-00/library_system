@@ -8,7 +8,6 @@ public class Library {
 
 		//load users and get an instance of stock
 		ArrayList<User> Users = UserLoader.loadUsers();
-		//Item_DB stock = new Item_DB();
 		ArrayList<Item> stock = StockLoader.loadDB();
 		User curr_user = null;
 		Checked_out_itm[] items;
@@ -295,6 +294,98 @@ public class Library {
 						System.out.println("Enter A Valid Number");
 						break;
 					case 10:
+						String title, genre, publisher, author,director;
+						String [] actors;
+						int year, numCopies,idNum, volume, issue;
+						boolean newArrival;
+						System.out.println("~~~~~~~~~ACTIONS~~~~~~~~~");
+						System.out.println("1: Add a Book");
+						System.out.println("2: Add a DVD");
+						System.out.println("3: Add a Magazine");
+						System.out.println("4: Add an eBook");
+						System.out.println("5: Add an Audio Book");
+						int add = scan.nextInt();
+						scan.nextLine();
+						System.out.println("Enter ID #");
+						idNum = scan.nextInt();
+						scan.nextLine();
+						System.out.println("Enter Title");
+						title = scan.nextLine();
+						System.out.println("Enter Year");
+						year = scan.nextInt();
+						scan.nextLine();
+						System.out.println("Enter Genre");
+						genre = scan.nextLine();
+						System.out.println("Enter number of copies");
+						numCopies = scan.nextInt();
+						scan.nextLine();
+						System.out.println("Enter true if new arrival and false if not");
+						newArrival = scan.nextBoolean();
+						scan.nextLine();
+						switch(add) {
+
+						case 1:
+							System.out.println("Enter Publisher");
+							publisher = scan.nextLine();
+							System.out.println("Enter Author");
+							author = scan.nextLine();
+							Book newbook = new Book(idNum,title,year,genre,publisher,author,numCopies,newArrival);
+							ArrayList<Book> books = stock.getBooks();
+							books.add(newbook);
+							curr_user.addNewBook(books);
+							break;
+						case 2:
+							System.out.println("Enter Directors");
+							director = scan.nextLine();
+							System.out.println("Enter number of actors you would like listed");
+							int numOfActors = scan.nextInt();
+							scan.nextLine();
+							actors = new String[numOfActors];
+							for(int x = 0; x < numOfActors;x++ ) {
+							System.out.println("Enter Actor");
+							actors[x] = scan.nextLine();
+							}
+							DVD newDVD = new DVD(idNum,title,year,genre,director/*,actors*/,numCopies,newArrival);
+							ArrayList<DVD> dvds = stock.getDVDs();
+							dvds.add(newDVD);
+							curr_user.addNewDVD(dvds);
+							break;
+						case 3:
+							System.out.println("Enter Publisher");
+							publisher = scan.nextLine();
+							System.out.println("Enter Volume#");
+							volume = scan.nextInt();
+							scan.nextLine();
+							System.out.println("Enter Issue#");
+							issue = scan.nextInt();
+							scan.nextLine();
+							Magazine newMagazine = new Magazine(idNum,title,year,genre,publisher,volume,issue,numCopies,newArrival);
+							ArrayList<Magazine> magazines = stock.getMagazines();
+							magazines.add(newMagazine);
+							curr_user.addNewMagazine(magazines);
+							break;
+						case 4:
+							System.out.println("Enter Publisher");
+							publisher = scan.nextLine();
+							System.out.println("Enter Author");
+							author = scan.nextLine();
+							eBook newebook = new eBook(idNum,title,year,genre,publisher,author,numCopies,newArrival);
+							ArrayList<eBook> ebooks = stock.geteBooks();
+							ebooks.add(newebook);
+							curr_user.addNeweBook(ebooks);
+							break;
+						case 5:
+							System.out.println("Enter Publisher");
+							publisher = scan.nextLine();
+							System.out.println("Enter Author");
+							author = scan.nextLine();
+							Audio_Book newaudioBook = new Audio_Book(idNum,title,year,genre,publisher,author,numCopies,newArrival);
+							ArrayList<Audio_Book> audiobooks = stock.getaudioBooks();
+							audiobooks.add(newaudioBook);
+							curr_user.addNewAudio_Book(audiobooks);
+							break;
+
+						}
 						break;
 					case 11:
 						System.out.println("EXITING THE SYSTEM");

@@ -1,23 +1,22 @@
-{"books":[
-	{
- 	"id":1,
-	"title":"The Cat in the Hat",
-	"year":1957,
-	"genre":"Children",
-	"publisher":"Random House",
-	"author":"Dr. Seuss",
-	"numCopies":3,
-	"newArrival":false
-  },{
- 	"id":2,
-	"title":"Pajama Time",
-	"year":2000,
-	"genre":"Children",
-	"publisher":"Workman",
-	"author":"Sandra Boynton",
-	"numCopies":2,
-	"newArrival":true
-	},{
+{"books":[{
+ "id":1,
+"title":"The Cat in the Hat",
+"year":1957,
+"genre":"Children",
+"publisher":"Random House",
+"author":"Dr. Seuss",
+"numCopies":3,
+"newArrival":false
+},{
+ "id":2,
+"title":"Pajama Time",
+"year":2000,
+"genre":"Children",
+"publisher":"Workman",
+"author":"Sandra Boynton",
+"numCopies":2,
+"newArrival":true
+},{
  "id":3,
 "title":"Pride and Prejudice",
 "year":1813,
@@ -35,5 +34,6 @@
 "author":"Margaret Mitchell",
 "numCopies":2,
 "newArrival":false
+}
 }]
 }

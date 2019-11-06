@@ -77,19 +77,18 @@ private static ArrayList<Item> stock;
 			JSONParser parser = new JSONParser();
 			JSONObject jsonData = (JSONObject)new JSONParser().parse(reader);
 			JSONArray dvdJSON = (JSONArray)jsonData.get("dvds");
-			
 			for(int i=0; i < dvdJSON.size(); i++) {
 				JSONObject DVDJSON = (JSONObject)dvdJSON.get(i);
 				int id = (int)(long)DVDJSON.get("id");
 				String title = (String)DVDJSON.get("title");
 				int year = (int)(long)DVDJSON.get("year");
 				String genre = (String)DVDJSON.get("genre");
-				String director = (String)DVDJSON.get("director");
-				//String[] actors = (String[])DVDJSON.get("actors"); 
+				String director = (String)DVDJSON.get("director");			
+				String actors = (String)DVDJSON.get("actors");
 				int numCopies = (int)(long)DVDJSON.get("numCopies");
 				boolean newArrival = (boolean)DVDJSON.get("newArrival");
 				
-				DVD temp = new DVD(id,title,year,genre,director/*,actors*/,numCopies,newArrival);
+				DVD temp = new DVD(id,title,year,genre,director,actors,numCopies,newArrival);
 				dvds.add(temp);
 				System.out.println(temp.getId());
 				stock.add(temp);

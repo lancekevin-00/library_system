@@ -5,7 +5,7 @@
   	"year":1986,
     "genre": "Action",
     "director":"Tony Scott",
-    "actors": ["Tom Cruise","Kelly McGillis","Val Kilmer"],
+    "actors":"Tom Cruise, Kelly McGillis, Val Kilmer",
     "numCopies":2,
     "newArrival":false
   },{
@@ -14,7 +14,7 @@
   	"year":2013,
     "genre": "Children",
     "director":"Chris Buck",
-    "actors": ["Kristen Bell", "Josh Gad"],
+    "actors":"Kristen Bell, Josh Gad",
     "numCopies":3,
     "newArrival":true
   },{
@@ -23,7 +23,7 @@
   	"year":2008,
     "genre": "Romance",
     "director":"Nick Cassavetes",
-    "actors": ["Rachel McAdams", "Ryan Gosling"],
+    "actors": "Rachel McAdams, Ryan Gosling",
     "numCopies":1,
     "newArrival":false
   },{
@@ -32,7 +32,7 @@
   	"year":2005,
     "genre": "Comedy",
     "director":"David Dobkin",
-    "actors": ["Owen Wilson", "Vince Vaughn"],
+    "actors": "Owen Wilson, Vince Vaughn",
     "numCopies":2,
     "newArrival":false
   },
