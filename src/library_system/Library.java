@@ -11,6 +11,7 @@ public class Library {
 		//load users and get an instance of stock
 		ArrayList<User> Users = UserLoader.loadUsers();
 		ArrayList<Item> stock = StockLoader.loadDB();
+		ArrayList<Checked_out_itm> chkItems = UserLoader.loadCheckedOutItems();
 		User curr_user = null;
 		Checked_out_itm[] items;
 		boolean total_logout = false;
@@ -401,7 +402,8 @@ public class Library {
 		updateDVDs(StockLoader.getDvds());
 		updateMagazines(StockLoader.getMagazines());
 		updateeBooks(StockLoader.getEbooks());
-		updateAudio_Books(StockLoader.getAudiobooks());
+		updateAudio_Books(StockLoader.getAudiobooks()); 
+		updateUsers(Users);
 	}
 /**Helper Methods
  * 
@@ -479,6 +481,38 @@ public class Library {
 			  JSONArray list = new JSONArray();
 		      for(int i = 0; i <audiobook.size(); i++) {
 		    	  list.add(audiobook.get(i));
+		      }
+			file.write(list.toJSONString());
+			file.write("\n}");
+	file.flush();
+	file.close();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	private static void updateUsers(ArrayList<User> users) {
+		try (FileWriter file = new FileWriter("users.json")) {	
+			file.write("{\"users\":");
+			  JSONArray list = new JSONArray();
+		      for(int i = 0; i <users.size(); i++) {
+		    	  list.add(users.get(i));
+		      }
+			file.write(list.toJSONString());
+			file.write("\n}");
+	file.flush();
+	file.close();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	private static void updateChkOutItems(ArrayList<Checked_out_itm> chkItems) {
+		try (FileWriter file = new FileWriter("checkedoutitems.json")) {	
+			file.write("{\"checkedoutitems\":");
+			  JSONArray list = new JSONArray();
+		      for(int i = 0; i <chkItems.size(); i++) {
+		    	  list.add(chkItems.get(i));
 		      }
 			file.write(list.toJSONString());
 			file.write("\n}");

@@ -110,4 +110,6 @@ public abstract class User {
 	public void setPhone(int phone) {
 		this.phone = phone;
 	}
+	
 }
+

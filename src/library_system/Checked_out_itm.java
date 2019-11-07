@@ -6,8 +6,7 @@ public class Checked_out_itm {
 	private int renewals;
 	private int time_remaining;
 	private String title;
-	private int id;
-	
+	private int id,userid;
 	public Checked_out_itm(String t, Item item) {
 		type = t;
 		renewals = 0;
@@ -15,7 +14,13 @@ public class Checked_out_itm {
 		title = item.getTitle();
 		id = item.getId();
 	}
-	
+	public Checked_out_itm(int userid, String type, int id, int renewals, int timeremaining) { 
+		this.userid = userid;
+		this.type = type;
+		this.id = id;
+		this.renewals = renewals;
+		this.time_remaining = timeremaining;
+	}
 	public void return_itm() {
 		item.setCopies_avalible(item.getCopies_avalible() + 1);
 	}
@@ -30,6 +35,8 @@ public class Checked_out_itm {
 		}
 		
 	}
+	
+	
 	
 	public int getId() {
 		return id;
@@ -60,5 +67,8 @@ public class Checked_out_itm {
 	}
 	public void setTitle(String name) {
 		this.title = name;
+	}
+	public String toString() {
+		return "{\n\"userid\":"+ userid+"\"id\":" +id+",\n\"type\":\""+type+"\",\n\"renewals\":"+renewals+",\n\"timeremaining\":"+time_remaining+"\n}";
 	}
 }
