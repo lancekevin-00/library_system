@@ -4,10 +4,8 @@ public class Adult extends User {
 	Child[] children;
 	private String firstName,lastName;
 	private int accountID;
-	Adult(int id,String firstName,String lastName,int birthdayYear,String address, int accountID,String password ,double fines, Child[] children) {
+	Adult(int id,String firstName,String lastName,int birthdayYear,String address, int accountID,String password ,int fines, Child[] children) {
 		super.Name = firstName+" "+lastName;
-		this.firstName = firstName;
-		this.lastName = lastName;
 		super.cardNumber = id;
 		super.password = password;
 		super.Age = birthdayYear;
@@ -20,7 +18,7 @@ public class Adult extends User {
 			this.children[i] = children[i];
 		}
 	}
-	Adult(int id,String firstName,String lastName,int birthdayYear,String address, int accountID,String password ,double fines) {
+	Adult(int id,String firstName,String lastName,int birthdayYear,String address, int accountID,String password ,int fines) {
 		super.Name = firstName+" "+lastName;
 		super.cardNumber = id;
 		super.password = password;
@@ -28,7 +26,8 @@ public class Adult extends User {
 		super.Fees = fines;
 		super.Address = address;
 		super.items = new Checked_out_itm[10];
-		
+		this.firstName = firstName;
+		this.lastName = lastName;
 		children = new Child[0];
 	}
 	
@@ -70,6 +69,6 @@ public class Adult extends User {
 		children = tempChildren;
 	}
 	public String toString() {
-		return "{\n\"id\":" +cardNumber+",\n\"firstname\":\""+firstName+",\n\"name\":\""+lastName+",\n\"birthdayYear\":"+Age+",\n\"address\":\""+Address+",\n\"accountID\":"+accountID+",\n\"password\":\""+password+",\n\"type\":\"A\",\n\"fines\":"+Fees + "\n}";
+		return "{\n\"id\":" +cardNumber+",\n\"firstname\":\""+firstName+"\",\n\"lastName\":\""+lastName+"\",\n\"birthdayYear\":"+Age+",\n\"address\":\""+Address+"\",\n\"accountID\":"+accountID+",\n\"password\":\""+password+"\",\n\"type\":\"A\",\n\"fines\":"+Fees + "\n}";
 	}
 }

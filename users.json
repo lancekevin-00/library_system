@@ -1,52 +1,52 @@
 {"users":[{
 "id":1,
-"firstname":"Robbie,
-"lastName":"White,
+"firstname":"Robbie",
+"lastName":"White",
 "birthdayYear":1980,
-"address":"123 Park Avenue,
+"address":"123 Park Avenue",
 "accountID":1,
-"password":"placeholder,
+"password":"placeholder",
 "type":"L",
-"fines":0.0
+"fines":0
 },{
 "id":2,
-"firstname":"Amy,
-"lastName":"Smith,
+"firstname":"Ava",
+"lastName":"Smith",
 "birthdayYear":1990,
-"address":"765 Jefferson Rd.,
+"address":"765 Jefferson Rd.",
 "accountID":2,
-"password":"placeholder,
+"password":"placeholder",
 "type":"L",
-"fines":0.0
+"fines":0
 },{
 "id":3,
-"firstname":"null,
-"name":"null,
+"firstname":"Jim",
+"lastName":"Hudson",
 "birthdayYear":1999,
-"address":"834 Birch Ln.,
+"address":"834 Birch Ln.",
 "accountID":0,
-"password":"placeholder,
+"password":"placeholder",
 "type":"A",
-"fines":7.0
+"fines":7
 },{
 "id":4,
-"firstname":"Bryan,
-"name":"Wilson,
+"firstname":"Bryan",
+"lastName":"Wilson",
 "birthdayYear":2000,
-"address":"342 Fairview Pl.,
+"address":"342 Fairview Pl.",
 "accountID":4,
-"password":"placeholder,
+"password":"placeholder",
 "type":"T",
-"fines":0.0
+"fines":0
 },{
 "id":5,
-"firstname":"null,
-"name":"null,
+"firstname":"Jed",
+"lastName":"Wilson",
 "birthdayYear":2000,
-"address":"342 Fairview Pl.,
+"address":"342 Fairview Pl.",
 "accountID":0,
-"password":"placeholder,
+"password":"placeholder",
 "type":"A",
-"fines":3.0
+"fines":3
 }]
 }

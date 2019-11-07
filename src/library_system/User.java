@@ -4,8 +4,7 @@ public abstract class User {
 	protected String Name;
 	protected int cardNumber;
 	protected String password;
-	protected int Age;
-	protected double Fees;
+	protected int Age,Fees;
 	protected Checked_out_itm[] items;
 	protected String Address;
 	public boolean is_librarian = false;
@@ -24,7 +23,7 @@ public abstract class User {
 	public void changePwd(String pwd) {
 		password = pwd;
 	}
-	public void makePayment(double pmt) {
+	public void makePayment(int pmt) {
 		Fees = Fees - pmt;
 	}
 	public int checkReturnDate(int id) {
@@ -79,7 +78,7 @@ public abstract class User {
 		}
 	}
 	
-	protected void setFees(double fees) {
+	protected void setFees(int fees) {
 		Fees = fees;
 	}
 	public String getAddress() {

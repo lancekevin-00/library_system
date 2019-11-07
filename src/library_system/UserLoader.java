@@ -18,13 +18,13 @@ public class UserLoader {
 			for(int i=0; i < userJSON.size(); i++) {
 				JSONObject UserJSON = (JSONObject)userJSON.get(i);
 				int id = (int)(long)UserJSON.get("id");
-				String firstName = (String)UserJSON.get("firstName"); 
+				String firstName = (String)UserJSON.get("firstname"); 
 				String lastName = (String)UserJSON.get("lastName");
 				int birthdayYear = (int)(long)UserJSON.get("birthdayYear"); // Need to add this to the json file 
 				String address = (String)UserJSON.get("address");
 			//	String email = (String)UserJSON.get("email"); //add this and phone to constructors
 			//	String phone = (String)UserJSON.get("phone"); //Have it as a string right now but idk if you want to make it an integer or not
-				int accountID = (int)(long)UserJSON.get("accountId");
+				int accountID = (int)(long)UserJSON.get("accountID");
 				String password = (String)UserJSON.get("password");
 				String type = (String)UserJSON.get("type");
 				int fines = (int)(long)UserJSON.get("fines");
