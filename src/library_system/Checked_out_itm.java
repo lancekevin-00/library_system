@@ -33,10 +33,11 @@ public class Checked_out_itm {
 			renewals ++;
 			System.out.println("this is the "+ renewals + "renewal of this item");
 		}
-		
 	}
 	
-	
+	public int getUserId() {
+		return userid;
+	}
 	
 	public int getId() {
 		return id;

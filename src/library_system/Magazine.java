@@ -19,6 +19,7 @@ public class Magazine extends Item {
 		this.issue = issue;
 		this.numCopies = numCopies;
 		this.newArrival = newArrival;
+		setCopies_avalible(numCopies);
 		searchTerms = new String[3];
 		searchTerms[0]= this.title;
 		searchTerms[1]= this.genre;
@@ -26,6 +27,7 @@ public class Magazine extends Item {
 		setSearchTerms(searchTerms);
 	}
 	
+
 	public void notifyWaitlist() {
 		super.notifyWaitlist();
 	}

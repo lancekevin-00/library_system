@@ -7,9 +7,8 @@ import org.json.simple.parser.JSONParser;;
 public class UserLoader {
 	private static final String USER_FILE_NAME = "users.json";
 	private static final String CHKITEM_FILE_NAME = "checkedoutitems.json";
+	private static ArrayList<User> users = new ArrayList<User>();	
 	public static ArrayList<User> loadUsers() {
-		ArrayList<User> users = new ArrayList<User>();
-		
 		try {
 			FileReader reader = new FileReader(USER_FILE_NAME);
 			JSONObject jsonData = (JSONObject)new JSONParser().parse(reader);
@@ -68,8 +67,18 @@ public class UserLoader {
 				int daysremaining = (int)(long)ChkItemJSON.get("timeremaining");
 				checkedOutItems.add(new Checked_out_itm(userid,type,id,renewal,daysremaining));
 			}
-			return checkedOutItems;
-			
+			/*	for(User user : users) {
+					for(Checked_out_itm chkItem : checkedOutItems) {
+							for(Item items : StockLoader.loadDB())
+								if(chkItem.getUserId() == user.getCardNumber()) {
+									if(items.getId() == chkItem.getId()) {
+										
+									}
+									
+								}
+				} 
+			}*/
+			return checkedOutItems;			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
