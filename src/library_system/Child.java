@@ -8,7 +8,7 @@ public class Child extends User {
 		super.cardNumber = id;
 		super.password = password;
 		super.Age = birthdayYear;
-		super.Fees = 0.0;
+		super.Fees = 0;
 		super.Address = address;
 		super.items = new Checked_out_itm[3];
 		this.parent = parent;

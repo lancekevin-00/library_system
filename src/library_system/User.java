@@ -19,8 +19,10 @@ public abstract class User {
 	}
 
 	public void return_itm(int index) {
+		System.out.println("calling COI return method");
 		items[index].return_itm();
 		items[index] = null;
+		System.out.println("null is now in the array");
 	}
 
 	public void changePwd(String pwd) {

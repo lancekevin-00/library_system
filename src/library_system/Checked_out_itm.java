@@ -13,6 +13,7 @@ public class Checked_out_itm {
 		time_remaining = item.getMax_checkout_time();
 		title = item.getTitle();
 		id = item.getId();
+		this.item = item;
 	}
 	public Checked_out_itm(int userid, String title, int id, int renewals, int timeremaining) { 
 		this.userid = userid;
@@ -22,6 +23,8 @@ public class Checked_out_itm {
 		this.time_remaining = timeremaining;
 	}
 	public void return_itm() {
+		System.out.println("IN COI");
+		System.out.println("returning "+ item.getId()+":"+item.getTitle());
 		item.setCopies_avalible(item.getCopies_avalible() + 1);
 	}
 	
