@@ -17,6 +17,8 @@ public class eBook extends Item {
 		this.author = author;
 		this.numCopies = numCopies;
 		this.newArrival = newArrival;
+		setCopies_avalible(numCopies);
+		setMax_checkout_time(30);
 		searchTerms = new String[3];
 		searchTerms[0]= this.title;
 		searchTerms[1]= this.genre;

@@ -1,39 +1,38 @@
-{"ebooks":[
-  {
-  	"id":17,
-  	"title":"The Cat in the Hat- Ebook Version",
-  	"year":1957,
-    "genre": "Children",
-    "publisher":"Random House",
-    "author":"Dr. Seuss",
-    "numCopies":3,
-    "newArrival":false
-  },{
-    "id":18,
-    "title":"Pajama Time- Ebook Version",
-    "year":2000,
-    "genre": "Children",
-    "publisher":"Workman",
-    "author":"Sandra Boynton",
-    "numCopies":2,
-    "newArrival":true
-  },{
-    "id":19,
-    "title":"Pride and Prejudice- Ebook Version",
-    "year":1813,
-    "genre":"Women's Fiction",
-    "publisher":"CreateSpace",
-    "author":"Jane Austin",
-    "numCopies":1,
-    "newArrival":false
-  },{
-    "id":20,
-    "title":"Gone With the Wind- Ebook Version",
-    "year":1936,
-    "genre": "Historical Fiction",
-    "publisher":"Scribner",
-    "author":"Margaret Mitchell",
-    "numCopies":2,
-    "newArrival":false
-  },
-]}
+{"ebooks":[{
+ "id":17,
+"title":"The Cat in the Hat- Ebook Version",
+"year":1957,
+"genre":"Children",
+"publisher":"Random House",
+"author":"Dr. Seuss",
+"numCopies":3,
+"newArrival":false
+},{
+ "id":18,
+"title":"Pajama Time- Ebook Version",
+"year":2000,
+"genre":"Children",
+"publisher":"Workman",
+"author":"Sandra Boynton",
+"numCopies":2,
+"newArrival":true
+},{
+ "id":19,
+"title":"Pride and Prejudice- Ebook Version",
+"year":1813,
+"genre":"Women's Fiction",
+"publisher":"CreateSpace",
+"author":"Jane Austin",
+"numCopies":1,
+"newArrival":false
+},{
+ "id":20,
+"title":"Gone With the Wind- Ebook Version",
+"year":1936,
+"genre":"Historical Fiction",
+"publisher":"Scribner",
+"author":"Margaret Mitchell",
+"numCopies":2,
+"newArrival":false
+}]
+}

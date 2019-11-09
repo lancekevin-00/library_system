@@ -4,14 +4,14 @@ public abstract class User {
 	protected String Name;
 	protected int cardNumber;
 	protected String password;
-	protected int Age;
-	protected double Fees;
+	protected int Age,Fees;
 	protected Checked_out_itm[] items;
 	protected String Address;
 	public boolean is_librarian = false;
 	protected String email;
 	protected int phone;
-
+	protected String type;
+	ArrayList<Checked_out_itm> chkItems = UserLoader.loadCheckedOutItems();
 	public void checkout(Checked_out_itm itm, int i) {
 		if (itm == null)
 			return;
@@ -26,7 +26,7 @@ public abstract class User {
 	public void changePwd(String pwd) {
 		password = pwd;
 	}
-	public void makePayment(double pmt) {
+	public void makePayment(int pmt) {
 		Fees = Fees - pmt;
 	}
 	public int checkReturnDate(int id) {
@@ -69,19 +69,25 @@ public abstract class User {
 	public void updateFees() {
 		Fees = 0;
 		for(Checked_out_itm itm: items) {
-			if(itm.getTime_remaining() < 0) {
-				Fees += itm.getTime_remaining() * -1;
+			if(itm != null) {
+				if(itm.getTime_remaining() < 0) {
+					Fees += itm.getTime_remaining() * -1;
+				}
 			}
 		}
 	}
 	
 	public void updateDay() {
-		for(Checked_out_itm itm: items) {
-			itm.updateDay();
+		for(Checked_out_itm itm: chkItems) {
+			if(itm != null) {
+				itm.updateDay();
+			}
 		}
 	}
-	
-	protected void setFees(double fees) {
+	public String getType() {
+		return type;
+	}
+	protected void setFees(int fees) {
 		Fees = fees;
 	}
 	public String getAddress() {
@@ -112,4 +118,6 @@ public abstract class User {
 	public void setPhone(int phone) {
 		this.phone = phone;
 	}
+	
 }
+
