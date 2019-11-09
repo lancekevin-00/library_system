@@ -55,7 +55,6 @@ public class Library {
 
 			}
 			while(curr_user == null);
-
 			System.out.println("Welcome to the library " + curr_user.getName());
 
 			try {
@@ -71,9 +70,9 @@ public class Library {
 					System.out.println("7: Change Password");
 					System.out.println("8: Log out");
 					if(curr_user.is_librarian) {
-						System.out.println("10: Edit User");
-						System.out.println("11: Add item");
-						System.out.println("12: Update day");
+						System.out.println("9: Edit User");
+						System.out.println("10: Add item");
+						System.out.println("11: Update day");
 					}
 
 
@@ -141,9 +140,9 @@ public class Library {
 								for(int b=0; b<items.length; b++) {
 									if(items[b] == null) {
 										curr_user.checkout(curr_result.checkout(), b);
-								
 										added = true;
-										System.out.println("successfully checked out "+ curr_result.getTitle());
+										System.out.println("successfully checked out "+ curr_result.getTitle()); 
+										b = items.length+1;
 									}
 								}
 								if(!added)
@@ -160,7 +159,9 @@ public class Library {
 						System.out.println("Check Due Dates");
 						items = curr_user.getItems();
 						for(Checked_out_itm item: items) {
+							if(item !=null) {
 							System.out.println(item.getTitle()+": "+item.getTime_remaining()+" days remaining");
+							}
 						}
 						break;
 					case 3:
@@ -278,8 +279,9 @@ public class Library {
 								eUser.setAddress(nAddress);
 								break;
 							case 4:
-								System.out.println("enter the new email");
+								System.out.println("enter the new Phone Number");
 								int nPhone = scan.nextInt();
+								scan.nextLine();
 								eUser.setPhone(nPhone);
 								break;
 							default:
@@ -375,21 +377,24 @@ public class Library {
 						}
 						break;
 					case 11:
+						System.out.println("Updating the day");
+						for(User user: Users) {
+							if(user !=  null) {
+							user.updateDay();
+							user.updateFees();
+							}
+						}
+						break;
+					case 12:
 						System.out.println("EXITING THE SYSTEM");
 						total_logout = true;
 						go_again = false;
-						break;
-					case 12:
-						System.out.println("Updating the day");
-						for(User user: Users) {
-							user.updateDay();
-							user.updateFees();
-						}
 						break;
 					default:
 						System.out.println("Enter A Valid Number");
 						break;
 					}
+					
 				}
 			}
 			catch (Exception e) {

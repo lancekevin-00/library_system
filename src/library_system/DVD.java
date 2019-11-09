@@ -18,6 +18,7 @@ public class DVD extends Item {
 		this.numCopies = numCopies;
 		this.newArrival = newArrival;
 		setCopies_avalible(numCopies);
+		setMax_checkout_time(7);
 		searchTerms = new String[3];
 		searchTerms[0]= this.title;
 		searchTerms[1]= this.genre;

@@ -18,6 +18,7 @@ public class Book extends Item {
 		this.numCopies = numCopies;
 		this.newArrival = newArrival;
 		setCopies_avalible(numCopies);
+		setMax_checkout_time(30);
 		//Placeholders to test the search function, will clean up once it works 
 		searchTerms = new String[3];
 		searchTerms[0]= this.title;
