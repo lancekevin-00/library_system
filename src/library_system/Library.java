@@ -165,7 +165,7 @@ public class Library {
 					case 2:
 						System.out.println("Check Due Dates");
 						items = curr_user.getItems();
-						for(Checked_out_itm item: chkItems) {
+						for(Checked_out_itm item: items) {
 							if(item !=null) {
 							System.out.println(item.getTitle()+": "+item.getTime_remaining()+" days remaining");
 							}
@@ -175,7 +175,8 @@ public class Library {
 						System.out.println("Checked Out Items:");
 						items = curr_user.getItems();
 						for(Checked_out_itm itm: items) {
-							System.out.println("ID: "+itm.getId() + ":\t "+ itm.getTitle() + "\t " + itm.getTime_remaining() + " days remaining \t this item has been renewed " + itm.getRenewals() + " times");
+							if(itm != null)
+								System.out.println("ID: "+itm.getId() + ":\t "+ itm.getTitle() + "\t " + itm.getTime_remaining() + " days remaining \t this item has been renewed " + itm.getRenewals() + " times");
 						}
 						int d = 0;
 						boolean e = false;
@@ -183,7 +184,7 @@ public class Library {
 							System.out.println("Please enter the ID of the item you would like to return or 0 to exit");
 							d = scan.nextInt();
 							for(int f = 0; f < items.length; f++) {
-								if(d == items[f].getId()) {
+								if(items[f]!=null && d == items[f].getId()) {
 									e = true;
 									curr_user.return_itm(f);
 								}
