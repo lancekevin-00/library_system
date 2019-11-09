@@ -5,16 +5,17 @@ import org.json.simple.JSONArray;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Library {
-
+//KNOWN ERRORS, Cant change a persons phone number, Update day updates the day 5 times
 	public static void main(String [] args) {
 
 		//load users and get an instance of stock
 		ArrayList<User> Users = UserLoader.loadUsers();
 		ArrayList<Item> stock = StockLoader.loadDB();
+		ArrayList<Checked_out_itm> chkItems = UserLoader.loadCheckedOutItems();
 		User curr_user = null;
 		Checked_out_itm[] items;
 		boolean total_logout = false;
-		Scanner scan = new Scanner(System.in);		
+		Scanner scan = new Scanner(System.in);
 		while(!total_logout){
 			System.out.println("~~~~~~~~~~~~~~WELCOME TO THE LIBRARY~~~~~~~~~~~~~~");
 			do {
@@ -54,7 +55,6 @@ public class Library {
 
 			}
 			while(curr_user == null);
-
 			System.out.println("Welcome to the library " + curr_user.getName());
 
 			try {
@@ -70,9 +70,9 @@ public class Library {
 					System.out.println("7: Change Password");
 					System.out.println("8: Log out");
 					if(curr_user.is_librarian) {
-						System.out.println("10: Edit User");
-						System.out.println("11: Add item");
-						System.out.println("12: Update day");
+						System.out.println("9: Edit User");
+						System.out.println("10: Add item");
+						System.out.println("11: Update day");
 					}
 
 
@@ -94,8 +94,8 @@ public class Library {
 
 							}
 						}
-						
-						
+
+
 						System.out.println("Results:");
 						for(Item itm: results) {
 							System.out.println(itm.getId() + ": "+ itm.getTitle());
@@ -107,19 +107,14 @@ public class Library {
 						while(curr_result == null && !zero) {
 							System.out.println("Select a Result by id# or enter zero to exit:");
 							id = scan.nextInt();
-							if(id <= 0) {
+							if(id <= 0)
 								zero = true;
-							}
-							else {
-								for(int i = 0; i < results.size(); i++) {
-									if(results.get(i).getId() == id)
-										curr_result = results.get(i);
+							for(int i = 0; i < results.size(); i++) {
+								if(results.get(i).getId() == id)
+									curr_result = results.get(i);
 								}
-							}
 						}
-						if(zero)
-							break;
-						
+
 						boolean i = true;
 						while(i) {
 							System.out.println("~~~~~~~~~ACTIONS~~~~~~~~~");
@@ -139,26 +134,26 @@ public class Library {
 										System.out.println("You have " + curr_user.getFees() + " in outstanding fees so you are unable to checkout");
 										break;
 									}
-															
+
 									items = curr_user.getItems();
-									
+
 									int g = 0;
 									while(items[g] != null && g < items.length)
 										g++;
-									
+
 									if(g == items.length) {
 										System.out.println("you have reached your checkout limit");
 										break;
 									}
-									
+
 									Checked_out_itm itm = curr_result.checkout(curr_user);
 									if(itm == null) {
 										System.out.println("there are no more copies in stock");
-										break;	
+										break;
 									}
-									
+
 									curr_user.checkout(itm, g);
-									
+
 									break;
 								case 3:
 									System.out.println("Return to Menu");
@@ -170,28 +165,25 @@ public class Library {
 					case 2:
 						System.out.println("Check Due Dates");
 						items = curr_user.getItems();
-						for(Checked_out_itm item: items) {
-							if(item != null)
+						for(Checked_out_itm item: chkItems) {
+							if(item !=null) {
 							System.out.println(item.getTitle()+": "+item.getTime_remaining()+" days remaining");
+							}
 						}
 						break;
 					case 3:
-						
 						System.out.println("Checked Out Items:");
 						items = curr_user.getItems();
 						for(Checked_out_itm itm: items) {
-							if(itm != null)
-								System.out.println("ID: "+itm.getId() + ":\t "+ itm.getTitle() + "\t " + itm.getTime_remaining() + " days remaining \t this item has been renewed " + itm.getRenewals() + " times");
+							System.out.println("ID: "+itm.getId() + ":\t "+ itm.getTitle() + "\t " + itm.getTime_remaining() + " days remaining \t this item has been renewed " + itm.getRenewals() + " times");
 						}
-						
 						int d = 0;
 						boolean e = false;
 						while(!e || d == 0) {
 							System.out.println("Please enter the ID of the item you would like to return or 0 to exit");
 							d = scan.nextInt();
 							for(int f = 0; f < items.length; f++) {
-								if(items[f]!=null && d == items[f].getId()) {
-									System.out.println("item found");
+								if(d == items[f].getId()) {
 									e = true;
 									curr_user.return_itm(f);
 								}
@@ -294,8 +286,9 @@ public class Library {
 								eUser.setAddress(nAddress);
 								break;
 							case 4:
-								System.out.println("enter the new email");
+								System.out.println("enter the new Phone Number");
 								int nPhone = scan.nextInt();
+								scan.nextLine();
 								eUser.setPhone(nPhone);
 								break;
 							default:
@@ -391,21 +384,24 @@ public class Library {
 						}
 						break;
 					case 11:
+						System.out.println("Updating the day");
+						for(User user: Users) {
+							if(user !=  null) {
+								user.updateDay();
+								user.updateFees();
+							}
+						}
+						break;
+					case 12:
 						System.out.println("EXITING THE SYSTEM");
 						total_logout = true;
 						go_again = false;
-						break;
-					case 12:
-						System.out.println("Updating the day");
-						for(User user: Users) {
-							user.updateDay();
-							user.updateFees();
-						}
 						break;
 					default:
 						System.out.println("Enter A Valid Number");
 						break;
 					}
+
 				}
 			}
 			catch (Exception e) {
@@ -419,14 +415,16 @@ public class Library {
 		updateMagazines(StockLoader.getMagazines());
 		updateeBooks(StockLoader.getEbooks());
 		updateAudio_Books(StockLoader.getAudiobooks());
+		updateUsers(Users);
+		updateChkOutItems(chkItems);
 	}
 /**Helper Methods
- * 
+ *
  * @param books
  */
 	private static void updateBook(ArrayList<Book> books) {
-		
-		try (FileWriter file = new FileWriter("books.json")) {	
+
+		try (FileWriter file = new FileWriter("books.json")) {
 			file.write("{\"books\":");
 			  JSONArray list = new JSONArray();
 		      for(int i = 0; i <books.size(); i++) {
@@ -443,7 +441,7 @@ public class Library {
 		}
 	}
 	private static void updateDVDs(ArrayList<DVD> dvd) {
-		try (FileWriter file = new FileWriter("dvds.json")) {	
+		try (FileWriter file = new FileWriter("dvds.json")) {
 			file.write("{\"dvds\":");
 			  JSONArray list = new JSONArray();
 		      for(int i = 0; i <dvd.size(); i++) {
@@ -459,7 +457,7 @@ public class Library {
 		}
 	}
 	private static void updateMagazines(ArrayList<Magazine> magazines) {
-		try (FileWriter file = new FileWriter("magazines.json")) {	
+		try (FileWriter file = new FileWriter("magazines.json")) {
 			file.write("{\"magazines\":");
 			  JSONArray list = new JSONArray();
 		      for(int i = 0; i <magazines.size(); i++) {
@@ -475,7 +473,7 @@ public class Library {
 		}
 	}
 	private static void updateeBooks(ArrayList<eBook> ebook) {
-		try (FileWriter file = new FileWriter("ebooks.json")) {	
+		try (FileWriter file = new FileWriter("ebooks.json")) {
 			file.write("{\"ebooks\":");
 			  JSONArray list = new JSONArray();
 		      for(int i = 0; i <ebook.size(); i++) {
@@ -491,7 +489,7 @@ public class Library {
 		}
 	}
 	private static void updateAudio_Books(ArrayList<Audio_Book> audiobook) {
-		try (FileWriter file = new FileWriter("audiobooks.json")) {	
+		try (FileWriter file = new FileWriter("audiobooks.json")) {
 			file.write("{\"audiobooks\":");
 			  JSONArray list = new JSONArray();
 		      for(int i = 0; i <audiobook.size(); i++) {
@@ -506,6 +504,36 @@ public class Library {
 			e.printStackTrace();
 		}
 	}
+	private static void updateUsers(ArrayList<User> users) {
+		try (FileWriter file = new FileWriter("users.json")) {
+			file.write("{\"users\":");
+			  JSONArray list = new JSONArray();
+		      for(int i = 0; i <users.size(); i++) {
+		    	  list.add(users.get(i));
+		      }
+			file.write(list.toJSONString());
+			file.write("\n}");
+	file.flush();
+	file.close();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	private static void updateChkOutItems(ArrayList<Checked_out_itm> chkItems) {
+		try (FileWriter file = new FileWriter("checkedoutitems.json")) {
+			file.write("{\"checkedoutitems\":");
+			  JSONArray list = new JSONArray();
+		      for(int i = 0; i <chkItems.size(); i++) {
+		    	  list.add(chkItems.get(i));
+		      }
+			file.write(list.toJSONString());
+			file.write("\n}");
+	file.flush();
+	file.close();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }
-
-
