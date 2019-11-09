@@ -2,7 +2,7 @@ package library_system;
 public class Librarian extends User{
 	private String firstName,lastName;
 	private int accountID;
-	Librarian(int id,String firstName,String lastName,int birthdayYear,String address, int accountID,String password ,int fines) {
+	Librarian(int id,String firstName,String lastName,int birthdayYear,String address, int accountID,String password ,int fines,String type) {
 		super.Name = firstName+" "+lastName;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -12,6 +12,7 @@ public class Librarian extends User{
 		super.Fees = fines;
 		super.Address = address;
 		super.items = new Checked_out_itm[10];
+		super.type = type;
 		is_librarian = true;
 		this.accountID = accountID;
 	}

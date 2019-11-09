@@ -14,9 +14,9 @@ public class Checked_out_itm {
 		title = item.getTitle();
 		id = item.getId();
 	}
-	public Checked_out_itm(int userid, String type, int id, int renewals, int timeremaining) { 
+	public Checked_out_itm(int userid, String title, int id, int renewals, int timeremaining) { 
 		this.userid = userid;
-		this.type = type;
+		this.title = title;
 		this.id = id;
 		this.renewals = renewals;
 		this.time_remaining = timeremaining;
@@ -61,7 +61,7 @@ public class Checked_out_itm {
 		return time_remaining;
 	}
 	public void updateDay() {
-		time_remaining --;
+		time_remaining--;
 	}
 	public String getTitle() {
 		return title;
@@ -70,6 +70,6 @@ public class Checked_out_itm {
 		this.title = name;
 	}
 	public String toString() {
-		return "{\n\"userid\":"+ userid+"\"id\":" +id+",\n\"type\":\""+type+"\",\n\"renewals\":"+renewals+",\n\"timeremaining\":"+time_remaining+"\n}";
+		return "{\n\"userid\":"+ userid+",\n\"id\":" +id+",\n\"\title\":"+title+"\",\n\"renewals\":"+renewals+",\n\"timeremaining\":"+time_remaining+"\n}";
 	}
 }

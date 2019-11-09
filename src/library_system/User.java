@@ -10,7 +10,8 @@ public abstract class User {
 	public boolean is_librarian = false;
 	protected String email;
 	protected int phone;
-
+	protected String type;
+	ArrayList<Checked_out_itm> chkItems = UserLoader.loadCheckedOutItems();
 	public void checkout(Checked_out_itm itm, int i) {
 		items[i] = itm;
 	}
@@ -75,13 +76,15 @@ public abstract class User {
 	}
 	
 	public void updateDay() {
-		for(Checked_out_itm itm: items) {
+		for(Checked_out_itm itm: chkItems) {
 			if(itm != null) {
 				itm.updateDay();
 			}
 		}
 	}
-	
+	public String getType() {
+		return type;
+	}
 	protected void setFees(int fees) {
 		Fees = fees;
 	}

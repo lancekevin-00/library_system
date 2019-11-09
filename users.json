@@ -27,7 +27,7 @@
 "accountID":0,
 "password":"placeholder",
 "type":"A",
-"fines":7
+"fines":0
 },{
 "id":4,
 "firstname":"Bryan",
@@ -47,6 +47,6 @@
 "accountID":0,
 "password":"placeholder",
 "type":"A",
-"fines":3
+"fines":0
 }]
 }

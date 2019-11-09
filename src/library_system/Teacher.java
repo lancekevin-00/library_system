@@ -3,7 +3,7 @@ package library_system;
 public class Teacher extends User{
 	private String firstName,lastName;
 	private int accountID;
-	Teacher(int id,String firstName,String lastName,int birthdayYear,String address, int accountID,String password ,int fines) {
+	Teacher(int id,String firstName,String lastName,int birthdayYear,String address, int accountID,String password ,int fines,String type) {
 		super.Name = firstName+" "+lastName;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -13,6 +13,7 @@ public class Teacher extends User{
 		super.Fees = fines;
 		super.Address = address;
 		super.items = new Checked_out_itm[50];
+		super.type = type;
 		this.accountID = accountID;
 		
 	}

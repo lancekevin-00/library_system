@@ -28,16 +28,16 @@ public class UserLoader {
 				String type = (String)UserJSON.get("type");
 				int fines = (int)(long)UserJSON.get("fines");
 				if(type.equals("A")) {
-					users.add(new Adult(id,firstName,lastName,birthdayYear,address,accountID,password ,fines)); 
+					users.add(new Adult(id,firstName,lastName,birthdayYear,address,accountID,password ,fines,type)); 
 				}
 				else if(type.equals("C")) {
 					//users.add(new Child(id,firstName,lastName,birthdayYear,address,accountID,password ,fines)); 
 				}
 				else if(type.equals("T")) { 
-					users.add(new Teacher(id,firstName,lastName,birthdayYear,address,accountID,password ,fines)); 
+					users.add(new Teacher(id,firstName,lastName,birthdayYear,address,accountID,password ,fines,type)); 
 				}
 				else if(type.equals("L")) {
-					users.add(new Librarian(id,firstName,lastName,birthdayYear,address,accountID,password ,fines)); 
+					users.add(new Librarian(id,firstName,lastName,birthdayYear,address,accountID,password ,fines,type)); 
 				}
 			}
 			
@@ -67,17 +67,26 @@ public class UserLoader {
 				int daysremaining = (int)(long)ChkItemJSON.get("timeremaining");
 				checkedOutItems.add(new Checked_out_itm(userid,type,id,renewal,daysremaining));
 			}
-			/*	for(User user : users) {
+				Checked_out_itm[] checkedOut = new Checked_out_itm[10];
+				int j =0;
+				for(User user : users) {
+					if(user.getType() == "L") {
+						checkedOut = new Checked_out_itm[10];
+					}
+					else if(user.getType() == "A") {
+						checkedOut = new Checked_out_itm[10];
+					}
+					else if(user.getType() == "T") {
+						checkedOut = new Checked_out_itm[50];
+					}
 					for(Checked_out_itm chkItem : checkedOutItems) {
-							for(Item items : StockLoader.loadDB())
 								if(chkItem.getUserId() == user.getCardNumber()) {
-									if(items.getId() == chkItem.getId()) {
-										
+										checkedOut[j] = chkItem;
+										j++;
 									}
-									
 								}
-				} 
-			}*/
+						user.setItems(checkedOut);
+						} 
 			return checkedOutItems;			
 		} catch (Exception e) {
 			e.printStackTrace();

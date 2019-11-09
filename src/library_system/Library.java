@@ -5,7 +5,7 @@ import org.json.simple.JSONArray;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Library {
-
+//KNOWN ERRORS, Cant change a persons phone number, Update day updates the day 5 times
 	public static void main(String [] args) {
 
 		//load users and get an instance of stock
@@ -143,6 +143,7 @@ public class Library {
 										added = true;
 										System.out.println("successfully checked out "+ curr_result.getTitle()); 
 										b = items.length+1;
+										chkItems.add(new Checked_out_itm(curr_user.getCardNumber(),curr_result.getTitle(),curr_result.getId(),0,curr_result.getMax_checkout_time()));
 									}
 								}
 								if(!added)
@@ -158,7 +159,7 @@ public class Library {
 					case 2:
 						System.out.println("Check Due Dates");
 						items = curr_user.getItems();
-						for(Checked_out_itm item: items) {
+						for(Checked_out_itm item: chkItems) {
 							if(item !=null) {
 							System.out.println(item.getTitle()+": "+item.getTime_remaining()+" days remaining");
 							}
@@ -380,8 +381,8 @@ public class Library {
 						System.out.println("Updating the day");
 						for(User user: Users) {
 							if(user !=  null) {
-							user.updateDay();
-							user.updateFees();
+								user.updateDay();
+								user.updateFees();
 							}
 						}
 						break;
@@ -409,6 +410,7 @@ public class Library {
 		updateeBooks(StockLoader.getEbooks());
 		updateAudio_Books(StockLoader.getAudiobooks()); 
 		updateUsers(Users);
+		updateChkOutItems(chkItems);
 	}
 /**Helper Methods
  * 

@@ -18,7 +18,7 @@ public class Adult extends User {
 			this.children[i] = children[i];
 		}
 	}
-	Adult(int id,String firstName,String lastName,int birthdayYear,String address, int accountID,String password ,int fines) {
+	Adult(int id,String firstName,String lastName,int birthdayYear,String address, int accountID,String password ,int fines,String type) {
 		super.Name = firstName+" "+lastName;
 		super.cardNumber = id;
 		super.password = password;
@@ -28,6 +28,7 @@ public class Adult extends User {
 		super.items = new Checked_out_itm[10];
 		this.firstName = firstName;
 		this.lastName = lastName;
+		super.type = type;
 		children = new Child[0];
 	}
 	
