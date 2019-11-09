@@ -54,7 +54,23 @@ public class Item{
 		return title;
 	}
 	
-	public Checked_out_itm checkout() {
+	public Checked_out_itm checkout(User u) {
+		if(waitlist == null)
+			waitlist = new User[10];
+		//being added to the waitlist
+		if(copies_avalible == 0) {
+			System.out.println("There are no copies of "+ title + " in stock. You are being added to the waitlist");
+			for(int i = 0; i < waitlist.length; i++) {
+				if(waitlist[i] == null) {
+					waitlist[i] = u;
+					System.out.println("you are the #" + (i+1) + " in line for this book");
+					return null;
+				}
+				System.out.println("The waitlist has reached its maximum size, Sorry");
+			}
+		}
+		
+		//checking out the item
 		copies_avalible --;
 		Checked_out_itm ret = new Checked_out_itm(title, this);
 		return ret;

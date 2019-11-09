@@ -13,6 +13,8 @@ public abstract class User {
 	protected int phone;
 
 	public void checkout(Checked_out_itm itm, int i) {
+		if (itm == null)
+			return;
 		items[i] = itm;
 	}
 

@@ -101,58 +101,65 @@ public class Library {
 							System.out.println(itm.getId() + ": "+ itm.getTitle());
 						}
 
-
-						System.out.println("Select a Result by id# or enter zero to exit:");
-						int id = scan.nextInt();
-						if(id <= 0)
-							break;
+						int id;
+						boolean zero = false;
 						Item curr_result = null;
-						while(curr_result == null) {
+						while(curr_result == null && !zero) {
+							System.out.println("Select a Result by id# or enter zero to exit:");
+							id = scan.nextInt();
+							if(id <= 0)
+								zero = true;
 							for(int i = 0; i < results.size(); i++) {
 								if(results.get(i).getId() == id)
 									curr_result = results.get(i);
 								}
-							System.out.println("Please enter a valid id or 0 to exit");
 						}
-
-
-						System.out.println("~~~~~~~~~ACTIONS~~~~~~~~~");
-						System.out.println("1: Get Info");
-						System.out.println("2: Checkout");
-						System.out.println("3: Return to Menu");
 						
 						boolean i = true;
 						while(i) {
-						int c = scan.nextInt();
-						scan.nextLine();
-						switch(c) {
-							case 1:
-								System.out.println(curr_result.getTitle());
-								System.out.println("Copies Available:" + curr_result.getCopies_avalible());
-								break;
-							case 2:
-								if (curr_user.getFees() != 0) {
-									System.out.println("You have " + curr_user.getFees() + " in outstanding fees so you are unable to checkout");
+							System.out.println("~~~~~~~~~ACTIONS~~~~~~~~~");
+							System.out.println("1: Get Info");
+							System.out.println("2: Checkout");
+							System.out.println("3: Return to Menu");
+							int c = scan.nextInt();
+							scan.nextLine();
+							switch(c) {
+								case 1:
+									System.out.println(curr_result.getTitle());
+									System.out.println("Copies Available:" + curr_result.getCopies_avalible());
+									break;
+								case 2:
+									//checking that there are no fees
+									if (curr_user.getFees() != 0) {
+										System.out.println("You have " + curr_user.getFees() + " in outstanding fees so you are unable to checkout");
+										break;
+									}
+															
+									items = curr_user.getItems();
+									
+									int g = 0;
+									while(items[g] != null && g < items.length)
+										g++;
+									
+									if(g == items.length) {
+										System.out.println("you have reached your checkout limit");
+										break;
+									}
+									
+									Checked_out_itm itm = curr_result.checkout(curr_user);
+									if(itm == null) {
+										System.out.println("there are no more copies in stock");
+										break;	
+									}
+									
+									curr_user.checkout(itm, g);
+									
+									break;
+								case 3:
+									System.out.println("Return to Menu");
+									i = false;
 									break;
 								}
-								items = curr_user.getItems();
-								boolean added = false;
-								for(int b=0; b<items.length; b++) {
-									if(items[b] == null) {
-										curr_user.checkout(curr_result.checkout(), b);
-								
-										added = true;
-										System.out.println("successfully checked out "+ curr_result.getTitle());
-									}
-								}
-								if(!added)
-									System.out.println("you have reached your checkout limit");
-								break;
-							case 3:
-								System.out.println("Return to Menu");
-								i = false;
-								break;
-							}
 						}
 						break;
 					case 2:
@@ -229,7 +236,7 @@ public class Library {
 						break;
 					case 8:
 						go_again = false;
-						System.out.println("Good bye" + curr_user.Name);
+						System.out.println("Good bye " + curr_user.Name);
 						curr_user = null;
 						break;
 					case 9:
