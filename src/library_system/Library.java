@@ -12,6 +12,7 @@ public class Library {
 		ArrayList<User> Users = UserLoader.loadUsers();
 		ArrayList<Item> stock = StockLoader.loadDB();
 		ArrayList<Checked_out_itm> chkItems = UserLoader.loadCheckedOutItems();
+		UserLoader.finish_Checked_out_itm_intsantiation(chkItems, stock);
 		User curr_user = null;
 		Checked_out_itm[] items;
 		boolean total_logout = false;
@@ -387,11 +388,11 @@ public class Library {
 					case 11:
 						System.out.println("Updating the day");
 						for(User user: Users) {
-							if(user !=  null) {
+							if(user !=  null ) { 
 								user.updateDay();
 								user.updateFees();
 							}
-						}
+						} 
 						break;
 					case 12:
 						System.out.println("EXITING THE SYSTEM");

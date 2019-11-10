@@ -11,18 +11,13 @@ public abstract class User {
 	protected String email;
 	protected int phone;
 	protected String type;
-	ArrayList<Checked_out_itm> chkItems = UserLoader.loadCheckedOutItems();
 	public void checkout(Checked_out_itm itm, int i) {
-		if (itm == null)
-			return;
 		items[i] = itm;
 	}
 
 	public void return_itm(int index) {
-		System.out.println("calling COI return method");
 		items[index].return_itm();
 		items[index] = null;
-		System.out.println("null is now in the array");
 	}
 
 	public void changePwd(String pwd) {
@@ -80,7 +75,7 @@ public abstract class User {
 	}
 	
 	public void updateDay() {
-		for(Checked_out_itm itm: chkItems) {
+		for(Checked_out_itm itm: items) {
 			if(itm != null) {
 				itm.updateDay();
 			}
