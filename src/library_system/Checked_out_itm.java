@@ -65,7 +65,8 @@ public class Checked_out_itm {
 		return time_remaining;
 	}
 	public void updateDay() {
-		time_remaining--;
+		time_remaining --;
+		System.out.println(id + ": " +time_remaining);
 	}
 	public String getTitle() {
 		return title;

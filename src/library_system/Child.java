@@ -1,7 +1,7 @@
 package library_system;
 
 public class Child extends User {
-	private Adult parent;
+/*	private Adult parent;
 	
 	Child(int id,String firstName,String lastName,int birthdayYear,String address, int accountID,String password ,double fines, Adult parent) {
 		super.Name = firstName+" "+lastName;
@@ -17,4 +17,5 @@ public class Child extends User {
 	public void setFees(double fee) {
 		parent.Fees = parent.Fees + Fees;
 	}
+	*/
 }

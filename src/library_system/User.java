@@ -8,8 +8,6 @@ public abstract class User {
 	protected Checked_out_itm[] items;
 	protected String Address;
 	public boolean is_librarian = false;
-	protected String email;
-	protected int phone;
 	protected String type;
 	ArrayList<Checked_out_itm> chkItems = UserLoader.loadCheckedOutItems();
 	public void checkout(Checked_out_itm itm, int i) {
@@ -80,7 +78,7 @@ public abstract class User {
 	}
 	
 	public void updateDay() {
-		for(Checked_out_itm itm: chkItems) {
+		for(Checked_out_itm itm: items) {
 			if(itm != null) {
 				itm.updateDay();
 			}
@@ -104,22 +102,5 @@ public abstract class User {
 	public void setItems(Checked_out_itm[] items) {
 		this.items = items;
 	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public int getPhone() {
-		return phone;
-	}
-
-	public void setPhone(int phone) {
-		this.phone = phone;
-	}
-	
 }
 
