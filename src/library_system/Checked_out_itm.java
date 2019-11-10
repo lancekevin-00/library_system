@@ -65,7 +65,8 @@ public class Checked_out_itm {
 		return time_remaining;
 	}
 	public void updateDay() {
-		time_remaining--;
+		time_remaining --;
+		System.out.println(id + ": " +time_remaining);
 	}
 	public String getTitle() {
 		return title;
@@ -82,6 +83,7 @@ public class Checked_out_itm {
 	}
 	
 	public String toString() {
+
 		return "{\n\"userid\":"+ userid+",\n\"id\":" +id+",\n\"title\":\""+title+"\",\n\"renewals\":"+renewals+",\n\"timeremaining\":"+time_remaining+"\n}";
 	}
 }

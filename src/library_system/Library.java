@@ -13,6 +13,13 @@ public class Library {
 		ArrayList<Item> stock = StockLoader.loadDB();
 		ArrayList<Checked_out_itm> chkItems = UserLoader.loadCheckedOutItems();
 		UserLoader.finish_Checked_out_itm_intsantiation(chkItems, stock);
+		for(Checked_out_itm item: chkItems) {
+			System.out.println(item.toString());
+		}
+		UserLoader.finish_Checked_out_itm_intsantiation(chkItems, stock);
+		for(Checked_out_itm item: chkItems) {
+			item.print();
+		}
 		User curr_user = null;
 		Checked_out_itm[] items;
 		boolean total_logout = false;
@@ -67,13 +74,13 @@ public class Library {
 					System.out.println("3: Return");
 					System.out.println("4: Check Fines");
 					System.out.println("5: Pay Fines");
-					System.out.println("6: Change Email Address");
-					System.out.println("7: Change Password");
-					System.out.println("8: Log out");
+					System.out.println("6: Change Password");
+					System.out.println("7: Log out");
 					if(curr_user.is_librarian) {
-						System.out.println("9: Edit User");
-						System.out.println("10: Add item");
-						System.out.println("11: Update day");
+						System.out.println("8: Edit User");
+						System.out.println("9: Add item");
+						System.out.println("10: Update day");
+						System.out.println("11: EXIT THE SYSTEM");
 					}
 
 
@@ -220,11 +227,6 @@ public class Library {
 						System.out.println("You now owe "+ curr_user.getFees() + " in fines");
 						break;
 					case 6:
-						System.out.println("Enter your new email address: ");
-						String new_email = scan.next();
-						curr_user.setEmail(new_email);
-						break;
-					case 7:
 						System.out.println("Enter your new password:");
 						String pwd1 = scan.next();
 						System.out.println("Confirm your password:");
@@ -238,12 +240,12 @@ public class Library {
 							System.out.println("new password not confirmed");
 						}
 						break;
-					case 8:
+					case 7:
 						go_again = false;
 						System.out.println("Good bye " + curr_user.Name);
 						curr_user = null;
 						break;
-					case 9:
+					case 8:
 						if(curr_user.is_librarian) {
 
 							//finding the user
@@ -267,10 +269,8 @@ public class Library {
 							while(!f);
 							System.out.println("------------------");
 							System.out.println("1: Look up fines");
-							System.out.println("2: Change Email");
-							System.out.println("3: Change Address");
-							System.out.println("4: Change Phone Number");
-							System.out.println("0: exit");
+							System.out.println("2: Change Address");
+							System.out.println("3: exit");
 
 							int a = scan.nextInt();
 							switch(a) {
@@ -278,29 +278,19 @@ public class Library {
 								System.out.println("fines: "+ eUser.getFees());
 								break;
 							case 2:
-								System.out.println("enter the new email");
-								String nEmail = scan.next();
-								eUser.setEmail(nEmail);
-								break;
-							case 3:
 								System.out.println("enter the new address");
 								String nAddress = scan.nextLine();
 								eUser.setAddress(nAddress);
 								break;
-							case 4:
-								System.out.println("enter the new Phone Number");
-								int nPhone = scan.nextInt();
-								scan.nextLine();
-								eUser.setPhone(nPhone);
-								break;
 							default:
+								f = true;
 								break;
 							}
 						}
 						else
 						System.out.println("Enter A Valid Number");
 						break;
-					case 10:
+					case 9:
 						String title, genre, publisher, author,director,actors;
 						int year, numCopies,idNum, volume, issue;
 						boolean newArrival;
@@ -385,16 +375,17 @@ public class Library {
 							break;
 						}
 						break;
-					case 11:
+					case 10:
 						System.out.println("Updating the day");
 						for(User user: Users) {
-							if(user !=  null ) { 
+							if(user !=  null) {
+								System.out.println(user.getName());
 								user.updateDay();
 								user.updateFees();
 							}
 						} 
 						break;
-					case 12:
+					case 11:
 						System.out.println("EXITING THE SYSTEM");
 						total_logout = true;
 						go_again = false;

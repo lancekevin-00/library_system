@@ -1,10 +1,14 @@
 package library_system;
-
+/**
+ * 
+ * @author riley
+ *
+ */
 public class Adult extends User {
-	Child[] children;
+	//Child[] children;
 	private String firstName,lastName;
 	private int accountID;
-	Adult(int id,String firstName,String lastName,int birthdayYear,String address, int accountID,String password ,int fines, Child[] children) {
+	Adult(int id,String firstName,String lastName,int birthdayYear,String address, int accountID,String password ,int fines) {
 		super.Name = firstName+" "+lastName;
 		super.cardNumber = id;
 		super.password = password;
@@ -13,10 +17,11 @@ public class Adult extends User {
 		super.Address = address;
 		super.items = new Checked_out_itm[10];
 		this.accountID = accountID;
-		this.children = new Child[children.length];
+		/*this.children = new Child[children.length];
 		for (int i=0;i<this.children.length;i++) {
 			this.children[i] = children[i];
 		}
+		*/
 	}
 	Adult(int id,String firstName,String lastName,int birthdayYear,String address, int accountID,String password ,int fines,String type) {
 		super.Name = firstName+" "+lastName;
@@ -29,21 +34,21 @@ public class Adult extends User {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		super.type = type;
-		children = new Child[0];
+		//children = new Child[0];
 	}
-	
-	private double getChildFees() {
+
+	/*private double getChildFees() {
 		double total = 0.0;
 		for(Child c: children) {
 			total += c.getFees();
 		}
 		return total;
 	}
-	
+
 	public double getFees(){
 		return (Fees + this.getChildFees());
 	}
-	
+
 	public void addChild(Child c) {
 		Child[] tempChildren = new Child[children.length + 1];
 		for(int i=0;i<children.length;i++) {
@@ -52,7 +57,7 @@ public class Adult extends User {
 		tempChildren[children.length] = c;
 		children = tempChildren;
 	}
-	
+
 	public void removeChild(String name) {
 		boolean before = true;
 		Child[] tempChildren = new Child[children.length - 1];
@@ -69,6 +74,7 @@ public class Adult extends User {
 		}
 		children = tempChildren;
 	}
+	*/
 	public String toString() {
 		return "{\n\"id\":" +cardNumber+",\n\"firstname\":\""+firstName+"\",\n\"lastName\":\""+lastName+"\",\n\"birthdayYear\":"+Age+",\n\"address\":\""+Address+"\",\n\"accountID\":"+accountID+",\n\"password\":\""+password+"\",\n\"type\":\"A\",\n\"fines\":"+Fees + "\n}";
 	}

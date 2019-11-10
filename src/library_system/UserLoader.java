@@ -30,9 +30,6 @@ public class UserLoader {
 				if(type.equals("A")) {
 					users.add(new Adult(id,firstName,lastName,birthdayYear,address,accountID,password ,fines,type)); 
 				}
-				else if(type.equals("C")) {
-					//users.add(new Child(id,firstName,lastName,birthdayYear,address,accountID,password ,fines)); 
-				}
 				else if(type.equals("T")) { 
 					users.add(new Teacher(id,firstName,lastName,birthdayYear,address,accountID,password ,fines,type)); 
 				}
