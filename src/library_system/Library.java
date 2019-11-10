@@ -12,6 +12,13 @@ public class Library {
 		ArrayList<User> Users = UserLoader.loadUsers();
 		ArrayList<Item> stock = StockLoader.loadDB();
 		ArrayList<Checked_out_itm> chkItems = UserLoader.loadCheckedOutItems();
+		for(Checked_out_itm item: chkItems) {
+			System.out.println(item.toString());
+		}
+		UserLoader.finish_Checked_out_itm_intsantiation(chkItems, stock);
+		for(Checked_out_itm item: chkItems) {
+			item.print();
+		}
 		User curr_user = null;
 		Checked_out_itm[] items;
 		boolean total_logout = false;

@@ -22,6 +22,7 @@ public class Checked_out_itm {
 		this.renewals = renewals;
 		this.time_remaining = timeremaining;
 	}
+
 	public void return_itm() {
 		System.out.println("IN COI");
 		System.out.println("returning "+ item.getId()+":"+item.getTitle());
@@ -72,7 +73,15 @@ public class Checked_out_itm {
 	public void setTitle(String name) {
 		this.title = name;
 	}
+	public void setItem(Item i) {
+		item = i;
+	}
+	
+	public void print() {
+		System.out.println(id+":\t"+title+":\t"+item);
+	}
+	
 	public String toString() {
-		return "{\n\"userid\":"+ userid+",\n\"id\":" +id+",\n\"\title\":"+title+"\",\n\"renewals\":"+renewals+",\n\"timeremaining\":"+time_remaining+"\n}";
+		return "{\n\"userid\":"+ userid+",\n\"id\":" +id+",\n\"title\":"+title+"\",\n\"renewals\":"+renewals+",\n\"timeremaining\":"+time_remaining+"\n}";
 	}
 }

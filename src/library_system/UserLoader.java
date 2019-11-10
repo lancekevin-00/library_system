@@ -62,7 +62,7 @@ public class UserLoader {
 				JSONObject ChkItemJSON = (JSONObject)chkItemJSON.get(i);
 				int userid = (int)(long)ChkItemJSON.get("userid");
 				int id = (int)(long)ChkItemJSON.get("id");
-				String type = (String)ChkItemJSON.get("type");
+				String type = (String)ChkItemJSON.get("title");
 				int renewal = (int)(long)ChkItemJSON.get("renewals");
 				int daysremaining = (int)(long)ChkItemJSON.get("timeremaining");
 				checkedOutItems.add(new Checked_out_itm(userid,type,id,renewal,daysremaining));
@@ -93,6 +93,18 @@ public class UserLoader {
 		}
 		
 		return null;
+	}
+	
+	//remove this if it doesn't work. It is supposed to add the item to the checked out item. This is nessessacary for the return method
+	
+	public static void finish_Checked_out_itm_intsantiation(ArrayList<Checked_out_itm> checked_out_items, ArrayList<Item> stock) {
+		for(int i=0;i < checked_out_items.size(); i++) {
+			for(int c=0; c < stock.size(); c++) {
+				if(checked_out_items.get(i).getId() == stock.get(c).getId()) {
+					checked_out_items.get(i).setItem(stock.get(c));
+				}
+			}
+		}
 	}
 	
 	
