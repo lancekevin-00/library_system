@@ -46,8 +46,6 @@ public class Checked_out_itm {
 	 * Returns the item 
 	 */
 	public void return_itm() {
-		System.out.println("IN COI");
-		System.out.println("returning "+ item.getId()+":"+item.getTitle());
 		item.setCopies_avalible(item.getCopies_avalible() + 1);
 	}
 	/**
@@ -102,9 +100,6 @@ public class Checked_out_itm {
 		item = i;
 	}
 	
-	public void print() {
-		System.out.println(id+":\t"+title+":\t"+item);
-	}
 	/**
 	 * Prints the checked_out_itm information to the database in the specific format
 	 */

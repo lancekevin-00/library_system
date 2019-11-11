@@ -80,14 +80,9 @@ public class UserLoader {
 			/**
 			 * Sets the amount of checked out items for each specific user and adds them from the database to the specific user
 			 */
-				Checked_out_itm[] checkedOut; //= new Checked_out_itm[10];
-
-				for(User user : users)
-					System.out.println(user.getName());
+				Checked_out_itm[] checkedOut;
 
 				for(User user : users) {
-
-					System.out.println(user.getName());
 
 					if(user.getType() == "T") {
 						checkedOut = new Checked_out_itm[50];
@@ -97,16 +92,12 @@ public class UserLoader {
 					}
 
 					int j = 0;
-					//System.out.println(checkedOutItems.size());
 					for(Checked_out_itm chkItem : checkedOutItems) {
-						System.out.println("\t"+user.getName());
 						if(chkItem.getUserId() == user.getCardNumber()) {
-							System.out.println("adding " + chkItem.getId() + " to " + user.getName());
 							checkedOut[j] = chkItem;
 							j++;
 						}
 					}
-					System.out.println("done loop for " + user.getName());
 					user.setItems(checkedOut);
 				}
 			return checkedOutItems;

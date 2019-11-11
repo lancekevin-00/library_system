@@ -10,7 +10,7 @@ import org.json.simple.JSONArray;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Library {
-//KNOWN ERRORS, Update day updates the day 5 times
+
 	public static void main(String [] args) {
 		//load users and get an instance of stock
 		ArrayList<User> Users = UserLoader.loadUsers();
@@ -32,7 +32,6 @@ public class Library {
 				int card_num = scan.nextInt();
 
 				//login
-				System.out.println("Searching for the number " + card_num + " in the user database");
 				boolean found = false;
 				for(User user: Users) {
 					if(user.getCardNumber() == card_num) {
@@ -42,7 +41,6 @@ public class Library {
 						do {
 							System.out.println("please enter your password to continue: ");
 							pwd = scan.next();
-							System.out.println("checking if the password " + pwd + " is correct");
 							if (user.getPassword().equals(pwd)){
 								System.out.println("login successful");
 								curr_user = user;
@@ -87,7 +85,7 @@ public class Library {
 					
 					int choice = scan.nextInt();
 					scan.nextLine();
-					//Searches through the database for the inputted term by the user
+					//Searches through the database for the inputed term by the user
 					switch(choice) {
 					case 1:
 						System.out.println("Enter a search term: ");
@@ -124,6 +122,9 @@ public class Library {
 									curr_result = results.get(i);
 								}
 						}
+						
+						if(zero)
+							break;
 						//User is given options based on item they selected
 						boolean i = true;
 						while(i) {
