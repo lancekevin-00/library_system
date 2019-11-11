@@ -9,7 +9,7 @@ public abstract class User {
 	protected String Address;
 	public boolean is_librarian = false;
 	protected String type;
-	ArrayList<Checked_out_itm> chkItems = UserLoader.loadCheckedOutItems();
+	//ArrayList<Checked_out_itm> chkItems = UserLoader.loadCheckedOutItems();
 	public void checkout(Checked_out_itm itm, int i) {
 		if (itm == null)
 			return;

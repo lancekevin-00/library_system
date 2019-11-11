@@ -67,26 +67,35 @@ public class UserLoader {
 				int daysremaining = (int)(long)ChkItemJSON.get("timeremaining");
 				checkedOutItems.add(new Checked_out_itm(userid,type,id,renewal,daysremaining));
 			}
-				Checked_out_itm[] checkedOut = new Checked_out_itm[10];
-				int j =0;
+				Checked_out_itm[] checkedOut; //= new Checked_out_itm[10];
+				
+				for(User user : users) 
+					System.out.println(user.getName());
+				
 				for(User user : users) {
-					if(user.getType() == "L") {
-						checkedOut = new Checked_out_itm[10];
-					}
-					else if(user.getType() == "A") {
-						checkedOut = new Checked_out_itm[10];
-					}
-					else if(user.getType() == "T") {
+					
+					System.out.println(user.getName());
+					
+					if(user.getType() == "T") {
 						checkedOut = new Checked_out_itm[50];
 					}
+					else{
+						checkedOut = new Checked_out_itm[10];
+					}
+					
+					int j = 0;
+					//System.out.println(checkedOutItems.size());
 					for(Checked_out_itm chkItem : checkedOutItems) {
-								if(chkItem.getUserId() == user.getCardNumber()) {
-										checkedOut[j] = chkItem;
-										j++;
-									}
-								}
-						user.setItems(checkedOut);
-						} 
+						System.out.println("\t"+user.getName());
+						if(chkItem.getUserId() == user.getCardNumber()) {
+							System.out.println("adding " + chkItem.getId() + " to " + user.getName());
+							checkedOut[j] = chkItem;
+							j++;
+						}
+					}
+					System.out.println("done loop for " + user.getName());
+					user.setItems(checkedOut);
+				} 
 			return checkedOutItems;			
 		} catch (Exception e) {
 			e.printStackTrace();
