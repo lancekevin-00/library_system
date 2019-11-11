@@ -7,7 +7,7 @@ package library_system;
 import java.util.ArrayList;
 public abstract class User {
 	/**
-	 * Variables that will be used by each user 
+	 * Variables that will be used by each user
 	 */
 	protected String Name;
 	protected int cardNumber;
@@ -17,17 +17,17 @@ public abstract class User {
 	protected String Address;
 	public boolean is_librarian = false;
 	protected String type;
-	/** 
+	/**
 	 * Adds a checked out item to the users checked out items
-	 * @param itm The item that is being added 
-	 * @param i The index that it is adding 
+	 * @param itm The item that is being added
+	 * @param i The index that it is adding
 	 */
 	public void checkout(Checked_out_itm itm, int i) {
 		items[i] = itm;
 	}
 	/**
 	 * Returns a users checked out item
-	 * @param index The index of the book that is being returned 
+	 * @param index The index of the book that is being returned
 	 */
 	public void return_itm(int index) {
 		items[index].return_itm();
@@ -48,9 +48,9 @@ public abstract class User {
 		Fees = Fees - pmt;
 	}
 	/**
-	 * Checks the return date of a users check 
-	 * @param id The id of the book that is being checked for a return date 
-	 * @return The time remaining on the checked out book before it is overdue 
+	 * Checks the return date of a users check
+	 * @param id The id of the book that is being checked for a return date
+	 * @return The time remaining on the checked out book before it is overdue
 	 */
 	public int checkReturnDate(int id) {
 		for(Checked_out_itm item:items) {
@@ -88,7 +88,7 @@ public abstract class User {
 	public double getFees() {
 		return Fees;
 	}
-	
+
 	public void updateFees() {
 		Fees = 0;
 		for(Checked_out_itm itm: items) {
@@ -99,7 +99,7 @@ public abstract class User {
 			}
 		}
 	}
-	
+
 	public void updateDay() {
 		for(Checked_out_itm itm: items) {
 			if(itm != null) {
@@ -126,4 +126,3 @@ public abstract class User {
 		this.items = items;
 	}
 }
-
