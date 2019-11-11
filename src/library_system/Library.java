@@ -1,29 +1,30 @@
 package library_system;
+/**
+ * Library class, Runs the menu for the library
+ * @author riley and lance
+ * Imports for all of the json files
+ */
 import java.io.FileWriter;
 import java.io.IOException;
 import org.json.simple.JSONArray;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Library {
-//KNOWN ERRORS, Cant change a persons phone number, Update day updates the day 5 times
+//KNOWN ERRORS, Update day updates the day 5 times
 	public static void main(String [] args) {
-
 		//load users and get an instance of stock
 		ArrayList<User> Users = UserLoader.loadUsers();
 		ArrayList<Item> stock = StockLoader.loadDB();
 		ArrayList<Checked_out_itm> chkItems = UserLoader.loadCheckedOutItems();
 		UserLoader.finish_Checked_out_itm_intsantiation(chkItems, stock);
-		for(Checked_out_itm item: chkItems) {
-			System.out.println(item.toString());
-		}
 		UserLoader.finish_Checked_out_itm_intsantiation(chkItems, stock);
-		for(Checked_out_itm item: chkItems) {
-			item.print();
-		}
 		User curr_user = null;
 		Checked_out_itm[] items;
 		boolean total_logout = false;
 		Scanner scan = new Scanner(System.in);
+		/**
+		 * Starts the menu and library System, Makes sure the system continues running until the user wants to exit
+		 */
 		while(!total_logout){
 			System.out.println("~~~~~~~~~~~~~~WELCOME TO THE LIBRARY~~~~~~~~~~~~~~");
 			do {
@@ -64,7 +65,7 @@ public class Library {
 			}
 			while(curr_user == null);
 			System.out.println("Welcome to the library " + curr_user.getName());
-
+			//Prints the menu
 			try {
 				boolean go_again = true;
 				while(go_again) {
@@ -83,9 +84,10 @@ public class Library {
 						System.out.println("11: EXIT THE SYSTEM");
 					}
 
-
+					
 					int choice = scan.nextInt();
 					scan.nextLine();
+					//Searches through the database for the inputted term by the user
 					switch(choice) {
 					case 1:
 						System.out.println("Enter a search term: ");
@@ -103,7 +105,7 @@ public class Library {
 							}
 						}
 
-
+						//Returns the Search results
 						System.out.println("Results:");
 						for(Item itm: results) {
 							System.out.println(itm.getId() + ": "+ itm.getTitle());
@@ -122,7 +124,7 @@ public class Library {
 									curr_result = results.get(i);
 								}
 						}
-
+						//User is given options based on item they selected
 						boolean i = true;
 						while(i) {
 							System.out.println("~~~~~~~~~ACTIONS~~~~~~~~~");
@@ -170,6 +172,7 @@ public class Library {
 								}
 						}
 						break;
+						//Checks due dates of checked out items
 					case 2:
 						System.out.println("Check Due Dates");
 						items = curr_user.getItems();
@@ -179,6 +182,7 @@ public class Library {
 							}
 						}
 						break;
+						//Lets the user know which items they have checked out 
 					case 3:
 						System.out.println("Checked Out Items:");
 						items = curr_user.getItems();
@@ -199,6 +203,7 @@ public class Library {
 							}
 						}
 						break;
+						//Prints out the users fees and allows the user to pay the fees
 					case 4:
 						System.out.println("You owe: $" + curr_user.getFees());
 						System.out.println("~~~~~~~~~ACTIONS~~~~~~~~~");
@@ -218,6 +223,7 @@ public class Library {
 							break;
 						};
 						break;
+						//The user can make a payment for their fees
 					case 5:
 						System.out.println("Enter payment amount");
 						System.out.print("$");
@@ -226,6 +232,7 @@ public class Library {
 						System.out.println("Thank you for your payment");
 						System.out.println("You now owe "+ curr_user.getFees() + " in fines");
 						break;
+						//The user can change their password
 					case 6:
 						System.out.println("Enter your new password:");
 						String pwd1 = scan.next();
@@ -240,11 +247,13 @@ public class Library {
 							System.out.println("new password not confirmed");
 						}
 						break;
+						//Logout
 					case 7:
 						go_again = false;
 						System.out.println("Good bye " + curr_user.Name);
 						curr_user = null;
 						break;
+						//Allows the librarian to edit a user
 					case 8:
 						if(curr_user.is_librarian) {
 
@@ -290,6 +299,7 @@ public class Library {
 						else
 						System.out.println("Enter A Valid Number");
 						break;
+						//Allows the librarian to add a new item to stock and specify all information about it
 					case 9:
 						String title, genre, publisher, author,director,actors;
 						int year, numCopies,idNum, volume, issue;
@@ -375,6 +385,7 @@ public class Library {
 							break;
 						}
 						break;
+						//Updates the day for the checked out books
 					case 10:
 						System.out.println("Updating the day");
 						for(User user: Users) {
@@ -385,6 +396,7 @@ public class Library {
 							}
 						} 
 						break;
+						//Exits the system
 					case 11:
 						System.out.println("EXITING THE SYSTEM");
 						total_logout = true;
@@ -403,6 +415,7 @@ public class Library {
 		}
 		while(!total_logout);
 		scan.close();
+		//Writes all the updated lists to the respective database
 		updateBook(StockLoader.getBooks());
 		updateDVDs(StockLoader.getDvds());
 		updateMagazines(StockLoader.getMagazines());
@@ -413,7 +426,8 @@ public class Library {
 	}
 /**Helper Methods
  *
- * @param books
+ * These methods print out the updated arraylists to the json files
+ * 
  */
 	private static void updateBook(ArrayList<Book> books) {
 

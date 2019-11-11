@@ -1,6 +1,14 @@
 package library_system;
+/**
+ * User abstract super class
+ * @author riley and lance
+ *
+ */
 import java.util.ArrayList;
 public abstract class User {
+	/**
+	 * Variables that will be used by each user 
+	 */
 	protected String Name;
 	protected int cardNumber;
 	protected String password;
@@ -9,21 +17,41 @@ public abstract class User {
 	protected String Address;
 	public boolean is_librarian = false;
 	protected String type;
+	/** 
+	 * Adds a checked out item to the users checked out items
+	 * @param itm The item that is being added 
+	 * @param i The index that it is adding 
+	 */
 	public void checkout(Checked_out_itm itm, int i) {
 		items[i] = itm;
 	}
-
+	/**
+	 * Returns a users checked out item
+	 * @param index The index of the book that is being returned 
+	 */
 	public void return_itm(int index) {
 		items[index].return_itm();
 		items[index] = null;
 	}
-
+	/**
+	 * Changes the users passwords
+	 * @param pwd The new password
+	 */
 	public void changePwd(String pwd) {
 		password = pwd;
 	}
+	/**
+	 * Make payment of fines
+	 * @param pmt The payment that the user is paying for their fines
+	 */
 	public void makePayment(int pmt) {
 		Fees = Fees - pmt;
 	}
+	/**
+	 * Checks the return date of a users check 
+	 * @param id The id of the book that is being checked for a return date 
+	 * @return The time remaining on the checked out book before it is overdue 
+	 */
 	public int checkReturnDate(int id) {
 		for(Checked_out_itm item:items) {
 			if (id == item.getId())
@@ -32,7 +60,7 @@ public abstract class User {
 		return -1;
 	}
 
-	//getters and setters
+	//getters and setters for the variables
 	public String getName() {
 		return Name;
 	}

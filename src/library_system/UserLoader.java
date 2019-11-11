@@ -1,13 +1,25 @@
 package library_system;
+/**
+ * UserLoader class
+ * @author riley and lance
+ * Imports for all of the json files
+ */
 import java.io.FileReader;
 import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;;
 public class UserLoader {
+	/**
+	 * File names and  user array list
+	 */
 	private static final String USER_FILE_NAME = "users.json";
 	private static final String CHKITEM_FILE_NAME = "checkedoutitems.json";
 	private static ArrayList<User> users = new ArrayList<User>();	
+	/**
+	 * Parses through the json file and adds the users to the arraylist 
+	 * @return The loaded arraylist from the json file
+	 */
 	public static ArrayList<User> loadUsers() {
 		try {
 			FileReader reader = new FileReader(USER_FILE_NAME);
@@ -19,10 +31,8 @@ public class UserLoader {
 				int id = (int)(long)UserJSON.get("id");
 				String firstName = (String)UserJSON.get("firstname"); 
 				String lastName = (String)UserJSON.get("lastName");
-				int birthdayYear = (int)(long)UserJSON.get("birthdayYear"); // Need to add this to the json file 
+				int birthdayYear = (int)(long)UserJSON.get("birthdayYear"); 
 				String address = (String)UserJSON.get("address");
-			//	String email = (String)UserJSON.get("email"); //add this and phone to constructors
-			//	String phone = (String)UserJSON.get("phone"); //Have it as a string right now but idk if you want to make it an integer or not
 				int accountID = (int)(long)UserJSON.get("accountID");
 				String password = (String)UserJSON.get("password");
 				String type = (String)UserJSON.get("type");
@@ -46,7 +56,10 @@ public class UserLoader {
 		
 		return null;
 	}
-	
+	/**
+	 * Parses through the json file and adds the Checked out items to the arraylist 
+	 * @return The loaded arraylist from the json file
+	 */
 	public static ArrayList<Checked_out_itm> loadCheckedOutItems() {
 		ArrayList<Checked_out_itm> checkedOutItems = new ArrayList<Checked_out_itm>();
 		
@@ -64,6 +77,9 @@ public class UserLoader {
 				int daysremaining = (int)(long)ChkItemJSON.get("timeremaining");
 				checkedOutItems.add(new Checked_out_itm(userid,title,id,renewal,daysremaining));
 			}
+			/**
+			 * Sets the amount of checked out items for each specific user and adds them from the database to the specific user
+			 */
 				Checked_out_itm[] checkedOut = new Checked_out_itm[10];
 				int j =0;
 				for(User user : users) {
@@ -92,8 +108,11 @@ public class UserLoader {
 		return null;
 	}
 	
-	//remove this if it doesn't work. It is supposed to add the item to the checked out item. This is nessessacary for the return method
-	
+	/**
+	 * Adds the item to the checked out item for the return methods
+	 * @param checked_out_items Arraylist of checked out items
+	 * @param stock ArrayList of items in stock
+	 */
 	public static void finish_Checked_out_itm_intsantiation(ArrayList<Checked_out_itm> checked_out_items, ArrayList<Item> stock) {
 		for(int i=0;i < checked_out_items.size(); i++) {
 			for(int c=0; c < stock.size(); c++) {
@@ -102,7 +121,5 @@ public class UserLoader {
 				}
 			}
 		}
-	}
-	
-	
+	}	
 }

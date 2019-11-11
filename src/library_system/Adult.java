@@ -1,28 +1,24 @@
 package library_system;
 /**
- * 
- * @author riley
+ *  Adult User class
+ * @author riley and lance
  *
  */
-public class Adult extends User {
-	//Child[] children;
+public class Adult extends User {	
 	private String firstName,lastName;
 	private int accountID;
-	Adult(int id,String firstName,String lastName,int birthdayYear,String address, int accountID,String password ,int fines) {
-		super.Name = firstName+" "+lastName;
-		super.cardNumber = id;
-		super.password = password;
-		super.Age = birthdayYear;
-		super.Fees = fines;
-		super.Address = address;
-		super.items = new Checked_out_itm[10];
-		this.accountID = accountID;
-		/*this.children = new Child[children.length];
-		for (int i=0;i<this.children.length;i++) {
-			this.children[i] = children[i];
-		}
-		*/
-	}
+	/**
+	 * Constructor for Adult User
+	 * @param id The id of the user
+	 * @param firstName First Name of the user
+	 * @param lastName Last name of the user
+	 * @param birthdayYear Birthday of the user
+	 * @param address The address of the user
+	 * @param accountID The Id of the account
+	 * @param password User's password
+	 * @param fines User's fines
+	 * @param type The type of user account
+	 */
 	Adult(int id,String firstName,String lastName,int birthdayYear,String address, int accountID,String password ,int fines,String type) {
 		super.Name = firstName+" "+lastName;
 		super.cardNumber = id;
@@ -34,47 +30,10 @@ public class Adult extends User {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		super.type = type;
-		//children = new Child[0];
-	}
-
-	/*private double getChildFees() {
-		double total = 0.0;
-		for(Child c: children) {
-			total += c.getFees();
-		}
-		return total;
-	}
-
-	public double getFees(){
-		return (Fees + this.getChildFees());
-	}
-
-	public void addChild(Child c) {
-		Child[] tempChildren = new Child[children.length + 1];
-		for(int i=0;i<children.length;i++) {
-			tempChildren[i] = children[i];
-		}
-		tempChildren[children.length] = c;
-		children = tempChildren;
-	}
-
-	public void removeChild(String name) {
-		boolean before = true;
-		Child[] tempChildren = new Child[children.length - 1];
-		for(int i=0;i<children.length; i++) {
-			if(children[i].Name == name) {
-				before = false;
-			}
-			if(before) {
-				tempChildren[i] = children[i];
-			}
-			else {
-				tempChildren[i-1] = children[i];
-			}
-		}
-		children = tempChildren;
-	}
-	*/
+	} 
+	/**
+	 * Prints the adult user to the user database in the specific format
+	 */
 	public String toString() {
 		return "{\n\"id\":" +cardNumber+",\n\"firstname\":\""+firstName+"\",\n\"lastName\":\""+lastName+"\",\n\"birthdayYear\":"+Age+",\n\"address\":\""+Address+"\",\n\"accountID\":"+accountID+",\n\"password\":\""+password+"\",\n\"type\":\"A\",\n\"fines\":"+Fees + "\n}";
 	}
