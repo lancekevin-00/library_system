@@ -1,6 +1,13 @@
 package library_system;
-
+/**
+ * Item class
+ * @author riley and lance
+ *
+ */
 public class Item{
+	/**
+	 * Variables to be used by all item types
+	 */
 	protected int max_checkout_time;
 	protected User[] waitlist;
 	protected int copies_avalible;
@@ -8,7 +15,7 @@ public class Item{
 	protected String[] searchTerms;
 	protected String title;
 	protected int id;
-	
+	//Getters and Setters for attributes of each item
 	public int getId() {
 		return id;
 	}
@@ -53,7 +60,11 @@ public class Item{
 	public String getTitle() {
 		return title;
 	}
-	
+	/**
+	 *  Checks out the item for the specific user
+	 * @param u The specific user
+	 * @return null
+	 */
 	public Checked_out_itm checkout(User u) {
 		if(waitlist == null)
 			waitlist = new User[10];

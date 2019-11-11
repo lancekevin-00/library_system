@@ -1,11 +1,18 @@
 package library_system;
+/**
+ * UserLoader class
+ * @author riley and lance
+ * Imports for all of the json files
+ */
 import java.io.FileReader;
 import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;;
-
 public class StockLoader {
+	/**
+	 * File names and  item arrayLists
+	 */
 private static final String BOOK_FILE_NAME = "books.json";
 private static final String DVD_FILE_NAME = "dvds.json";
 private static final String MAGAZINE_FILE_NAME = "magazines.json";
@@ -18,7 +25,10 @@ private static ArrayList<DVD> dvds;
 private static ArrayList<Magazine> magazines;
 private static ArrayList<eBook> ebooks;
 private static ArrayList<Audio_Book> audiobooks;
-
+/**
+ * Loads all of the item arraylist into the stock arraylist
+ * @return The stock arraylist
+ */
 	private static ArrayList<Item> getStock(){
 		stock = new ArrayList<Item>();
 		loadBooks();
@@ -29,14 +39,20 @@ private static ArrayList<Audio_Book> audiobooks;
 		
 		return stock;
 	}
-	
+	/**
+	 * Loads the database
+	 * @return The stock arraylist
+	 */
 	public static ArrayList<Item> loadDB(){
 		if(stock == null) {
 			stock = getStock();
 		}
 		return stock;
 	}
-
+	/**
+	 * Loads the books by parsing through the book json file
+	 * @return the book arraylist
+	 */
 	private static ArrayList<Book> loadBooks() {
 		books = new ArrayList<Book>();
 		
@@ -68,8 +84,10 @@ private static ArrayList<Audio_Book> audiobooks;
 		
 		return null;
 	}
-	
-	
+	/**
+	 * Loads the dvds by parsing through the dvd json file
+	 * @return the dvd arraylist
+	 */
 	private static ArrayList<DVD> loadDVDs() {
 		dvds = new ArrayList<DVD>();
 		
@@ -101,7 +119,10 @@ private static ArrayList<Audio_Book> audiobooks;
 		
 		return null;
 	}
-	
+	/**
+	 * Loads the magazines by parsing through the magazines json file
+	 * @return the magazine arraylist
+	 */
 	private static ArrayList<Magazine> loadMagazines() {
 		magazines = new ArrayList<Magazine>();
 		
@@ -135,7 +156,10 @@ private static ArrayList<Audio_Book> audiobooks;
 		
 		return null;
 	}
-	
+	/**
+	 * Loads the ebooks by parsing through the ebook json file
+	 * @return the ebook arraylist
+	 */
 	private static ArrayList<eBook> loadeBooks() {
 		ebooks = new ArrayList<eBook>();
 		
@@ -167,7 +191,10 @@ private static ArrayList<Audio_Book> audiobooks;
 		
 		return null;
 	}
-	
+	/**
+	 * Loads the audiobooks by parsing through the audiobook json file
+	 * @return the audiobook arraylist
+	 */
 	private static ArrayList<Audio_Book> loadaudioBooks() {
 		audiobooks = new ArrayList<Audio_Book>();
 		
@@ -199,7 +226,7 @@ private static ArrayList<Audio_Book> audiobooks;
 		
 		return null;
 	}
-
+	//Getters for the item arraylists
 	public static ArrayList<Book> getBooks() {
 		return books;
 	}
