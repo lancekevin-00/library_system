@@ -61,7 +61,7 @@ public class User_Tester {
 	public void librarian() {
 		Librarian temp = new Librarian(0, "temp", "librarian", 2000, "1234 temp st", 0, "password", 0, "L");
 		String actual = temp.toString();
-		String expected = "{\n\"id\":" +0+",\n\"firstname\":\""+"temp"+"\",\n\"lastName\":\""+"adult"+"\",\n\"birthdayYear\":"+"2000"+",\n\"address\":\""+"1234 temp st"+"\",\n\"accountID\":"+0+",\n\"password\":\""+"password"+"\",\n\"type\":\"L\",\n\"fines\":"+0 + "\n}";
+		String expected = "{\n\"id\":" +0+",\n\"firstname\":\""+"temp"+"\",\n\"lastName\":\""+"librarian"+"\",\n\"birthdayYear\":"+"2000"+",\n\"address\":\""+"1234 temp st"+"\",\n\"accountID\":"+0+",\n\"password\":\""+"password"+"\",\n\"type\":\"L\",\n\"fines\":"+0 + "\n}";
 		assertEquals("librarian instantiated correctly", actual, expected);
 	}
 	
@@ -124,5 +124,49 @@ public class User_Tester {
 		
 		assertEquals("Shrek 2 was added correctly", actual, expected);
 	}
-
+	
+	@Test
+	//returning an item
+	public void ReturnBook() {
+		int expected = book.getCopies_avalible();
+		Checked_out_itm itm = book.checkout(adult);
+		adult.checkout(itm,0);
+		adult.return_itm(0);
+		
+		int actual = book.getCopies_avalible();
+		
+		assertEquals("the book was properly returned", actual, expected);
+	}
+	
+	@Test
+	//changing password
+	public void ChangePassword() {
+		String expected = "new_password";
+		adult.changePwd(expected);
+		String actual = adult.getPassword();
+		
+		assertEquals("password changed correctly", actual, expected);
+	}
+	
+	@Test
+	//making payment
+	public void makePayment() {
+		adult.setFees(5);
+		int expected = 0;
+		adult.makePayment(5);
+		int actual = adult.getFees();
+		
+		assertEquals("fees paid correctly", actual, expected);
+	}
+	
+	@Test
+	//checking return date book
+	public void checkingReturnDate() {
+		int expected = book.getMax_checkout_time();
+		Checked_out_itm itm = book.checkout(adult);
+		adult.checkout(itm,0);
+		int actual = adult.checkReturnDate(0);
+		
+		assertEquals("correct return date returned", actual, expected);
+	}
 }

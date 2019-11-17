@@ -85,7 +85,7 @@ public abstract class User {
 	protected void setAge(int age) {
 		Age = age;
 	}
-	public double getFees() {
+	public int getFees() {
 		return Fees;
 	}
 
