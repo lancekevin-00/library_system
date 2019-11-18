@@ -187,6 +187,41 @@ public class User_Tester {
 		int actual = adult.checkReturnDate(0);
 		
 		assertEquals("Updates day correctly", actual, expected);
+	}
+	@Test
+	//Checking max amount of items checked out for adults
+	public void maxCheckoutItems_Adult() {
+		Checked_out_itm itm = book.checkout(adult);
+		int expected =10;
+		for(int i=0;i <12; i++) {
+			adult.checkout(itm,0);
+		}
+		int actual = adult.getItems().length;
 		
+		assertEquals("Max checkout for Adult correct", actual, expected);
+	}
+	@Test
+	//Checking max amount of items checked out for Librarians
+	public void maxCheckoutItems_Librarian() {
+		Checked_out_itm itm = eBook.checkout(librarian);
+		int expected =10;
+		for(int i=0;i <12; i++) {
+			librarian.checkout(itm,0);
+		}
+		int actual = librarian.getItems().length;
+		
+		assertEquals("Max checkout for Librarian correct", actual, expected);
+	}
+	@Test
+	//Checking max amount of items checked out for adults
+	public void maxCheckoutItems_Teacher() {
+		Checked_out_itm itm = audioBook.checkout(teacher);
+		int expected =50;
+		for(int i=0;i <52; i++) {
+			teacher.checkout(itm,0);
+		}
+		int actual = teacher.getItems().length;
+		
+		assertEquals("Max checkout for teacher correct", actual, expected);
 	}
 }
