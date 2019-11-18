@@ -169,4 +169,24 @@ public class User_Tester {
 		
 		assertEquals("correct return date returned", actual, expected);
 	}
+	@Test
+	//Checking if fees are set
+	public void checkingFees() {
+		adult.setFees(10);
+		int expected = 10;
+		int actual = adult.getFees();
+		assertEquals("Correct Fee amount returned", actual, expected);	
+	}
+	@Test 
+	//Test updating day on checked out items
+	public void testUpdateDay() {
+		Checked_out_itm itm = new Checked_out_itm("Harry Potter",book);
+		adult.checkout(itm,0);
+		int expected = adult.checkReturnDate(0)-1;
+		adult.updateDay();
+		int actual = adult.checkReturnDate(0);
+		
+		assertEquals("Updates day correctly", actual, expected);
+		
+	}
 }
