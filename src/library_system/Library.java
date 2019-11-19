@@ -1,4 +1,6 @@
 package library_system;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 /**
  * Library class, Runs the menu for the library
  * @author riley and lance
@@ -10,6 +12,7 @@ import org.json.simple.JSONArray;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Library {
+	static Librarian temp_lib;
 
 	public static void main(String [] args) {
 		//load users and get an instance of stock
@@ -22,6 +25,12 @@ public class Library {
 		Checked_out_itm[] items;
 		boolean total_logout = false;
 		Scanner scan = new Scanner(System.in);
+		
+		//tester user which is newly instantiated each time and used for testing the system
+		System.out.println(args.length);
+		temp_lib = new Librarian(Integer.parseInt(args[0]), "temp","librarian",2000,"1 library street", 100, "password", 0,"L");
+		Users.add(temp_lib);
+		
 		/**
 		 * Starts the menu and library System, Makes sure the system continues running until the user wants to exit
 		 */
@@ -400,6 +409,7 @@ public class Library {
 						//Exits the system
 					case 11:
 						System.out.println("EXITING THE SYSTEM");
+						writeOutTestData();
 						total_logout = true;
 						go_again = false;
 						break;
@@ -541,6 +551,23 @@ public class Library {
 	file.close();
 		}
 		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private static void writeOutTestData() {
+		FileWriter out = null;
+		try {
+			out = new FileWriter("test_data.txt");
+			out.write("U, "+ temp_lib.getCardNumber()+", "+temp_lib.getName()+", "+temp_lib.getAge()+", "+temp_lib.getPassword()+", "+temp_lib.getType() + ", ignore");
+			Checked_out_itm[] itms = temp_lib.getItems();
+			for(Checked_out_itm itm:itms) {
+				if(itm!=null) {
+					out.write("C, "+itm.getId()+", "+itm.getUserId()+", "+itm.getTitle()+", "+itm.getTime_remaining()+", "+itm.getRenewals()+", "+itm.getType());
+				}
+			}
+			out.close();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
