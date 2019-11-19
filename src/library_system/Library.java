@@ -47,9 +47,10 @@ public class Library {
 						found = true;
 						int pwd_attmpts = 3;
 						String pwd;
-						do {
+						while(pwd_attmpts > 0 && curr_user == null) {
 							System.out.println("please enter your password to continue: ");
 							pwd = scan.next();
+							System.out.println(pwd);
 							if (user.getPassword().equals(pwd)){
 								System.out.println("login successful");
 								curr_user = user;
@@ -59,7 +60,6 @@ public class Library {
 								System.out.println("incorrect password " + pwd_attmpts + " attempts remaining");
 							}
 						}
-						while(pwd_attmpts > 0 && curr_user == null);
 						if (pwd_attmpts == 0)
 							System.out.println("You ran out of attempts");
 					}

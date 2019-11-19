@@ -27,6 +27,8 @@ public class Library_Tester {
 			fips = new FileInputStream(new File("test_files/checkout1.txt"));
 			System.setIn(fips);
 			Library.main(args);
+			System.out.println("exited the main");
+			
 		    Scanner file;
 		    String[][] data;
 			try {
@@ -34,7 +36,12 @@ public class Library_Tester {
 				int lines = 0;
 				while(file.hasNextLine()) {
 					++lines;
+					file.nextLine();
 				}
+				
+				System.out.println("Lines:" + lines);
+				
+				file = new Scanner(new File("test_data.txt"));
 				data = new String[lines][7];
 				for(int i = 0; i < lines; i++) {
 					String line = file.nextLine();
@@ -50,14 +57,15 @@ public class Library_Tester {
 				return;
 			}
 			
-		    System.setIn(fips);
-		    System.out.println(args.length);
+			System.out.println("loaded the data");
 		    
 		    boolean found = false;
 		    for(int i=0;i<data.length;i++) {
 		    	if(data[i][0].equals("C") && Integer.parseInt(data[i][1]) == 12 && Integer.parseInt(data[i][2]) == Integer.parseInt(USERID));
 		    		found = true;
 		    }
+		    
+		    System.out.println("analyzed the data");
 		    
 		    assertTrue(found);
 		    System.setIn(original);
