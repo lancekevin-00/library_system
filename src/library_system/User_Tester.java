@@ -224,4 +224,15 @@ public class User_Tester {
 		
 		assertEquals("Max checkout for teacher correct", actual, expected);
 	}
+	@Test
+	public void checkoutSameItem() {
+		Checked_out_itm itm = new Checked_out_itm("Harry Potter",book);
+		adult.checkout(itm,0);
+		adult.checkout(itm,1);
+		Checked_out_itm[] temp = adult.getItems();
+		String actual = temp[0].toString() + ", " + temp[1].toString();;
+		String expected = itm.toString() + ", " + itm.toString();
+		
+		assertEquals("harry potter was added correctly", actual, expected);
+	}
 }
