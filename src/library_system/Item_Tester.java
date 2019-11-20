@@ -102,15 +102,68 @@ public class Item_Tester {
 		assertEquals("correct return date returned", actual, expected);
 	}
 	@Test 
+	//Max amount of people on waitlist for a book
 	public void maxWaitListBook() {
 		int expected = 10;
 		User[] users = new User[10];
 		for(int i =0; i < users.length; i++) {
 			users[i] = adult;
 		}
-		int actual = users.length;
+		book.setWaitlist(users);
+		int actual = book.getWaitlist().length;
 		
 		assertEquals("Correct waitlist size returned", actual, expected);
+	}
+	@Test 
+	//Max amount of people on waitlist for an audio book
+	public void maxWaitListAudioBook() {
+		int expected = 10;
+		User[] users = new User[10];
+		for(int i =0; i < users.length; i++) {
+			users[i] = adult;
+		}
+		audioBook.setWaitlist(users);
+		int actual = audioBook.getWaitlist().length;
 		
+		assertEquals("Correct waitlist size returned", actual, expected);
+	}
+	@Test 
+	//Max amount of people on waitlist on an ebook
+	public void maxWaitListeBook() {
+		int expected = 10;
+		User[] users = new User[10];
+		for(int i =0; i < users.length; i++) {
+			users[i] = adult;
+		}
+		eBook.setWaitlist(users);
+		int actual = eBook.getWaitlist().length;
+		
+		assertEquals("Correct waitlist size returned", actual, expected);
+	}
+	@Test 
+	//Max amount of people on waitlist on a Magazine
+	public void maxWaitListMagazine() {
+		int expected = 10;
+		User[] users = new User[10];
+		for(int i =0; i < users.length; i++) {
+			users[i] = adult;
+		}
+		magazine.setWaitlist(users);
+		int actual = magazine.getWaitlist().length;
+		
+		assertEquals("Correct waitlist size returned", actual, expected);
+	}
+	@Test 
+	//Max amount of people on waitlist on a DVD
+	public void maxWaitListDVD() {
+		int expected = 10;
+		User[] users = new User[10];
+		for(int i =0; i < users.length; i++) {
+			users[i] = adult;
+		}
+		dvd.setWaitlist(users);
+		int actual = dvd.getWaitlist().length;
+		
+		assertEquals("Correct waitlist size returned", actual, expected);
 	}
 }
