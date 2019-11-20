@@ -71,7 +71,64 @@ public class Library_Tester {
 		    System.setIn(original);
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
-		}
-	    
+		}   
 	}
+	
+	@Test 
+	public void testAddBook() {
+		 System.out.println("main");
+	    String[] args = new String[]{USERID};
+	    final InputStream original = System.in;
+	    FileInputStream fips;
+		try {
+			fips = new FileInputStream(new File("test_files/addBook.txt"));
+			System.setIn(fips);
+			Library.main(args);
+			System.out.println("exited the main");
+			
+		    Scanner file;
+		    String[][] data;
+		  	try {
+					file = new Scanner(new File("test_data1.txt"));
+					int lines = 0;
+					while(file.hasNextLine()) {
+						++lines;
+						file.nextLine();
+					}
+					
+					System.out.println("Lines:" + lines);
+					
+					file = new Scanner(new File("test_data1.txt"));
+					data = new String[lines][7];
+					for(int i = 0; i < lines; i++) {
+						String line = file.nextLine();
+						String[] temp = line.split(", ");
+						if(temp.length == 7)
+							data[i] = temp;
+						else
+							System.out.println("there was an error reading the file");
+					}
+					file.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+					return;
+				}
+				
+				System.out.println("loaded the data");
+			    
+			    boolean found = false;
+			    for(int i=0;i<data.length;i++) {
+			    	if(data[i][0].equals("C") && Integer.parseInt(data[i][1]) == 9 && Integer.parseInt(data[i][2]) == Integer.parseInt(USERID));
+			    		found = true;
+			    }
+			    
+			    System.out.println("analyzed the data");
+			    
+			    assertTrue(found);
+			    System.setIn(original);
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+			}   
+	} 
+	
 }

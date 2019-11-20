@@ -34,5 +34,50 @@
 "author":"Margaret Mitchell",
 "numCopies":2,
 "newArrival":false
+},{
+ "id":32,
+"title":"Harry Potter",
+"year":2005,
+"genre":"Adventure",
+"publisher":"Scholastic",
+"author":"J.K Rowling",
+"numCopies":3,
+"newArrival":false
+},{
+ "id":32,
+"title":"Harry Potter",
+"year":2005,
+"genre":"Adventure",
+"publisher":"Scholastic",
+"author":"J.K Rowling",
+"numCopies":3,
+"newArrival":false
+},{
+ "id":32,
+"title":"Harry Potter",
+"year":2005,
+"genre":"Adventure",
+"publisher":"Scholastic",
+"author":"J.K Rowling",
+"numCopies":3,
+"newArrival":false
+},{
+ "id":32,
+"title":"Harry Potter",
+"year":2005,
+"genre":"Adventure",
+"publisher":"Scholastic",
+"author":"J.K Rowling",
+"numCopies":3,
+"newArrival":false
+},{
+ "id":32,
+"title":"Harry Potter",
+"year":2005,
+"genre":"Adventure",
+"publisher":"Scholastic",
+"author":"J.K Rowling",
+"numCopies":3,
+"newArrival":false
 }]
 }
