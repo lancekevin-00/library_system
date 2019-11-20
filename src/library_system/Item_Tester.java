@@ -101,4 +101,16 @@ public class Item_Tester {
 		
 		assertEquals("correct return date returned", actual, expected);
 	}
+	@Test 
+	public void maxWaitListBook() {
+		int expected = 10;
+		User[] users = new User[10];
+		for(int i =0; i < users.length; i++) {
+			users[i] = adult;
+		}
+		int actual = users.length;
+		
+		assertEquals("Correct waitlist size returned", actual, expected);
+		
+	}
 }

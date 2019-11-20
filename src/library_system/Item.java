@@ -29,7 +29,9 @@ public class Item{
 	public void setMax_checkout_time(int max_checkout_time) {
 		this.max_checkout_time = max_checkout_time;
 	}
-	
+	public void setWaitlist(User[] users) {
+		waitlist = users;
+	}
 	public User[] getWaitlist() {
 		return waitlist;
 	}
